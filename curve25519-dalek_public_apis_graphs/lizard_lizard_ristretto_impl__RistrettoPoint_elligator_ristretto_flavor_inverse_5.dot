@@ -1,0 +1,112 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "lizard_ristretto.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]lizard_decode()." [label="lizard_decode", tooltip="    pub fn lizard_decode<D: Digest>(&self) -> Option<[u8; 16]>     where         D: Digest<OutputSize = U32>,     {         let mut result: [u8; 16] = Default::default();         let mut h: [u8; 32] =...", fillcolor=lightgray, style="filled,dotted"]
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]decode_253_bits()." [label="decode_253_bits", tooltip="    pub fn decode_253_bits(&self) -> (u8, [[u8; 32]; 8]) {         let mut ret = [[0u8; 32]; 8];         let (mask, fes) = self.elligator_ristretto_flavor_inverse();          for j in 0..8 {          ...", fillcolor=lightgray, style="filled,dotted"]
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]elligator_ristretto_flavor_inverse()." [label="elligator_ristretto_flavor_inverse", tooltip="    pub fn elligator_ristretto_flavor_inverse(&self) -> (u8, [FieldElement; 8]) {         // Elligator2 computes a Point from a FieldElement in two steps: first         // it computes a (s,t) on the J...", fillcolor=green, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "zkgroup.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSecretParams_DecryptServiceId()." [label="GroupSecretParams_DecryptServiceId", tooltip="fn GroupSecretParams_DecryptServiceId(     params: Serialized<GroupSecretParams>,     ciphertext: Serialized<UuidCiphertext>, ) -> Result<ServiceId, ZkGroupVerificationFailure> {     params.decrypt_se...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/CallLinkSecretParams_DecryptUserId()." [label="CallLinkSecretParams_DecryptUserId", tooltip="fn CallLinkSecretParams_DecryptUserId(     params_bytes: &[u8],     user_id: Serialized<UuidCiphertext>, ) -> Result<Aci, ZkGroupVerificationFailure> {     let params = zkgroup::deserialize::<CallLink...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSecretParams_DecryptProfileKey()." [label="GroupSecretParams_DecryptProfileKey", tooltip="fn GroupSecretParams_DecryptProfileKey(     params: Serialized<GroupSecretParams>,     profile_key: Serialized<ProfileKeyCiphertext>,     user_id: Aci, ) -> Result<Serialized<ProfileKey>, ZkGroupVerif...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_2 {
+    label = "serialization.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 benches()." [label="benches", tooltip="criterion_group!(benches, bench_server_param_serialization,); criterion_main!(benches);", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_3 {
+    label = "zkgroup_benchmarks.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." [label="benchmark_integration_profile", tooltip="pub fn benchmark_integration_profile(c: &mut Criterion) {     // SERVER     let server_secret_params = zkgroup::ServerSecretParams::generate(zkgroup::TEST_ARRAY_32);     let server_public_params = ser...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_auth()." [label="benchmark_integration_auth", tooltip="fn benchmark_integration_auth(c: &mut Criterion) {     let server_secret_params = zkgroup::ServerSecretParams::generate(zkgroup::TEST_ARRAY_32);     let server_public_params = server_secret_params.get...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_4 {
+    label = "params.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 api/call_links/params/impl#[CallLinkSecretParams]decrypt_uid()." [label="decrypt_uid", tooltip="    pub fn decrypt_uid(         &self,         ciphertext: api::groups::UuidCiphertext,     ) -> Result<libsignal_core::Aci, ZkGroupVerificationFailure> {         let uid = crypto::uid_encryption::Uid...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_5 {
+    label = "group_params.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." [label="decrypt_profile_key", tooltip="    pub fn decrypt_profile_key(         &self,         ciphertext: api::groups::ProfileKeyCiphertext,         user_id: libsignal_core::Aci,     ) -> Result<api::profiles::ProfileKey, ZkGroupVerificati...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_service_id()." [label="decrypt_service_id", tooltip="    pub fn decrypt_service_id(         &self,         ciphertext: api::groups::UuidCiphertext,     ) -> Result<libsignal_core::ServiceId, ZkGroupVerificationFailure> {         crypto::uid_encryption::...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_6 {
+    label = "profile_key_encryption.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/impl#[ProfileKeyEncryptionDomain]decrypt()." [label="decrypt", tooltip="    pub(crate) fn decrypt(         key_pair: &KeyPair,         ciphertext: &Ciphertext,         uid_bytes: UidBytes,     ) -> Result<profile_key_struct::ProfileKeyStruct, ZkGroupVerificationFailure> {...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/tests/test_profile_key_encryption()." [label="test_profile_key_encryption", tooltip="    fn test_profile_key_encryption() {         let master_key = TEST_ARRAY_32_1;         let mut sho = Sho::new(b' Test_Profile_Key_Encryption' , &master_key);          //let system = SystemParams::ge...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_7 {
+    label = "uid_encryption.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/tests/test_pni_encryption()." [label="test_pni_encryption", tooltip="    fn test_pni_encryption() {         let mut sho = Sho::new(b' Test_Pni_Encryption' , &[]);         let key_pair = KeyPair::derive_from(sho.as_mut());          let pni = libsignal_core::Pni::from_uu...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/tests/test_uid_encryption()." [label="test_uid_encryption", tooltip="    fn test_uid_encryption() {         let master_key = TEST_ARRAY_32;         let mut sho = Sho::new(b' Test_Uid_Encryption' , &master_key);          //let system = SystemParams::generate();         ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/impl#[UidEncryptionDomain]decrypt()." [label="decrypt", tooltip="    pub(crate) fn decrypt(         key_pair: &KeyPair,         ciphertext: &Ciphertext,     ) -> Result<libsignal_core::ServiceId, ZkGroupVerificationFailure> {         let M2 = key_pair             ....", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_8 {
+    label = "call_link_flow.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 test_auth_credential()." [label="test_auth_credential", tooltip="fn test_auth_credential() {     let randomness1: RandomnessBytes = [0x43u8; RANDOMNESS_LEN];     let randomness2: RandomnessBytes = [0x44u8; RANDOMNESS_LEN];     let randomness3: RandomnessBytes = [0x...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 test_create_call_link_request_response()." [label="test_create_call_link_request_response", tooltip="fn test_create_call_link_request_response() {     let randomness0: RandomnessBytes = [0x42u8; RANDOMNESS_LEN];     let randomness1: RandomnessBytes = [0x43u8; RANDOMNESS_LEN];     let randomness2: Ran...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_9 {
+    label = "integration_tests.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 test_lizard()." [label="test_lizard", tooltip="fn test_lizard() {     let p = RistrettoPoint::lizard_encode::<Sha256>(&zkgroup::common::constants::TEST_ARRAY_16);     let data_out = p.lizard_decode::<Sha256>();     assert_hex_eq!(data_out.unwrap()...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 test_integration_expiring_profile()." [label="test_integration_expiring_profile", tooltip="fn test_integration_expiring_profile() {     // SERVER     let server_secret_params = zkgroup::ServerSecretParams::generate(zkgroup::TEST_ARRAY_32);     let server_public_params = server_secret_params...", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo zkgroup 0.9.0 api/call_links/params/impl#[CallLinkSecretParams]decrypt_uid()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/impl#[UidEncryptionDomain]decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSecretParams_DecryptServiceId()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_service_id()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/impl#[ProfileKeyEncryptionDomain]decrypt()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]decode_253_bits()." [color=blue]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/CallLinkSecretParams_DecryptUserId()." -> "rust-analyzer cargo zkgroup 0.9.0 api/call_links/params/impl#[CallLinkSecretParams]decrypt_uid()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/tests/test_pni_encryption()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/impl#[UidEncryptionDomain]decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/tests/test_profile_key_encryption()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/impl#[ProfileKeyEncryptionDomain]decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/tests/test_uid_encryption()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/impl#[UidEncryptionDomain]decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_lizard()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]lizard_decode()." [color=blue]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_service_id()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_integration_expiring_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_service_id()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_integration_expiring_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_auth_credential()." -> "rust-analyzer cargo zkgroup 0.9.0 api/call_links/params/impl#[CallLinkSecretParams]decrypt_uid()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/impl#[ProfileKeyEncryptionDomain]decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSecretParams_DecryptProfileKey()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]lizard_decode()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]elligator_ristretto_flavor_inverse()." [color=gray, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_service_id()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/impl#[UidEncryptionDomain]decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]decode_253_bits()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]elligator_ristretto_flavor_inverse()." [color=gray, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/uid_encryption/impl#[UidEncryptionDomain]decrypt()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]lizard_decode()." [color=blue]
+  "rust-analyzer cargo zkgroup 0.9.0 test_create_call_link_request_response()." -> "rust-analyzer cargo zkgroup 0.9.0 api/call_links/params/impl#[CallLinkSecretParams]decrypt_uid()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benches()." -> "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_auth()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benches()." -> "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_auth()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_service_id()." [color=blue, style=dashed]
+}

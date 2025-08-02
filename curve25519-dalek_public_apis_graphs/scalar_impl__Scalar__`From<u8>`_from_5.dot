@@ -1,0 +1,37 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "scalar.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`From<u8>`]from()." [label="from", tooltip="    fn from(x: u8) -> Scalar {         let mut s_bytes = [0u8; 32];         s_bytes[0] = x;         Scalar { bytes: s_bytes }     }", fillcolor=green, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "username.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." [label="nickname_scalar", tooltip="fn nickname_scalar(nickname: &str) -> Result<Scalar, UsernameError> {     assert!(         !nickname.is_empty(),         ' should be checked before calling nickname_scalar' ,     );     let bytes: Vec...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts_without_soft_limit()." [label="from_parts_without_soft_limit", tooltip="    fn from_parts_without_soft_limit(         nickname: &str,         discriminator: &str,     ) -> Result<Self, UsernameError> {         validate_prefix(nickname)?;         let discriminator = valida...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts()." [label="from_parts", tooltip="    pub fn from_parts(         nickname: &str,         discriminator: &str,         limits: NicknameLimits,     ) -> Result<Self, UsernameError> {         // This should perform the same set of checks...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/valid_nicknames_should_produce_scalar()." [label="valid_nicknames_should_produce_scalar", tooltip="    fn valid_nicknames_should_produce_scalar() {         proptest!(|(nickname in NICKNAME_PATTERN)| {             nickname_scalar(&nickname).unwrap();         });     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/make_scalars()." [label="make_scalars", tooltip="fn make_scalars(nickname: &str, discriminator: u64) -> Result<Vec<Scalar>, UsernameError> {     Ok(vec![         username_sha_scalar(nickname, discriminator)?,         nickname_scalar(nickname)?,     ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/valid_nickname_scalar()." [label="valid_nickname_scalar", tooltip="    fn valid_nickname_scalar() {         // the results should be 1 + 27*27 + 37*27*37^1 + 1*27*37^2 = 74656         let nickname = ' _z9_' ;         assert_eq!(Scalar::from(74656_u32), nickname_scala...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [label="new", tooltip="    pub fn new(s: &str) -> Result<Self, UsernameError> {         let (nickname, discriminator) =             s.rsplit_once('.').ok_or(UsernameError::MissingSeparator)?;         Self::from_parts_withou...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/to_base_37_scalar()." [label="to_base_37_scalar", tooltip="fn to_base_37_scalar(bytes: &[u8]) -> Scalar {     assert!(         bytes.len() <= MAX_NICKNAME_LENGTH,         ' may not fit in a Scalar'      );      let thirty_seven = Scalar::from(37u8);     let m...", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." -> "rust-analyzer cargo usernames 0.1.0 username/to_base_37_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts_without_soft_limit()." -> "rust-analyzer cargo usernames 0.1.0 username/make_scalars()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts_without_soft_limit()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/valid_nicknames_should_produce_scalar()." -> "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/make_scalars()." -> "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/valid_nickname_scalar()." -> "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts_without_soft_limit()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/to_base_37_scalar()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`From<u8>`]from()." [color=blue]
+}

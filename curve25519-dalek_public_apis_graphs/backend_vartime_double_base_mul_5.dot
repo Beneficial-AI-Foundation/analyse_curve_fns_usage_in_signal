@@ -1,0 +1,153 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "mod.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vartime_double_base_mul()." [label="vartime_double_base_mul", tooltip="pub fn vartime_double_base_mul(a: &Scalar, A: &EdwardsPoint, b: &Scalar) -> EdwardsPoint {     match get_selected_backend() {         #[cfg(curve25519_dalek_backend = ' simd' )]         BackendKind::A...", fillcolor=green, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "edwards.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]vartime_double_scalar_mul_basepoint()." [label="vartime_double_scalar_mul_basepoint", tooltip="    pub fn vartime_double_scalar_mul_basepoint(         a: &Scalar,         A: &EdwardsPoint,         b: &Scalar,     ) -> EdwardsPoint {         crate::backend::vartime_double_base_mul(a, A, b)     }", fillcolor=lightgray, style="filled,dotted"]
+  }
+  subgraph cluster_2 {
+    label = "verifying.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo ed25519-dalek 2.1.0 verifying/impl#[VerifyingKey][`Verifier<ed25519::Signature>`]verify()." [label="verify", tooltip="    fn verify(&self, message: &[u8], signature: &ed25519::Signature) -> Result<(), SignatureError> {         self.raw_verify::<Sha512>(message, signature)     }", fillcolor=lightgray, style="filled,dotted"]
+    "rust-analyzer cargo ed25519-dalek 2.1.0 verifying/impl#[VerifyingKey]raw_verify()." [label="raw_verify", tooltip="    pub(crate) fn raw_verify<CtxDigest>(         &self,         message: &[u8],         signature: &ed25519::Signature,     ) -> Result<(), SignatureError>     where         CtxDigest: Digest<OutputSi...", fillcolor=lightgray, style="filled,dotted"]
+    "rust-analyzer cargo ed25519-dalek 2.1.0 verifying/impl#[VerifyingKey]recompute_R()." [label="recompute_R", tooltip="    fn recompute_R<CtxDigest>(         &self,         context: Option<&[u8]>,         signature: &InternalSignature,         M: &[u8],     ) -> CompressedEdwardsY     where         CtxDigest: Digest<O...", fillcolor=lightgray, style="filled,dotted"]
+  }
+  subgraph cluster_3 {
+    label = "protocol.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPublicKey_Verify()." [label="ECPublicKey_Verify", tooltip="fn ECPublicKey_Verify(key: &PublicKey, message: &[u8], signature: &[u8]) -> bool {     key.verify_signature(message, signature) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/IdentityKey_VerifyAlternateIdentity()." [label="IdentityKey_VerifyAlternateIdentity", tooltip="fn IdentityKey_VerifyAlternateIdentity(     public_key: &PublicKey,     other_identity: &PublicKey,     signature: &[u8], ) -> Result<bool> {     let identity = IdentityKey::new(*public_key);     let ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_4 {
+    label = "curve.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 signatures()." [label="signatures", tooltip="pub fn signatures(c: &mut Criterion) {     let rng = &mut rng();     let alice_key = KeyPair::generate(rng);     let mut some_data = [0; 1024];     rng.fill(&mut some_data);      c.bench_function(' ge...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_5 {
+    label = "ed_to_xed.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 main()." [label="main", tooltip="fn main() {     let mut input = vec![];     std::io::stdin()         .read_to_end(&mut input)         .expect(' can read input' );     let key = boring::pkey::PKey::public_key_from_pem(&input).expect(...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_6 {
+    label = "curve.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [label="verify_signature", tooltip="    pub fn verify_signature(&self, message: &[u8], signature: &[u8]) -> bool {         self.verify_signature_for_multipart_message(&[message], signature)     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." [label="test_large_signatures", tooltip="    fn test_large_signatures() -> Result<(), CurveError> {         let mut csprng = OsRng.unwrap_err();         let key_pair = KeyPair::generate(&mut csprng);         let mut message = [0u8; 1024 * 10...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." [label="verify_signature_for_multipart_message", tooltip="    pub fn verify_signature_for_multipart_message(         &self,         message: &[&[u8]],         signature: &[u8],     ) -> bool {         match &self.key {             PublicKeyData::DjbPublicKey...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_7 {
+    label = "curve25519.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_random_signatures()." [label="test_random_signatures", tooltip="    fn test_random_signatures() {         let mut csprng = OsRng.unwrap_err();         for _ in 0..50 {             let mut message = [0u8; 64];             csprng.fill_bytes(&mut message);           ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_signature()." [label="test_signature", tooltip="    fn test_signature() {         let alice_identity_private: [u8; PRIVATE_KEY_LENGTH] = [             0xc0, 0x97, 0x24, 0x84, 0x12, 0xe5, 0x8b, 0xf0, 0x5d, 0xf4, 0x87, 0x96, 0x82, 0x05,             0...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." [label="verify_signature", tooltip="    pub fn verify_signature(         their_public_key: &[u8; PUBLIC_KEY_LENGTH],         message: &[&[u8]],         signature: &[u8; SIGNATURE_LENGTH],     ) -> bool {         let mont_point = Montgom...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_8 {
+    label = "verify.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/test/can_verify_search_response()." [label="can_verify_search_response", tooltip="    fn can_verify_search_response() {         let sig_key = VerifyingKey::from_bytes(&hex!(             ' ac0de1fd7f33552bbeb6ebc12b9d4ea10bf5f025c45073d3fb5f5648955a749e'          ))         .unwrap(...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_search()." [label="verify_search", tooltip="pub fn verify_search(     config: &PublicConfig,     req: SlimSearchRequest,     res: FullSearchResponse,     context: SearchContext,     force_monitor: bool,     now: SystemTime, ) -> Result<SearchSt...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_tree_head_signature()." [label="verify_tree_head_signature", tooltip="fn verify_tree_head_signature(     config: &PublicConfig,     head: &SingleSignatureTreeHead,     root: &[u8; 32],     verifying_key: &VerifyingKey, ) -> Result<()> {     let raw = marshal_tree_head_t...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/evaluate_vrf_proof()." [label="evaluate_vrf_proof", tooltip="fn evaluate_vrf_proof(     proof: &[u8],     vrf_key: &vrf::PublicKey,     search_key: &[u8], ) -> Result<[u8; 32]> {     let proof = proof.try_into().map_err(|_| MalformedProof)?;     Ok(vrf_key.proo...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_search_internal()." [label="verify_search_internal", tooltip="fn verify_search_internal(     config: &PublicConfig,     req: SlimSearchRequest,     res: FullSearchResponse,     context: SearchContext,     monitor: bool,     now: SystemTime, ) -> Result<SearchSta...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_9 {
+    label = "vrf.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/tests/test_proof_to_hash_fails()." [label="test_proof_to_hash_fails", tooltip="    fn test_proof_to_hash_fails() {         for v in TEST_VECTORS {             let pk = PublicKey::try_from(v.pk).unwrap();              assert!(pk.proof_to_hash(b' a' , &v.pi).is_err());            ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." [label="proof_to_hash", tooltip="    pub fn proof_to_hash(&self, m: &[u8], proof: &[u8; 80]) -> Result<[u8; 32]> {         // Decode proof into its component parts: gamma, c, and s.         let gamma = CompressedEdwardsY(proof[..32]....", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/tests/test_proof_to_hash()." [label="test_proof_to_hash", tooltip="    fn test_proof_to_hash() {         for v in TEST_VECTORS {             let pk = PublicKey::try_from(v.pk).unwrap();             let index = pk.proof_to_hash(v.alpha, &v.pi).unwrap();             as...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_10 {
+    label = "identity_key.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKey]verify_alternate_identity()." [label="verify_alternate_identity", tooltip="    pub fn verify_alternate_identity(&self, other: &IdentityKey, signature: &[u8]) -> Result<bool> {         Ok(self.public_key.verify_signature_for_multipart_message(             &[                 A...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_alternate_identity_signing()." [label="test_alternate_identity_signing", tooltip="    fn test_alternate_identity_signing() -> Result<()> {         let mut rng = OsRng.unwrap_err();         let primary = IdentityKeyPair::generate(&mut rng);         let secondary = IdentityKeyPair::g...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_11 {
+    label = "protocol.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]verify_signature()." [label="verify_signature", tooltip="    pub fn verify_signature(&self, signature_key: &PublicKey) -> Result<bool> {         let valid = signature_key.verify_signature(             &self.serialized[..self.serialized.len() - Self::SIGNATU...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_12 {
+    label = "sealed_sender.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]validate()." [label="validate", tooltip="    pub fn validate(&self, trust_root: &PublicKey) -> Result<bool> {         if REVOKED_SERVER_CERTIFICATE_KEY_IDS.contains(&self.key_id()?) {             log::error!(                 ' received serve...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]validate()." [label="validate", tooltip="    pub fn validate(&self, trust_root: &PublicKey, validation_time: Timestamp) -> Result<bool> {         if !self.signer.validate(trust_root)? {             log::error!(                 ' sender certi...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_13 {
+    label = "session.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [label="process_prekey_bundle", tooltip="pub async fn process_prekey_bundle<R: Rng + CryptoRng>(     remote_address: &ProtocolAddress,     session_store: &mut dyn SessionStore,     identity_store: &mut dyn IdentityKeyStore,     bundle: &PreK...", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_random_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/test/can_verify_search_response()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_search_internal()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPublicKey_Verify()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_search()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_search_internal()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]validate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]validate()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]validate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]validate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_tree_head_signature()." -> "rust-analyzer cargo ed25519-dalek 2.1.0 verifying/impl#[VerifyingKey][`Verifier<ed25519::Signature>`]verify()." [color=blue]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKey]verify_alternate_identity()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/tests/test_proof_to_hash_fails()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]vartime_double_scalar_mul_basepoint()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vartime_double_base_mul()." [color=gray, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/IdentityKey_VerifyAlternateIdentity()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKey]verify_alternate_identity()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]verify_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/evaluate_vrf_proof()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 main()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]vartime_double_scalar_mul_basepoint()." [color=blue]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_alternate_identity_signing()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKey]verify_alternate_identity()." [color=blue, style=dashed]
+  "rust-analyzer cargo ed25519-dalek 2.1.0 verifying/impl#[VerifyingKey][`Verifier<ed25519::Signature>`]verify()." -> "rust-analyzer cargo ed25519-dalek 2.1.0 verifying/impl#[VerifyingKey]raw_verify()." [color=gray, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_search_internal()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/evaluate_vrf_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/tests/test_proof_to_hash()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." [color=blue, style=dashed]
+  "rust-analyzer cargo ed25519-dalek 2.1.0 verifying/impl#[VerifyingKey]raw_verify()." -> "rust-analyzer cargo ed25519-dalek 2.1.0 verifying/impl#[VerifyingKey]recompute_R()." [color=gray, style=dashed]
+  "rust-analyzer cargo ed25519-dalek 2.1.0 verifying/impl#[VerifyingKey]recompute_R()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]vartime_double_scalar_mul_basepoint()." [color=gray, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]vartime_double_scalar_mul_basepoint()." [color=blue]
+  "rust-analyzer cargo libsignal-core 0.1.0 signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+}

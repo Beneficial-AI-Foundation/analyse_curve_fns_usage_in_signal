@@ -1,0 +1,856 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "scalar.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/clamp_integer()." [label="clamp_integer", tooltip="pub const fn clamp_integer(mut bytes: [u8; 32]) -> [u8; 32] {     bytes[0] &= 0b1111_1000;     bytes[31] &= 0b0111_1111;     bytes[31] |= 0b0100_0000;     bytes }", fillcolor=green, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "backup.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-account-keys 0.1.0 backup/impl#[`BackupKey<V1>`]derive_ec_key()." [label="derive_ec_key", tooltip="    pub fn derive_ec_key(&self, aci: &Aci) -> PrivateKey {         const INFO: &[u8] = b' 20241024_SIGNAL_BACKUP_ID_KEYPAIR:' ;         let mut private_key_bytes = [0; 32];         Hkdf::<Sha256>::new...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_2 {
+    label = "lib.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-ffi 0.76.4 signal_identitykeypair_deserialize()." [label="signal_identitykeypair_deserialize", tooltip="pub unsafe extern ' C'  fn signal_identitykeypair_deserialize(     private_key: *mut MutPointer<PrivateKey>,     public_key: *mut MutPointer<PublicKey>,     input: BorrowedSliceOf<c_uchar>, ) -> *mut ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_3 {
+    label = "lib.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-jni-impl 0.76.4 Java_org_signal_libsignal_internal_Native_IdentityKeyPair_1Deserialize()." [label="Java_org_signal_libsignal_internal_Native_IdentityKeyPair_1Deserialize", tooltip="pub unsafe extern ' C'  fn Java_org_signal_libsignal_internal_Native_IdentityKeyPair_1Deserialize<     'local, >(     mut env: JNIEnv<'local>,     _class: JClass,     data: JByteArray, ) -> JLongArray...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_4 {
+    label = "lib.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-node 0.76.4 main()." [label="main", tooltip="fn main(mut cx: ModuleContext) -> NeonResult<()> {     libsignal_bridge::node::register(&mut cx)?;     cx.export_function(' initLogger' , logging::init_logger)?;     cx.export_function(' IdentityKeyPa...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-node 0.76.4 identitykeypair_deserialize()." [label="identitykeypair_deserialize", tooltip="fn identitykeypair_deserialize(mut cx: FunctionContext) -> JsResult<JsObject> {     let buffer = cx.argument::<JsUint8Array>(0)?;     let identity_keypair_or_error = IdentityKeyPair::try_from(buffer.a...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_5 {
+    label = "account_keys.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge 0.1.0 account_keys/BackupKey_DeriveEcKey()." [label="BackupKey_DeriveEcKey", tooltip="pub fn BackupKey_DeriveEcKey(backup_key: &[u8; BACKUP_KEY_LEN], aci: Aci) -> PrivateKey {     // The explicit type forces the latest version of the key derivation scheme.     let backup_key: BackupKey...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_6 {
+    label = "protocol.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/IdentityKeyPair_SignAlternateIdentity()." [label="IdentityKeyPair_SignAlternateIdentity", tooltip="fn IdentityKeyPair_SignAlternateIdentity(     public_key: &PublicKey,     private_key: &PrivateKey,     other_identity: &PublicKey, ) -> Result<Vec<u8>> {     let mut rng = rand::rngs::OsRng.unwrap_er...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SealedSessionCipher_DecryptToUsmc()." [label="SealedSessionCipher_DecryptToUsmc", tooltip="async fn SealedSessionCipher_DecryptToUsmc(     ctext: &[u8],     identity_store: &mut dyn IdentityKeyStore, ) -> Result<UnidentifiedSenderMessageContent> {     sealed_sender_decrypt_to_usmc(ctext, id...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SealedSessionCipher_Encrypt()." [label="SealedSessionCipher_Encrypt", tooltip="async fn SealedSessionCipher_Encrypt(     destination: &ProtocolAddress,     content: &UnidentifiedSenderMessageContent,     identity_key_store: &mut dyn IdentityKeyStore, ) -> Result<Vec<u8>> {     l...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_Generate()." [label="ECPrivateKey_Generate", tooltip="fn ECPrivateKey_Generate() -> PrivateKey {     let mut rng = rand::rngs::OsRng.unwrap_err();     let keypair = KeyPair::generate(&mut rng);     keypair.private_key }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SenderKeyDistributionMessage_Create()." [label="SenderKeyDistributionMessage_Create", tooltip="async fn SenderKeyDistributionMessage_Create(     sender: &ProtocolAddress,     distribution_id: Uuid,     store: &mut dyn SenderKeyStore, ) -> Result<SenderKeyDistributionMessage> {     let mut csprn...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SenderKeyMessage_New()." [label="SenderKeyMessage_New", tooltip="fn SenderKeyMessage_New(     message_version: u8,     distribution_id: Uuid,     chain_id: u32,     iteration: u32,     ciphertext: &[u8],     pk: &PrivateKey, ) -> Result<SenderKeyMessage> {     let ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/GroupCipher_EncryptMessage()." [label="GroupCipher_EncryptMessage", tooltip="async fn GroupCipher_EncryptMessage(     sender: &ProtocolAddress,     distribution_id: Uuid,     message: &[u8],     store: &mut dyn SenderKeyStore, ) -> Result<CiphertextMessage> {     let mut rng =...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/PreKeyBundle_GetKyberPreKeyPublic()." [label="PreKeyBundle_GetKyberPreKeyPublic", tooltip="fn PreKeyBundle_GetKyberPreKeyPublic(bundle: &PreKeyBundle) -> Result<KyberPublicKey> {     Ok(bundle.kyber_pre_key_public()?.clone()) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_Agree()." [label="ECPrivateKey_Agree", tooltip="fn ECPrivateKey_Agree(private_key: &PrivateKey, public_key: &PublicKey) -> Result<Vec<u8>> {     Ok(private_key.calculate_agreement(public_key)?.into_vec()) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SessionBuilder_ProcessPreKeyBundle()." [label="SessionBuilder_ProcessPreKeyBundle", tooltip="async fn SessionBuilder_ProcessPreKeyBundle(     bundle: &PreKeyBundle,     protocol_address: &ProtocolAddress,     session_store: &mut dyn SessionStore,     identity_key_store: &mut dyn IdentityKeySt...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_Sign()." [label="ECPrivateKey_Sign", tooltip="fn ECPrivateKey_Sign(key: &PrivateKey, message: &[u8]) -> Result<Vec<u8>> {     let mut rng = rand::rngs::OsRng.unwrap_err();     Ok(key.calculate_signature(message, &mut rng)?.into_vec()) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/PrivateKey_Deserialize()." [label="PrivateKey_Deserialize", tooltip="fn PrivateKey_Deserialize(data: &[u8]) -> Result<PrivateKey> {     Ok(PrivateKey::deserialize(data)?) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/KyberPreKeyRecord_New()." [label="KyberPreKeyRecord_New", tooltip="fn KyberPreKeyRecord_New(     id: u32,     timestamp: Timestamp,     key_pair: &KyberKeyPair,     signature: &[u8], ) -> KyberPreKeyRecord {     KyberPreKeyRecord::new(id.into(), timestamp, key_pair, ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SenderCertificate_New()." [label="SenderCertificate_New", tooltip="fn SenderCertificate_New(     sender_uuid: String,     sender_e164: Option<String>,     sender_device_id: u32,     sender_key: &PublicKey,     expiration: Timestamp,     signer_cert: &ServerCertificat...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ServerCertificate_New()." [label="ServerCertificate_New", tooltip="fn ServerCertificate_New(     key_id: u32,     server_key: &PublicKey,     trust_root: &PrivateKey, ) -> Result<ServerCertificate> {     let mut rng = rand::rngs::OsRng.unwrap_err();     ServerCertifi...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_GetPublicKey()." [label="ECPrivateKey_GetPublicKey", tooltip="fn ECPrivateKey_GetPublicKey(k: &PrivateKey) -> Result<PublicKey> {     Ok(k.public_key()?) }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_7 {
+    label = "storage.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge-types 0.1.0 ffi/storage/impl#[`&FfiIdentityKeyStoreStruct`][IdentityKeyStore]get_identity_key_pair()." [label="get_identity_key_pair", tooltip="    async fn get_identity_key_pair(&self) -> Result<IdentityKeyPair, SignalProtocolError> {         let mut key = MutPointer::null();         let result = (self.get_identity_key_pair)(self.ctx, &mut k...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_8 {
+    label = "storage.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge-types 0.1.0 jni/storage/impl#[`JniIdentityKeyStore<'_>`][IdentityKeyStore]get_identity_key_pair()." [label="get_identity_key_pair", tooltip="    async fn get_identity_key_pair(&self) -> Result<IdentityKeyPair, SignalProtocolError> {         Ok(self.do_get_identity_key_pair()?)     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge-types 0.1.0 jni/storage/impl#[`JniIdentityKeyStore<'_>`]do_get_identity_key_pair()." [label="do_get_identity_key_pair", tooltip="    fn do_get_identity_key_pair(&self) -> Result<IdentityKeyPair, BridgeOrProtocolError> {         self.env             .borrow_mut()             .with_local_frame(8, ' getIdentityKeyPair' , |env| {  ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_9 {
+    label = "storage.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge-types 0.1.0 node/storage/impl#[NodeIdentityKeyStore][IdentityKeyStore]get_identity_key_pair()." [label="get_identity_key_pair", tooltip="    async fn get_identity_key_pair(&self) -> Result<IdentityKeyPair, SignalProtocolError> {         let pk = self             .do_get_identity_key()             .await             .map_err(|s| js_erro...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_10 {
+    label = "curve.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 key_agreement()." [label="key_agreement", tooltip="pub fn key_agreement(c: &mut Criterion) {     let rng = &mut rng();     let alice_key = KeyPair::generate(rng);     let bob_key = KeyPair::generate(rng);      c.bench_function(' key agreement' , |b| {...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 benches()." [label="benches", tooltip="criterion_group!(benches, generation, key_agreement, signatures);  criterion_main!(benches);", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 signatures()." [label="signatures", tooltip="pub fn signatures(c: &mut Criterion) {     let rng = &mut rng();     let alice_key = KeyPair::generate(rng);     let mut some_data = [0; 1024];     rng.fill(&mut some_data);      c.bench_function(' ge...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 generation()." [label="generation", tooltip="pub fn generation(c: &mut Criterion) {     let rng = &mut rng();     c.bench_function(' generation' , |b| b.iter(|| KeyPair::generate(rng))); }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_11 {
+    label = "ed_to_xed.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 main()." [label="main", tooltip="fn main() {     let mut input = vec![];     std::io::stdin()         .read_to_end(&mut input)         .expect(' can read input' );     let key = boring::pkey::PKey::public_key_from_pem(&input).expect(...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_12 {
+    label = "curve.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair][`TryFrom<PrivateKey>`]try_from()." [label="try_from", tooltip="    fn try_from(value: PrivateKey) -> Result<Self, CurveError> {         let public_key = value.public_key()?;         Ok(Self::new(public_key, value))     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_decode_size()." [label="test_decode_size", tooltip="    fn test_decode_size() -> Result<(), CurveError> {         let mut csprng = OsRng.unwrap_err();         let key_pair = KeyPair::generate(&mut csprng);         let serialized_public = key_pair.publi...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]public_key()." [label="public_key", tooltip="    pub fn public_key(&self) -> Result<PublicKey, CurveError> {         match &self.key {             PrivateKeyData::DjbPrivateKey(private_key) => {                 let public_key =                  ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [label="calculate_signature", tooltip="    pub fn calculate_signature<R: CryptoRng + Rng>(         &self,         message: &[u8],         csprng: &mut R,     ) -> Result<Box<[u8]>, CurveError> {         self.calculate_signature_for_multipa...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." [label="test_large_signatures", tooltip="    fn test_large_signatures() -> Result<(), CurveError> {         let mut csprng = OsRng.unwrap_err();         let key_pair = KeyPair::generate(&mut csprng);         let mut message = [0u8; 1024 * 10...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_signature()." [label="calculate_signature", tooltip="    pub fn calculate_signature<R: CryptoRng + Rng>(         &self,         message: &[u8],         csprng: &mut R,     ) -> Result<Box<[u8]>, CurveError> {         self.private_key.calculate_signature...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]from_public_and_private()." [label="from_public_and_private", tooltip="    pub fn from_public_and_private(         public_key: &[u8],         private_key: &[u8],     ) -> Result<Self, CurveError> {         let public_key = PublicKey::try_from(public_key)?;         let pr...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." [label="calculate_signature_for_multipart_message", tooltip="    pub fn calculate_signature_for_multipart_message<R: CryptoRng + Rng>(         &self,         message: &[&[u8]],         csprng: &mut R,     ) -> Result<Box<[u8]>, CurveError> {         match self....", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey][`TryFrom<&[u8]>`]try_from()." [label="try_from", tooltip="    fn try_from(value: &[u8]) -> Result<Self, CurveError> {         Self::deserialize(value)     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [label="deserialize", tooltip="    pub fn deserialize(value: &[u8]) -> Result<Self, CurveError> {         let mut key: [u8; curve25519::PRIVATE_KEY_LENGTH] = value             .try_into()             .map_err(|_| CurveError::BadKey...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." [label="calculate_agreement", tooltip="    pub fn calculate_agreement(&self, their_key: &PublicKey) -> Result<Box<[u8]>, CurveError> {         match (self.key, their_key.key) {             (PrivateKeyData::DjbPrivateKey(priv_key), PublicKe...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_agreement()." [label="calculate_agreement", tooltip="    pub fn calculate_agreement(&self, their_key: &PublicKey) -> Result<Box<[u8]>, CurveError> {         self.private_key.calculate_agreement(their_key)     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [label="generate", tooltip="    pub fn generate<R: Rng + CryptoRng>(csprng: &mut R) -> Self {         let private_key = curve25519::PrivateKey::new(csprng);          let public_key = PublicKey::from(PublicKeyData::DjbPublicKey( ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_13 {
+    label = "curve25519.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]new()." [label="new", tooltip="    pub fn new<R>(csprng: &mut R) -> Self     where         R: CryptoRng + Rng,     {         // This is essentially StaticSecret::random_from_rng only with clamping         let mut bytes = [0u8; 32];...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_random_agreements()." [label="test_random_agreements", tooltip="    fn test_random_agreements() {         let mut csprng = OsRng.unwrap_err();         for _ in 0..50 {             let alice_key = PrivateKey::new(&mut csprng);             let bob_key = PrivateKey::...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_agreement()." [label="test_agreement", tooltip="    fn test_agreement() {         let alice_public: [u8; 32] = [             0x1b, 0xb7, 0x59, 0x66, 0xf2, 0xe9, 0x3a, 0x36, 0x91, 0xdf, 0xff, 0x94, 0x2b, 0xb2,             0xa4, 0x66, 0xa1, 0xc0, 0x8...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_signature()." [label="test_signature", tooltip="    fn test_signature() {         let alice_identity_private: [u8; PRIVATE_KEY_LENGTH] = [             0xc0, 0x97, 0x24, 0x84, 0x12, 0xe5, 0x8b, 0xf0, 0x5d, 0xf4, 0x87, 0x96, 0x82, 0x05,             0...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_random_signatures()." [label="test_random_signatures", tooltip="    fn test_random_signatures() {         let mut csprng = OsRng.unwrap_err();         for _ in 0..50 {             let mut message = [0u8; 64];             csprng.fill_bytes(&mut message);           ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey][`From<[u8; PRIVATE_KEY_LENGTH]>`]from()." [label="from", tooltip="    fn from(private_key: [u8; 32]) -> Self {         let secret = StaticSecret::from(scalar::clamp_integer(private_key));         PrivateKey { secret }     }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_14 {
+    label = "scramble.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 scramble/impl#[`proto::Contact`][`Visit<Scrambler>`]accept()." [label="accept", tooltip="    fn accept(&mut self, visitor: &mut Scrambler) {         let Self {             aci,             pni,             username,             e164,             blocked: _,             visibility: _,     ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 scramble/impl#[`proto::Recipient`][`Visit<Scrambler>`]accept()." [label="accept", tooltip="    fn accept(&mut self, visitor: &mut Scrambler) {         let Self {             id: _,             destination,             special_fields: _,         } = self;          if let Some(dest) = destina...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 scramble/impl#[`proto::Frame`][`Visit<Scrambler>`]accept()." [label="accept", tooltip="    fn accept(&mut self, visitor: &mut Scrambler) {         let Self {             item,             special_fields: _,         } = self;          if let Some(item) = item {             use proto::fra...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_15 {
+    label = "request.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/registration/request/test/register_account_request_fetches_messages_no_push_tokens()." [label="register_account_request_fetches_messages_no_push_tokens", tooltip="    fn register_account_request_fetches_messages_no_push_tokens() {         let request = ChatRequest::register_account(             ' +18005550101' ,             Some(&' abc' .parse().unwrap()),     ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/registration/request/test/register_account_request()." [label="register_account_request", tooltip="    fn register_account_request() {         let request = ChatRequest::register_account(             ' +18005550101' ,             Some(&' abc' .parse().unwrap()),             NewMessageNotification::...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/registration/request/test/impl#[OwnedAccountKeys]as_borrowed()." [label="as_borrowed", tooltip="        fn as_borrowed(&self) -> AccountKeys<'_> {             let Self {                 identity_key,                 signed_pre_key,                 pq_last_resort_pre_key,             } = self;   ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_16 {
+    label = "kem.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 benches()." [label="benches", tooltip="criterion_group!(benches, bench_kem); criterion_main!(benches);", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_17 {
+    label = "ratchet.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet_forward_result()." [label="ratchet_forward_result", tooltip="pub fn ratchet_forward_result(c: &mut Criterion) -> Result<(), SignalProtocolError> {     let mut group = c.benchmark_group(' ratchet' );     group.sampling_mode(SamplingMode::Flat);     group.sample_...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet_forward()." [label="ratchet_forward", tooltip="pub fn ratchet_forward(c: &mut Criterion) {     ratchet_forward_result(c).expect(' success' ); }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_18 {
+    label = "sealed_sender.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." [label="v1", tooltip="pub fn v1(c: &mut Criterion) {     let mut rng = OsRng.unwrap_err();      let alice_address = ProtocolAddress::new(         ' 9d0652a3-dcc3-4d11-975f-74d61598733f' .to_owned(),         DeviceId::new(1...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." [label="v2", tooltip="pub fn v2(c: &mut Criterion) {     let mut rng = OsRng.unwrap_err();      let alice_address = ProtocolAddress::new(         ' 9d0652a3-dcc3-4d11-975f-74d61598733f' .to_owned(),         DeviceId::new(1...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_19 {
+    label = "session.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt()." [label="session_encrypt", tooltip="pub fn session_encrypt(c: &mut Criterion) {     session_encrypt_result(c).expect(' success' ); }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_decrypt_result()." [label="session_encrypt_decrypt_result", tooltip="pub fn session_encrypt_decrypt_result(c: &mut Criterion) -> Result<(), SignalProtocolError> {     let (alice_session_record, bob_session_record) = support::initialize_sessions_v4()?;      let alice_ad...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." [label="session_encrypt_result", tooltip="pub fn session_encrypt_result(c: &mut Criterion) -> Result<(), SignalProtocolError> {     let (alice_session_record, bob_session_record) = support::initialize_sessions_v4()?;      let alice_address = ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_decrypt()." [label="session_encrypt_decrypt", tooltip="pub fn session_encrypt_decrypt(c: &mut Criterion) {     session_encrypt_decrypt_result(c).expect(' success' ); }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_20 {
+    label = "fingerprint.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 fingerprint/test/fingerprint_mismatching_fingerprints()." [label="fingerprint_mismatching_fingerprints", tooltip="    fn fingerprint_mismatching_fingerprints() -> Result<()> {         use rand::rngs::OsRng;          use crate::IdentityKeyPair;          let mut rng = OsRng.unwrap_err();         let a_key_pair = Id...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 fingerprint/test/fingerprint_matching_identifiers()." [label="fingerprint_matching_identifiers", tooltip="    fn fingerprint_matching_identifiers() -> Result<()> {         // testMatchingFingerprints          use rand::rngs::OsRng;          use crate::IdentityKeyPair;          let a_key_pair = IdentityKey...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 fingerprint/test/fingerprint_mismatching_identifiers()." [label="fingerprint_mismatching_identifiers", tooltip="    fn fingerprint_mismatching_identifiers() -> Result<()> {         use rand::rngs::OsRng;          use crate::IdentityKeyPair;          let mut rng = OsRng.unwrap_err();         let a_key_pair = Ide...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_21 {
+    label = "group_cipher.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [label="create_sender_key_distribution_message", tooltip="pub async fn create_sender_key_distribution_message<R: Rng + CryptoRng>(     sender: &ProtocolAddress,     distribution_id: Uuid,     sender_key_store: &mut dyn SenderKeyStore,     csprng: &mut R, ) -...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [label="group_encrypt", tooltip="pub async fn group_encrypt<R: Rng + CryptoRng>(     sender_key_store: &mut dyn SenderKeyStore,     sender: &ProtocolAddress,     distribution_id: Uuid,     plaintext: &[u8],     csprng: &mut R, ) -> R...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_22 {
+    label = "identity_key.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<PrivateKey>`]try_from()." [label="try_from", tooltip="    fn try_from(private_key: PrivateKey) -> Result<Self> {         let identity_key = IdentityKey::new(private_key.public_key()?);         Ok(Self::new(identity_key, private_key))     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [label="generate", tooltip="    pub fn generate<R: CryptoRng + Rng>(csprng: &mut R) -> Self {         let keypair = KeyPair::generate(csprng);          Self {             identity_key: keypair.public_key.into(),             priv...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_serialize_identity_key_pair()." [label="test_serialize_identity_key_pair", tooltip="    fn test_serialize_identity_key_pair() -> Result<()> {         let identity_key_pair = IdentityKeyPair::generate(&mut OsRng.unwrap_err());         let serialized = identity_key_pair.serialize();   ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_identity_key_from()." [label="test_identity_key_from", tooltip="    fn test_identity_key_from() {         let key_pair = KeyPair::generate(&mut OsRng.unwrap_err());         let key_pair_public_serialized = key_pair.public_key.serialize();         let identity_key ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_alternate_identity_signing()." [label="test_alternate_identity_signing", tooltip="    fn test_alternate_identity_signing() -> Result<()> {         let mut rng = OsRng.unwrap_err();         let primary = IdentityKeyPair::generate(&mut rng);         let secondary = IdentityKeyPair::g...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<&[u8]>`]try_from()." [label="try_from", tooltip="    fn try_from(value: &[u8]) -> Result<Self> {         let structure = proto::storage::IdentityKeyPairStructure::decode(value)             .map_err(|_| SignalProtocolError::InvalidProtobufEncoding)?;...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]sign_alternate_identity()." [label="sign_alternate_identity", tooltip="    pub fn sign_alternate_identity<R: Rng + CryptoRng>(         &self,         other: &IdentityKey,         rng: &mut R,     ) -> Result<Box<[u8]>> {         Ok(self.private_key.calculate_signature_fo...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_23 {
+    label = "protocol.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_decryption_error_message()." [label="test_decryption_error_message", tooltip="    fn test_decryption_error_message() -> Result<()> {         let mut csprng = OsRng.unwrap_err();         let identity_key_pair = KeyPair::generate(&mut csprng);         let base_key_pair = KeyPair:...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/create_signal_message()." [label="create_signal_message", tooltip="    fn create_signal_message<T>(csprng: &mut T) -> Result<SignalMessage>     where         T: Rng + CryptoRng,     {         let mut mac_key = [0u8; 32];         csprng.fill_bytes(&mut mac_key);      ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]new()." [label="new", tooltip="    pub fn new<R: CryptoRng + Rng>(         message_version: u8,         distribution_id: Uuid,         chain_id: u32,         iteration: u32,         ciphertext: Box<[u8]>,         csprng: &mut R,   ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_signal_message_serialize_deserialize()." [label="test_signal_message_serialize_deserialize", tooltip="    fn test_signal_message_serialize_deserialize() -> Result<()> {         let mut csprng = OsRng.unwrap_err();         let message = create_signal_message(&mut csprng)?;         let deser_message =  ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_pre_key_signal_message_serialize_deserialize()." [label="test_pre_key_signal_message_serialize_deserialize", tooltip="    fn test_pre_key_signal_message_serialize_deserialize() -> Result<()> {         let mut csprng = OsRng.unwrap_err();         let identity_key_pair = KeyPair::generate(&mut csprng);         let base...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_sender_key_message_serialize_deserialize()." [label="test_sender_key_message_serialize_deserialize", tooltip="    fn test_sender_key_message_serialize_deserialize() -> Result<()> {         let mut csprng = OsRng.unwrap_err();         let signature_key_pair = KeyPair::generate(&mut csprng);         let sender_...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_24 {
+    label = "ratchet.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_bob_session_record()." [label="initialize_bob_session_record", tooltip="pub fn initialize_bob_session_record(     parameters: &BobSignalProtocolParameters, ) -> Result<SessionRecord> {     Ok(SessionRecord::new(initialize_bob_session(parameters)?)) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_bob_session()." [label="initialize_bob_session", tooltip="pub(crate) fn initialize_bob_session(     parameters: &BobSignalProtocolParameters, ) -> Result<SessionState> {     let local_identity = parameters.our_identity_key_pair().identity_key();      let mut...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session()." [label="initialize_alice_session", tooltip="pub(crate) fn initialize_alice_session<R: Rng + CryptoRng>(     parameters: &AliceSignalProtocolParameters,     mut csprng: &mut R, ) -> Result<SessionState> {     let local_identity = parameters.our_...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session_record()." [label="initialize_alice_session_record", tooltip="pub fn initialize_alice_session_record<R: Rng + CryptoRng>(     parameters: &AliceSignalProtocolParameters,     csprng: &mut R, ) -> Result<SessionRecord> {     Ok(SessionRecord::new(initialize_alice_...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_25 {
+    label = "keys.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/keys/impl#[RootKey]create_chain()." [label="create_chain", tooltip="    pub(crate) fn create_chain(         self,         their_ratchet_key: &PublicKey,         our_ratchet_key: &PrivateKey,     ) -> Result<(RootKey, ChainKey)> {         let shared_secret = our_ratche...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_26 {
+    label = "sealed_sender.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/apply_agreement_xor()." [label="apply_agreement_xor", tooltip="    pub(super) fn apply_agreement_xor(         our_keys: &KeyPair,         their_key: &PublicKey,         direction: Direction,         input: &[u8; MESSAGE_KEY_LEN],     ) -> Result<[u8; MESSAGE_KEY_...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt_from_usmc()." [label="sealed_sender_encrypt_from_usmc", tooltip="pub async fn sealed_sender_encrypt_from_usmc<R: Rng + CryptoRng>(     destination: &ProtocolAddress,     usmc: &UnidentifiedSenderMessageContent,     identity_store: &dyn IdentityKeyStore,     rng: &m...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt()." [label="sealed_sender_encrypt", tooltip="pub async fn sealed_sender_encrypt<R: Rng + CryptoRng>(     destination: &ProtocolAddress,     sender_cert: &SenderCertificate,     ptext: &[u8],     session_store: &mut dyn SessionStore,     identity...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/test_agreement_and_authentication()." [label="test_agreement_and_authentication", tooltip="    fn test_agreement_and_authentication() -> Result<()> {         // The sender and recipient each have a long-term identity key pair.         let sender_identity = IdentityKeyPair::generate(&mut ran...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/test_lossless_round_trip()." [label="test_lossless_round_trip", tooltip="fn test_lossless_round_trip() -> Result<()> {     let trust_root = PrivateKey::deserialize(&[0u8; 32])?;      // To test a hypothetical addition of a new field:     //     // Step 1: temporarily add a...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt_impl()." [label="sealed_sender_multi_recipient_encrypt_impl", tooltip="async fn sealed_sender_multi_recipient_encrypt_impl<     R: Rng + CryptoRng,     X: IntoIterator<Item = ServiceId>, >(     destinations: &[&ProtocolAddress],     destination_sessions: &[&SessionRecord...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/test_agreement_and_authentication()." [label="test_agreement_and_authentication", tooltip="    fn test_agreement_and_authentication() -> Result<()> {         // The sender and recipient each have a long-term identity key pair.         let sender_identity = IdentityKeyPair::generate(&mut ran...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [label="sealed_sender_decrypt_to_usmc", tooltip="pub async fn sealed_sender_decrypt_to_usmc(     ciphertext: &[u8],     identity_store: &dyn IdentityKeyStore, ) -> Result<UnidentifiedSenderMessageContent> {     let our_identity = identity_store.get_...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/compute_authentication_tag()." [label="compute_authentication_tag", tooltip="    pub(super) fn compute_authentication_tag(         our_keys: &IdentityKeyPair,         their_key: &IdentityKey,         direction: Direction,         ephemeral_pub_key: &PublicKey,         encrypte...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/impl#[DerivedKeys]derive_e()." [label="derive_e", tooltip="        pub(super) fn derive_e(&self) -> KeyPair {             let mut r = [0; 32];             self.kdf                 .expand(LABEL_R, &mut r)                 .expect(' valid output length' );     ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [label="new", tooltip="    pub fn new<R: Rng + CryptoRng>(         key_id: u32,         key: PublicKey,         trust_root: &PrivateKey,         rng: &mut R,     ) -> Result<Self> {         let certificate_pb = proto::seale...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt()." [label="sealed_sender_decrypt", tooltip="pub async fn sealed_sender_decrypt(     ciphertext: &[u8],     trust_root: &PublicKey,     timestamp: Timestamp,     local_e164: Option<String>,     local_uuid: String,     local_device_id: DeviceId, ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[StaticKeys]calculate()." [label="calculate", tooltip="        pub(super) fn calculate(             our_keys: &IdentityKeyPair,             their_key: &PublicKey,             chain_key: &[u8; 32],             ctext: &[u8],         ) -> Result<Self> {     ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [label="new", tooltip="    pub fn new<R: Rng + CryptoRng>(         sender_uuid: String,         sender_e164: Option<String>,         key: PublicKey,         sender_device_id: DeviceId,         expiration: Timestamp,        ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." [label="sealed_sender_multi_recipient_encrypt", tooltip="pub async fn sealed_sender_multi_recipient_encrypt<     R: Rng + CryptoRng,     X: IntoIterator<Item = ServiceId>, >(     destinations: &[&ProtocolAddress],     destination_sessions: &[&SessionRecord]...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[EphemeralKeys]calculate()." [label="calculate", tooltip="        pub(super) fn calculate(             our_keys: &KeyPair,             their_public: &PublicKey,             direction: Direction,         ) -> Result<Self> {             let our_pub_key = our_k...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_27 {
+    label = "sender_keys.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/when_exceed_maximum_states_then_oldest_is_ejected()." [label="when_exceed_maximum_states_then_oldest_is_ejected", tooltip="    fn when_exceed_maximum_states_then_oldest_is_ejected() {         assert_eq!(             5,             consts::MAX_SENDER_KEY_STATES,             ' Test written to expect this limit'          ); ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/add_single_state()." [label="add_single_state", tooltip="    fn add_single_state() {         let mut context = TestContext::new();          let public_key = random_public_key();         let chain_id = 1;         let chain_key = chain_key(1);         let rec...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/when_second_state_with_same_public_key_and_chain_id_added_then_it_keeps_first_data()." [label="when_second_state_with_same_public_key_and_chain_id_added_then_it_keeps_first_data", tooltip="    fn when_second_state_with_same_public_key_and_chain_id_added_then_it_keeps_first_data() {         let mut context = TestContext::new();          let chain_id = 1;         let record_key = (random_...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/add_second_state()." [label="add_second_state", tooltip="    fn add_second_state() {         let mut context = TestContext::new();          let chain_id_1 = 1;         let chain_id_2 = 2;         let record_key_1 = (random_public_key(), chain_id_1);        ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/when_second_state_with_different_public_key_but_same_chain_id_added_then_it_gets_replaced()." [label="when_second_state_with_different_public_key_but_same_chain_id_added_then_it_gets_replaced", tooltip="    fn when_second_state_with_different_public_key_but_same_chain_id_added_then_it_gets_replaced() {         let mut context = TestContext::new();          let chain_id = 1;         let record_key_1 =...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/impl#[SenderKeyState]signing_key_private()." [label="signing_key_private", tooltip="    pub(crate) fn signing_key_private(&self) -> Result<PrivateKey, InvalidSessionError> {         if let Some(ref signing_key) = self.state.sender_signing_key {             PrivateKey::deserialize(&si...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/random_public_key()." [label="random_public_key", tooltip="    fn random_public_key() -> PublicKey {         KeyPair::generate(&mut OsRng.unwrap_err()).public_key     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/when_second_state_with_same_public_key_and_chain_id_added_then_it_becomes_the_most_recent()." [label="when_second_state_with_same_public_key_and_chain_id_added_then_it_becomes_the_most_recent", tooltip="    fn when_second_state_with_same_public_key_and_chain_id_added_then_it_becomes_the_most_recent() {         let mut context = TestContext::new();          let chain_id_1 = 1;         let chain_id_2 =...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_28 {
+    label = "session.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [label="process_prekey_bundle", tooltip="pub async fn process_prekey_bundle<R: Rng + CryptoRng>(     remote_address: &ProtocolAddress,     session_store: &mut dyn SessionStore,     identity_store: &mut dyn IdentityKeyStore,     bundle: &PreK...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey()." [label="process_prekey", tooltip="pub async fn process_prekey<'a>(     message: &'a PreKeySignalMessage,     remote_address: &'a ProtocolAddress,     session_record: &mut SessionRecord,     identity_store: &dyn IdentityKeyStore,     p...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_impl()." [label="process_prekey_impl", tooltip="async fn process_prekey_impl(     message: &PreKeySignalMessage,     remote_address: &ProtocolAddress,     session_record: &mut SessionRecord,     signed_prekey_store: &dyn SignedPreKeyStore,     kybe...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_29 {
+    label = "session_cipher.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/decrypt_message_with_state()." [label="decrypt_message_with_state", tooltip="fn decrypt_message_with_state<R: Rng + CryptoRng>(     current_or_previous: CurrentOrPrevious,     state: &mut SessionState,     ciphertext: &SignalMessage,     original_message_type: CiphertextMessag...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/decrypt_message_with_record()." [label="decrypt_message_with_record", tooltip="fn decrypt_message_with_record<R: Rng + CryptoRng>(     remote_address: &ProtocolAddress,     record: &mut SessionRecord,     ciphertext: &SignalMessage,     original_message_type: CiphertextMessageTy...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/get_or_create_chain_key()." [label="get_or_create_chain_key", tooltip="fn get_or_create_chain_key<R: Rng + CryptoRng>(     state: &mut SessionState,     their_ephemeral: &PublicKey,     remote_address: &ProtocolAddress,     csprng: &mut R, ) -> Result<ChainKey> {     if ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_30 {
+    label = "kyber_prekey.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 state/kyber_prekey/impl#[KyberPreKeyRecord]generate()." [label="generate", tooltip="    pub fn generate(         kyber_key_type: kem::KeyType,         id: KyberPreKeyId,         signing_key: &PrivateKey,     ) -> Result<KyberPreKeyRecord> {         let mut rng = rand::rngs::OsRng.unw...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_31 {
+    label = "prekey.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 state/prekey/impl#[PreKeyRecord]key_pair()." [label="key_pair", tooltip="    pub fn key_pair(&self) -> Result<KeyPair> {         Ok(KeyPair::from_public_and_private(             &self.pre_key.public_key,             &self.pre_key.private_key,         )?)     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 state/prekey/impl#[PreKeyRecord]private_key()." [label="private_key", tooltip="    pub fn private_key(&self) -> Result<PrivateKey> {         Ok(PrivateKey::deserialize(&self.pre_key.private_key)?)     }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_32 {
+    label = "session.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 state/session/impl#[SessionState]sender_ratchet_private_key()." [label="sender_ratchet_private_key", tooltip="    pub(crate) fn sender_ratchet_private_key(&self) -> Result<PrivateKey, InvalidSessionError> {         match self.session.sender_chain {             None => Err(InvalidSessionError(' missing sender ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_33 {
+    label = "signed_prekey.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 state/signed_prekey/impl#[PrivateKey][KeySerde]deserialize()." [label="deserialize", tooltip="    fn deserialize<T: AsRef<[u8]>>(bytes: T) -> Result<Self> {         Ok(Self::deserialize(bytes.as_ref())?)     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 state/signed_prekey/impl#[KeyPair][KeyPairSerde]from_public_and_private()." [label="from_public_and_private", tooltip="    fn from_public_and_private(public_key: &[u8], private_key: &[u8]) -> Result<Self> {         Ok(KeyPair::from_public_and_private(public_key, private_key)?)     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 state/signed_prekey/impl#[SignedPreKeyRecord]private_key()." [label="private_key", tooltip="    pub fn private_key(&self) -> Result<PrivateKey> {         Ok(PrivateKey::deserialize(&self.get_storage().private_key)?)     }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_34 {
+    label = "groups.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_out_of_order()." [label="group_out_of_order", tooltip="fn group_out_of_order() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let sender_address =             ProtocolAddress::new(' +14159999111' .to...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_message_key_limit()." [label="group_message_key_limit", tooltip="fn group_message_key_limit() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let sender_address =             ProtocolAddress::new(' +14159999111...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." [label="group_sealed_sender_multiple_devices_and_excluded_recipients", tooltip="fn group_sealed_sender_multiple_devices_and_excluded_recipients() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let alice_device_id = DeviceId:...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." [label="group_sealed_sender_multiple_devices", tooltip="fn group_sealed_sender_multiple_devices() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let alice_device_id = DeviceId::new(23).unwrap();      ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_late_join()." [label="group_late_join", tooltip="fn group_late_join() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let sender_address =             ProtocolAddress::new(' +14159999111' .to_ow...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." [label="group_sealed_sender", tooltip="fn group_sealed_sender() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let alice_device_id = DeviceId::new(23).unwrap();         let bob_device...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_basic_ratchet()." [label="group_basic_ratchet", tooltip="fn group_basic_ratchet() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let sender_address =             ProtocolAddress::new(' +14159999111' .t...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_large_messages()." [label="group_large_messages", tooltip="fn group_large_messages() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let sender_address =             ProtocolAddress::new(' +14159999111' ....", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_no_send_session()." [label="group_no_send_session", tooltip="fn group_no_send_session() -> Result<(), SignalProtocolError> {     let mut csprng = OsRng.unwrap_err().unwrap_err();      let sender_address = ProtocolAddress::new(' +14159999111' .to_owned(), Device...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_too_far_in_the_future()." [label="group_too_far_in_the_future", tooltip="fn group_too_far_in_the_future() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let sender_address =             ProtocolAddress::new(' +1415999...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_no_recv_session()." [label="group_no_recv_session", tooltip="fn group_no_recv_session() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err().unwrap_err();          let device_id = DeviceId::new(1).unwrap();         let se...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 group_basic_encrypt_decrypt()." [label="group_basic_encrypt_decrypt", tooltip="fn group_basic_encrypt_decrypt() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let sender_address =             ProtocolAddress::new(' +1415999...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_35 {
+    label = "ratchet.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_alice_and_bob_agree_on_chain_keys_with_kyber()." [label="test_alice_and_bob_agree_on_chain_keys_with_kyber", tooltip="fn test_alice_and_bob_agree_on_chain_keys_with_kyber() -> Result<(), SignalProtocolError> {     let mut csprng = rand::rngs::OsRng.unwrap_err();      let alice_identity_key_pair = IdentityKeyPair::gen...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_36 {
+    label = "sealed_sender.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_redundant_empty_devices()." [label="test_sealed_sender_multi_recipient_redundant_empty_devices", tooltip="fn test_sealed_sender_multi_recipient_redundant_empty_devices() -> Result<(), SignalProtocolError> {     async {         let mut csprng = OsRng.unwrap_err();          let alice_device_id = DeviceId::n...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id()." [label="test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id", tooltip="fn test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id( ) -> Result<(), SignalProtocolError> {     async {         let mut rng = OsRng.unwrap_err();          let alice_device_id = Devi...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_archived_session()." [label="test_sealed_sender_multi_recipient_encrypt_with_archived_session", tooltip="fn test_sealed_sender_multi_recipient_encrypt_with_archived_session( ) -> Result<(), SignalProtocolError> {     async {         let mut rng = OsRng.unwrap_err();          let alice_device_id = DeviceI...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_server_cert()." [label="test_server_cert", tooltip="fn test_server_cert() -> Result<(), SignalProtocolError> {     let mut rng = OsRng.unwrap_err();     let trust_root = KeyPair::generate(&mut rng);     let server_key = KeyPair::generate(&mut rng);    ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_decryption_error_in_sealed_sender()." [label="test_decryption_error_in_sealed_sender", tooltip="fn test_decryption_error_in_sealed_sender() -> Result<(), SignalProtocolError> {     async {         let mut rng = OsRng.unwrap_err();          let alice_device_id = DeviceId::new(23).unwrap();       ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_revoked_server_cert()." [label="test_revoked_server_cert", tooltip="fn test_revoked_server_cert() -> Result<(), SignalProtocolError> {     let mut rng = OsRng.unwrap_err();     let trust_root = KeyPair::generate(&mut rng);     let server_key = KeyPair::generate(&mut r...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient()." [label="test_sealed_sender_multi_recipient", tooltip="fn test_sealed_sender_multi_recipient() -> Result<(), SignalProtocolError> {     async {         let mut rng = OsRng.unwrap_err();          let alice_device_id = DeviceId::new(23).unwrap();         le...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender()." [label="test_sealed_sender", tooltip="fn test_sealed_sender() -> Result<(), SignalProtocolError> {     async {         let mut rng = OsRng.unwrap_err();          let alice_device_id = DeviceId::new(23).unwrap();         let bob_device_id ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_cert()." [label="test_sender_cert", tooltip="fn test_sender_cert() -> Result<(), SignalProtocolError> {     let mut rng = OsRng.unwrap_err();     let trust_root = KeyPair::generate(&mut rng);     let server_key = KeyPair::generate(&mut rng);    ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." [label="test_sender_key_in_sealed_sender", tooltip="fn test_sender_key_in_sealed_sender() -> Result<(), SignalProtocolError> {     async {         let mut rng = OsRng.unwrap_err();          let alice_device_id = DeviceId::new(23).unwrap();         let ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_37 {
+    label = "session.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message_repeated_messages()." [label="test_simultaneous_initiate_lost_message_repeated_messages", tooltip="fn test_simultaneous_initiate_lost_message_repeated_messages() -> TestResult {     run(         |builder| {             builder.add_pre_key(IdChoice::Next);             builder.add_signed_pre_key(IdCh...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_pqr_state_and_message_contents_nonempty_if_enabled()." [label="test_pqr_state_and_message_contents_nonempty_if_enabled", tooltip="fn test_pqr_state_and_message_contents_nonempty_if_enabled() -> TestResult {     async {         let mut csprng = OsRng.unwrap_err();          let alice_device_id = DeviceId::new(1).unwrap();         ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_prekey()." [label="test_basic_prekey", tooltip="fn test_basic_prekey() -> TestResult {     run(         |builder| {             builder.add_pre_key(IdChoice::Next);             builder.add_signed_pre_key(IdChoice::Next);             builder.add_kyb...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit_with_self()." [label="test_chain_jump_over_limit_with_self", tooltip="fn test_chain_jump_over_limit_with_self() -> TestResult {     let mut store_builder_one = TestStoreBuilder::new();     let mut store_builder_two = TestStoreBuilder::from_store(&store_builder_one.store...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores()." [label="prekey_message_failed_decryption_does_not_update_stores", tooltip="fn prekey_message_failed_decryption_does_not_update_stores() -> TestResult {     async {         let mut csprng = OsRng.unwrap_err();         let alice_address =             ProtocolAddress::new(' +14...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_signed_pre_key_signature()." [label="test_bad_signed_pre_key_signature", tooltip="fn test_bad_signed_pre_key_signature() -> TestResult {     async {         let mut csprng = OsRng.unwrap_err();         let bob_address =             ProtocolAddress::new(' +14151111112' .to_owned(), ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_repeat_bundle_message()." [label="test_repeat_bundle_message", tooltip="fn test_repeat_bundle_message() -> TestResult {     let mut alice_store_builder = TestStoreBuilder::new();     let mut bob_store_builder = TestStoreBuilder::new()         .with_pre_key(3133.into())   ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_unacknowledged_sessions_eventually_expire()." [label="test_unacknowledged_sessions_eventually_expire", tooltip="fn test_unacknowledged_sessions_eventually_expire() -> TestResult {     async {         const WELL_PAST_EXPIRATION: Duration = Duration::from_secs(60 * 60 * 24 * 90);          let mut csprng = OsRng.u...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit()." [label="test_chain_jump_over_limit", tooltip="fn test_chain_jump_over_limit() -> TestResult {     let mut alice_store_builder = TestStoreBuilder::new();     let mut bob_store_builder = TestStoreBuilder::new()         .with_pre_key(31337.into())  ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_session()." [label="test_basic_session", tooltip="fn test_basic_session() -> TestResult {     let (alice_session, bob_session) = initialize_sessions_v4()?;     run_session_interaction(alice_session, bob_session)?;     Ok(()) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 x3dh_prekey_rejected_as_invalid_message_specifically()." [label="x3dh_prekey_rejected_as_invalid_message_specifically", tooltip="fn x3dh_prekey_rejected_as_invalid_message_specifically() {     async {         let mut csprng = OsRng.unwrap_err();          let alice_device_id = DeviceId::new(1).unwrap();         let bob_device_id...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_with_lossage()." [label="test_simultaneous_initiate_with_lossage", tooltip="fn test_simultaneous_initiate_with_lossage() -> TestResult {     let mut alice_store_builder = TestStoreBuilder::new()         .with_pre_key(IdChoice::Random)         .with_signed_pre_key(IdChoice::Ra...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_pqr_state_empty_if_disabled()." [label="test_pqr_state_empty_if_disabled", tooltip="fn test_pqr_state_empty_if_disabled() -> TestResult {     run(UsePQRatchet::No, UsePQRatchet::No)?;     run(UsePQRatchet::No, UsePQRatchet::Yes)?;     run(UsePQRatchet::Yes, UsePQRatchet::No)?;      f...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_signedprekey_not_saved()." [label="test_signedprekey_not_saved", tooltip="fn test_signedprekey_not_saved() -> TestResult {     run(         |builder| {             builder.add_pre_key(IdChoice::Next);             builder.add_signed_pre_key(IdChoice::Next);             build...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_duplicate_message_error_returned()." [label="test_duplicate_message_error_returned", tooltip="fn test_duplicate_message_error_returned() -> TestResult {     async {         let mut csprng = OsRng.unwrap_err();          let alice_device_id = DeviceId::new(1).unwrap();         let bob_device_id ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_message_key_limits()." [label="test_message_key_limits", tooltip="fn test_message_key_limits() -> TestResult {     run(initialize_sessions_v4()?)?;      fn run(sessions: (SessionRecord, SessionRecord)) -> TestResult {         async {             let (alice_session_r...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_repeated_messages()." [label="test_simultaneous_initiate_repeated_messages", tooltip="fn test_simultaneous_initiate_repeated_messages() -> TestResult {     let mut alice_store_builder = TestStoreBuilder::new()         .with_pre_key(IdChoice::Random)         .with_signed_pre_key(IdChoic...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [label="run", tooltip="    fn run(alice_pqr: UsePQRatchet, bob_pqr: UsePQRatchet) -> TestResult {         async {             let mut csprng = OsRng.unwrap_err();              let alice_device_id = DeviceId::new(1).unwrap()...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores_even_when_previously_archived()." [label="prekey_message_failed_decryption_does_not_update_stores_even_when_previously_archived", tooltip="fn prekey_message_failed_decryption_does_not_update_stores_even_when_previously_archived( ) -> TestResult {     async {         let mut csprng = OsRng.unwrap_err();         let alice_address =        ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_optional_one_time_prekey()." [label="test_optional_one_time_prekey", tooltip="fn test_optional_one_time_prekey() -> TestResult {     let mut alice_store_builder = TestStoreBuilder::new();     let mut bob_store_builder = TestStoreBuilder::new()         .with_signed_pre_key(22.in...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_to_archived_session()." [label="prekey_message_to_archived_session", tooltip="fn prekey_message_to_archived_session() -> TestResult {     async {         let mut csprng = OsRng.unwrap_err();         let alice_address =             ProtocolAddress::new(' +14151111111' .to_owned(...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_simultaneous_initiate()." [label="test_basic_simultaneous_initiate", tooltip="fn test_basic_simultaneous_initiate() -> TestResult {     let mut alice_store_builder = TestStoreBuilder::new()         .with_pre_key(IdChoice::Random)         .with_signed_pre_key(IdChoice::Random)  ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message()." [label="test_simultaneous_initiate_lost_message", tooltip="fn test_simultaneous_initiate_lost_message() -> TestResult {     let mut alice_store_builder = TestStoreBuilder::new()         .with_pre_key(IdChoice::Random)         .with_signed_pre_key(IdChoice::Ra...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 run_session_interaction()." [label="run_session_interaction", tooltip="fn run_session_interaction(alice_session: SessionRecord, bob_session: SessionRecord) -> TestResult {     async {         use rand::seq::SliceRandom;          let alice_address =             ProtocolAd...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_longer_sessions()." [label="test_longer_sessions", tooltip="fn test_longer_sessions() -> TestResult {     init_logger();     run(         2000,         |builder| {             builder.add_pre_key(IdChoice::Next);             builder.add_signed_pre_key(IdChoice...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_zero_is_a_valid_prekey_id()." [label="test_zero_is_a_valid_prekey_id", tooltip="fn test_zero_is_a_valid_prekey_id() -> TestResult {     async {         let mut csprng = OsRng.unwrap_err();         let alice_address =             ProtocolAddress::new(' +14151111111' .to_owned(), D...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_message_bundle()." [label="test_bad_message_bundle", tooltip="fn test_bad_message_bundle() -> TestResult {     let mut alice_store_builder = TestStoreBuilder::new();     let mut bob_store_builder = TestStoreBuilder::new()         .with_pre_key(3133.into())      ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_38 {
+    label = "mod.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [label="with_signed_pre_key", tooltip="    pub fn with_signed_pre_key(mut self, id_choice: IdChoice) -> Self {         self.add_signed_pre_key(id_choice);         self     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." [label="add_kyber_pre_key", tooltip="    pub fn add_kyber_pre_key(&mut self, id_choice: IdChoice) {         let id = self.gen_id(id_choice);         if let Some(latest_id) = self.store.all_kyber_pre_key_ids().last() {             assert!...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [label="create_pre_key_bundle", tooltip="pub async fn create_pre_key_bundle<R: Rng + CryptoRng>(     store: &mut dyn ProtocolStore,     mut csprng: &mut R, ) -> Result<PreKeyBundle, SignalProtocolError> {     let pre_key_pair = KeyPair::gene...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [label="new", tooltip="    pub fn new() -> Self {         let mut rng = OsRng.unwrap_err();         let identity_key = IdentityKeyPair::generate(&mut rng);         // Valid registration IDs fit in 14 bits.         let regis...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/initialize_sessions_v4()." [label="initialize_sessions_v4", tooltip="pub fn initialize_sessions_v4() -> Result<(SessionRecord, SessionRecord), SignalProtocolError> {     let mut csprng = OsRng.unwrap_err();     let alice_identity = IdentityKeyPair::generate(&mut csprng...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [label="with_pre_key", tooltip="    pub fn with_pre_key(mut self, id_choice: IdChoice) -> Self {         self.add_pre_key(id_choice);         self     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [label="add_pre_key", tooltip="    pub fn add_pre_key(&mut self, id_choice: IdChoice) {         let id = self.gen_id(id_choice);         // TODO: this requirement can be removed if store returns ids in the insertion order         i...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [label="test_in_memory_protocol_store", tooltip="pub fn test_in_memory_protocol_store() -> Result<InMemSignalProtocolStore, SignalProtocolError> {     let mut csprng = OsRng.unwrap_err();     let identity_key = IdentityKeyPair::generate(&mut csprng)...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]sign()." [label="sign", tooltip="    fn sign(&mut self, message: &[u8]) -> Box<[u8]> {         let identity_key_pair = self             .store             .get_identity_key_pair()             .now_or_never()             .expect(' syn...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [label="add_signed_pre_key", tooltip="    pub fn add_signed_pre_key(&mut self, id_choice: IdChoice) {         let id = self.gen_id(id_choice);         if let Some(latest_id) = self.store.all_signed_pre_key_ids().last() {             asser...", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_redundant_empty_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_redundant_empty_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_redundant_empty_devices()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_redundant_empty_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_redundant_empty_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_redundant_empty_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_redundant_empty_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message_repeated_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message_repeated_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message_repeated_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message_repeated_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair][`TryFrom<PrivateKey>`]try_from()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_pqr_state_and_message_contents_nonempty_if_enabled()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_pqr_state_and_message_contents_nonempty_if_enabled()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_pqr_state_and_message_contents_nonempty_if_enabled()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_pqr_state_and_message_contents_nonempty_if_enabled()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_pqr_state_and_message_contents_nonempty_if_enabled()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_decryption_error_message()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_decryption_error_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/create_signal_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_decryption_error_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_decode_size()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_decode_size()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/apply_agreement_xor()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]public_key()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey][`From<[u8; PRIVATE_KEY_LENGTH]>`]from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 fingerprint/test/fingerprint_mismatching_fingerprints()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_bad_registration_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_prekey()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_prekey()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_prekey()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_prekey()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/decrypt_message_with_state()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/get_or_create_chain_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge-types 0.1.0 node/storage/impl#[NodeIdentityKeyStore][IdentityKeyStore]get_identity_key_pair()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<PrivateKey>`]try_from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 fingerprint/test/fingerprint_matching_identifiers()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/decrypt_message_with_record()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/decrypt_message_with_state()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 state/signed_prekey/impl#[PrivateKey][KeySerde]deserialize()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 state/prekey/impl#[PreKeyRecord]key_pair()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]from_public_and_private()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt_from_usmc()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt_from_usmc()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[EphemeralKeys]calculate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt_from_usmc()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[StaticKeys]calculate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]sign()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/IdentityKeyPair_SignAlternateIdentity()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]sign_alternate_identity()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]new()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/clamp_integer()." [color=blue]
+  "rust-analyzer cargo libsignal-core 0.1.0 key_agreement()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 key_agreement()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit_with_self()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit_with_self()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit_with_self()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit_with_self()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SealedSessionCipher_DecryptToUsmc()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt_from_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_out_of_order()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_out_of_order()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_out_of_order()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 state/signed_prekey/impl#[KeyPair][KeyPairSerde]from_public_and_private()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]from_public_and_private()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_message_key_limit()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_message_key_limit()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_message_key_limit()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<PrivateKey>`]try_from()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/get_or_create_chain_key()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/get_or_create_chain_key()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/keys/impl#[RootKey]create_chain()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_cipher/get_or_create_chain_key()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 state/session/impl#[SessionState]sender_ratchet_private_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SealedSessionCipher_Encrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt_from_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_archived_session()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient_encrypt_with_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_random_agreements()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge-types 0.1.0 jni/storage/impl#[`JniIdentityKeyStore<'_>`][IdentityKeyStore]get_identity_key_pair()." -> "rust-analyzer cargo libsignal-bridge-types 0.1.0 jni/storage/impl#[`JniIdentityKeyStore<'_>`]do_get_identity_key_pair()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 scramble/impl#[`proto::Contact`][`Visit<Scrambler>`]accept()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_signed_pre_key_signature()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_signed_pre_key_signature()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_signed_pre_key_signature()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_signed_pre_key_signature()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_repeat_bundle_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_repeat_bundle_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_repeat_bundle_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_repeat_bundle_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/initialize_sessions_v4()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_bob_session_record()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/initialize_sessions_v4()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/initialize_sessions_v4()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/initialize_sessions_v4()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session_record()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_Generate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/test_agreement_and_authentication()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[EphemeralKeys]calculate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/test_agreement_and_authentication()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/test_agreement_and_authentication()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/test_agreement_and_authentication()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[StaticKeys]calculate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/registration/request/test/register_account_request_fetches_messages_no_push_tokens()." -> "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/registration/request/test/impl#[OwnedAccountKeys]as_borrowed()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_bob_session_record()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_bob_session()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/test_lossless_round_trip()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/test_lossless_round_trip()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-account-keys 0.1.0 backup/impl#[`BackupKey<V1>`]derive_ec_key()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SenderKeyDistributionMessage_Create()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices_and_excluded_recipients()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/registration/request/test/register_account_request()." -> "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/registration/request/test/impl#[OwnedAccountKeys]as_borrowed()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_unacknowledged_sessions_eventually_expire()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_unacknowledged_sessions_eventually_expire()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_unacknowledged_sessions_eventually_expire()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_unacknowledged_sessions_eventually_expire()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_serialize_identity_key_pair()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_serialize_identity_key_pair()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<&[u8]>`]try_from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]from_public_and_private()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey][`TryFrom<&[u8]>`]try_from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SenderKeyMessage_New()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/GroupCipher_EncryptMessage()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/PreKeyBundle_GetKyberPreKeyPublic()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 state/signed_prekey/impl#[SignedPreKeyRecord]private_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/when_exceed_maximum_states_then_oldest_is_ejected()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/random_public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 scramble/impl#[`proto::Recipient`][`Visit<Scrambler>`]accept()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 scramble/impl#[`proto::Contact`][`Visit<Scrambler>`]accept()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_server_cert()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_server_cert()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_chain_jump_over_limit()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/keys/impl#[RootKey]create_chain()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-node 0.76.4 main()." -> "rust-analyzer cargo libsignal-node 0.76.4 identitykeypair_deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/add_single_state()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/random_public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 benches()." -> "rust-analyzer cargo libsignal-core 0.1.0 generation()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 benches()." -> "rust-analyzer cargo libsignal-core 0.1.0 key_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 benches()." -> "rust-analyzer cargo libsignal-core 0.1.0 signatures()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt_impl()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/impl#[DerivedKeys]derive_e()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt_impl()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/apply_agreement_xor()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt_impl()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/compute_authentication_tag()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/test_agreement_and_authentication()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/apply_agreement_xor()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/test_agreement_and_authentication()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/impl#[DerivedKeys]derive_e()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/test_agreement_and_authentication()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/compute_authentication_tag()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/test_agreement_and_authentication()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/initialize_sessions_v4()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run_session_interaction()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 x3dh_prekey_rejected_as_invalid_message_specifically()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 x3dh_prekey_rejected_as_invalid_message_specifically()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 x3dh_prekey_rejected_as_invalid_message_specifically()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 x3dh_prekey_rejected_as_invalid_message_specifically()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 x3dh_prekey_rejected_as_invalid_message_specifically()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender_multiple_devices()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[EphemeralKeys]calculate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/apply_agreement_xor()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/impl#[DerivedKeys]derive_e()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/compute_authentication_tag()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[StaticKeys]calculate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/create_signal_message()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/compute_authentication_tag()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_Agree()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_bob_session()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_identity_key_from()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-jni-impl 0.76.4 Java_org_signal_libsignal_internal_Native_IdentityKeyPair_1Deserialize()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<&[u8]>`]try_from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/when_second_state_with_same_public_key_and_chain_id_added_then_it_keeps_first_data()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/random_public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_with_lossage()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_with_lossage()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_with_lossage()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_with_lossage()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey][`From<[u8; PRIVATE_KEY_LENGTH]>`]from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_late_join()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_late_join()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_late_join()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt_from_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_agreement()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey][`From<[u8; PRIVATE_KEY_LENGTH]>`]from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_pqr_state_empty_if_disabled()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-ffi 0.76.4 signal_identitykeypair_deserialize()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<&[u8]>`]try_from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SessionBuilder_ProcessPreKeyBundle()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_basic_ratchet()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_basic_ratchet()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_basic_ratchet()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge-types 0.1.0 jni/storage/impl#[`JniIdentityKeyStore<'_>`]do_get_identity_key_pair()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<&[u8]>`]try_from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_signedprekey_not_saved()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_signedprekey_not_saved()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_signedprekey_not_saved()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_signedprekey_not_saved()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_Sign()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_large_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_large_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_large_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 fingerprint/test/fingerprint_mismatching_identifiers()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/impl#[DerivedKeys]derive_e()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair][`TryFrom<PrivateKey>`]try_from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v2/impl#[DerivedKeys]derive_e()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey][`TryFrom<&[u8]>`]try_from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey][`TryFrom<&[u8]>`]try_from()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/PrivateKey_Deserialize()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]new()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_duplicate_message_error_returned()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_duplicate_message_error_returned()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_duplicate_message_error_returned()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_duplicate_message_error_returned()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_duplicate_message_error_returned()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/clamp_integer()." [color=blue]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/keys/impl#[RootKey]create_chain()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_message_key_limits()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/initialize_sessions_v4()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_message_key_limits()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_decrypt_result()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_decrypt_result()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/initialize_sessions_v4()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_alternate_identity_signing()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]sign_alternate_identity()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_alternate_identity_signing()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-node 0.76.4 identitykeypair_deserialize()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<&[u8]>`]try_from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/KyberPreKeyRecord_New()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 state/prekey/impl#[PreKeyRecord]private_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_repeated_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_repeated_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_repeated_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_repeated_messages()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_signal_message_serialize_deserialize()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/create_signal_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_decryption_error_in_sealed_sender()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_decryption_error_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt_from_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_decryption_error_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_decryption_error_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_decryption_error_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_decryption_error_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_decryption_error_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_decryption_error_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/add_second_state()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/random_public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 run()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 run()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 run()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 run()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 run()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 run()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session_record()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey][`From<[u8; PRIVATE_KEY_LENGTH]>`]from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_revoked_server_cert()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_revoked_server_cert()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_no_send_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_no_send_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet_forward_result()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet_forward_result()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet_forward_result()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 account_keys/BackupKey_DeriveEcKey()." -> "rust-analyzer cargo libsignal-account-keys 0.1.0 backup/impl#[`BackupKey<V1>`]derive_ec_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/registration/request/test/impl#[OwnedAccountKeys]as_borrowed()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 benches()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 benches()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 benches()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 benches()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 v1()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 state/session/impl#[SessionState]sender_ratchet_private_key()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 state/kyber_prekey/impl#[KyberPreKeyRecord]generate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/impl#[SenderKeyState]signing_key_private()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender_multi_recipient()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/when_second_state_with_different_public_key_but_same_chain_id_added_then_it_gets_replaced()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/random_public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[StaticKeys]calculate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 state/prekey/impl#[PreKeyRecord]private_key()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_alice_and_bob_agree_on_chain_keys_with_kyber()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_alice_and_bob_agree_on_chain_keys_with_kyber()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_alice_and_bob_agree_on_chain_keys_with_kyber()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_alice_session_record()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_alice_and_bob_agree_on_chain_keys_with_kyber()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_bob_session_record()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/initialize_sessions_v4()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/impl#[SenderKeyState]signing_key_private()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores_even_when_previously_archived()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores_even_when_previously_archived()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores_even_when_previously_archived()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_failed_decryption_does_not_update_stores_even_when_previously_archived()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_random_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_optional_one_time_prekey()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_optional_one_time_prekey()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_optional_one_time_prekey()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey][`From<[u8; PRIVATE_KEY_LENGTH]>`]from()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet_forward()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet_forward_result()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_pre_key_signal_message_serialize_deserialize()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_pre_key_signal_message_serialize_deserialize()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/create_signal_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/SenderCertificate_New()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair][`TryFrom<&[u8]>`]try_from()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/random_public_key()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge-types 0.1.0 ffi/storage/impl#[`&FfiIdentityKeyStoreStruct`][IdentityKeyStore]get_identity_key_pair()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/when_second_state_with_same_public_key_and_chain_id_added_then_it_becomes_the_most_recent()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sender_keys/sender_key_record_add_sender_key_state_tests/random_public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_impl()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ServerCertificate_New()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]sign()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 scramble/impl#[`proto::Frame`][`Visit<Scrambler>`]accept()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 scramble/impl#[`proto::Recipient`][`Visit<Scrambler>`]accept()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_too_far_in_the_future()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_too_far_in_the_future()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_too_far_in_the_future()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]sign()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]sign_alternate_identity()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_to_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_to_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_to_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 prekey_message_to_archived_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_cert()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_cert()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_cert()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_simultaneous_initiate()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_simultaneous_initiate()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_simultaneous_initiate()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_basic_simultaneous_initiate()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_impl()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 state/prekey/impl#[PreKeyRecord]key_pair()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_impl()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 ratchet/initialize_bob_session()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_simultaneous_initiate_lost_message()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt_impl()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 run_session_interaction()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 main()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 main()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 main()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey][`From<[u8; PRIVATE_KEY_LENGTH]>`]from()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/clamp_integer()." [color=blue]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_no_recv_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_no_recv_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_no_recv_session()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_GetPublicKey()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]public_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 state/signed_prekey/impl#[SignedPreKeyRecord]private_key()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]deserialize()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_basic_encrypt_decrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_basic_encrypt_decrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 group_basic_encrypt_decrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_agreement()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_multi_recipient_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 v2()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/group_encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 group_cipher/create_sender_key_distribution_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/test_in_memory_protocol_store()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_encrypt_from_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_decrypt_to_usmc()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_sender_key_in_sealed_sender()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_longer_sessions()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_longer_sessions()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_longer_sessions()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_longer_sessions()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]add_kyber_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_zero_is_a_valid_prekey_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_zero_is_a_valid_prekey_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_zero_is_a_valid_prekey_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_zero_is_a_valid_prekey_id()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_decrypt()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_decrypt_result()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/sealed_sender_v1/impl#[EphemeralKeys]calculate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_agreement()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_sender_key_message_serialize_deserialize()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/tests/test_sender_key_message_serialize_deserialize()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 generation()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]generate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_message_bundle()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_message_bundle()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_signed_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_message_bundle()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]with_pre_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 test_bad_message_bundle()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 run()." [color=blue, style=dashed]
+}

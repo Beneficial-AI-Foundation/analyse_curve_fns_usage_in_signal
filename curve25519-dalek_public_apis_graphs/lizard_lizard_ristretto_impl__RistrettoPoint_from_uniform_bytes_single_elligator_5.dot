@@ -1,0 +1,185 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "lizard_ristretto.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]from_uniform_bytes_single_elligator()." [label="from_uniform_bytes_single_elligator", tooltip="    pub fn from_uniform_bytes_single_elligator(bytes: &[u8; 32]) -> RistrettoPoint {         RistrettoPoint::elligator_ristretto_flavor(&FieldElement::from_bytes(bytes))     }", fillcolor=green, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "zkgroup.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSecretParams_EncryptProfileKey()." [label="GroupSecretParams_EncryptProfileKey", tooltip="fn GroupSecretParams_EncryptProfileKey(     params: Serialized<GroupSecretParams>,     profile_key: Serialized<ProfileKey>,     user_id: Aci, ) -> Serialized<ProfileKeyCiphertext> {     params        ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/ProfileKey_GetCommitment()." [label="ProfileKey_GetCommitment", tooltip="fn ProfileKey_GetCommitment(     profile_key: Serialized<ProfileKey>,     user_id: Aci, ) -> Serialized<ProfileKeyCommitment> {     profile_key.get_commitment(user_id).into() }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSecretParams_DecryptProfileKey()." [label="GroupSecretParams_DecryptProfileKey", tooltip="fn GroupSecretParams_DecryptProfileKey(     params: Serialized<GroupSecretParams>,     profile_key: Serialized<ProfileKeyCiphertext>,     user_id: Aci, ) -> Result<Serialized<ProfileKey>, ZkGroupVerif...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/ServerPublicParams_CreateExpiringProfileKeyCredentialPresentationDeterministic()." [label="ServerPublicParams_CreateExpiringProfileKeyCredentialPresentationDeterministic", tooltip="fn ServerPublicParams_CreateExpiringProfileKeyCredentialPresentationDeterministic(     server_public_params: &ServerPublicParams,     randomness: &[u8; RANDOMNESS_LEN],     group_secret_params: Serial...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/ServerPublicParams_CreateProfileKeyCredentialRequestContextDeterministic()." [label="ServerPublicParams_CreateProfileKeyCredentialRequestContextDeterministic", tooltip="fn ServerPublicParams_CreateProfileKeyCredentialRequestContextDeterministic(     server_public_params: &ServerPublicParams,     randomness: &[u8; RANDOMNESS_LEN],     user_id: Aci,     profile_key: Se...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_2 {
+    label = "fetch_profile_key_credential.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-net-chat 0.1.0 main()." [label="main", tooltip="async fn main() -> anyhow::Result<()> {     env_logger::builder()         .filter_module(module_path!(), log::LevelFilter::Info)         .parse_default_env()         .init();      let Config {        ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_3 {
+    label = "profiles.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/profiles/test/test_unsuccessful_requests()." [label="test_unsuccessful_requests", tooltip="    async fn test_unsuccessful_requests(         response: chat::Response,     ) -> RequestError<ProfileKeyCredentialRequestError> {         let randomness = zkgroup::TEST_ARRAY_32;         let server...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/profiles/test/test_successful_request()." [label="test_successful_request", tooltip="    async fn test_successful_request() {         let randomness = zkgroup::TEST_ARRAY_32;         let server_params = zkgroup::ServerSecretParams::generate(randomness);         let aci = Aci::parse_fr...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_4 {
+    label = "serialization.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 benches()." [label="benches", tooltip="criterion_group!(benches, bench_server_param_serialization,); criterion_main!(benches);", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_5 {
+    label = "zkgroup_benchmarks.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." [label="benchmark_integration_profile", tooltip="pub fn benchmark_integration_profile(c: &mut Criterion) {     // SERVER     let server_secret_params = zkgroup::ServerSecretParams::generate(zkgroup::TEST_ARRAY_32);     let server_public_params = ser...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_6 {
+    label = "group_params.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]encrypt_profile_key_bytes()." [label="encrypt_profile_key_bytes", tooltip="    pub fn encrypt_profile_key_bytes(         &self,         profile_key_bytes: ProfileKeyBytes,         user_id: libsignal_core::Aci,     ) -> api::groups::ProfileKeyCiphertext {         let profile_...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." [label="decrypt_profile_key", tooltip="    pub fn decrypt_profile_key(         &self,         ciphertext: api::groups::ProfileKeyCiphertext,         user_id: libsignal_core::Aci,     ) -> Result<api::profiles::ProfileKey, ZkGroupVerificati...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]encrypt_profile_key()." [label="encrypt_profile_key", tooltip="    pub fn encrypt_profile_key(         &self,         profile_key: api::profiles::ProfileKey,         user_id: libsignal_core::Aci,     ) -> api::groups::ProfileKeyCiphertext {         self.encrypt_p...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_7 {
+    label = "profile_key.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 api/profiles/profile_key/impl#[ProfileKey]get_commitment()." [label="get_commitment", tooltip="    pub fn get_commitment(         &self,         user_id: libsignal_core::Aci,     ) -> api::profiles::ProfileKeyCommitment {         let uid_bytes = uuid::Uuid::from(user_id).into_bytes();         l...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_8 {
+    label = "server_params.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_expiring_profile_key_credential_presentation()." [label="create_expiring_profile_key_credential_presentation", tooltip="    pub fn create_expiring_profile_key_credential_presentation(         &self,         randomness: RandomnessBytes,         group_secret_params: api::groups::GroupSecretParams,         expiring_profil...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_profile_key_credential_request_context()." [label="create_profile_key_credential_request_context", tooltip="    pub fn create_profile_key_credential_request_context(         &self,         randomness: RandomnessBytes,         aci: libsignal_core::Aci,         profile_key: api::profiles::ProfileKey,     ) ->...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_9 {
+    label = "sho.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 common/sho/impl#[Sho]get_point_single_elligator()." [label="get_point_single_elligator", tooltip="    pub fn get_point_single_elligator(&mut self) -> RistrettoPoint {         RistrettoPoint::from_uniform_bytes_single_elligator(             &self.internal_sho.squeeze_and_ratchet_as_array(),        ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_10 {
+    label = "credentials.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/credentials/tests/test_mac()." [label="test_mac", tooltip="    fn test_mac() {         // It doesn't really matter *which* credential we test here, we just want to generally know         // we've set things up correctly. (Also, the credentials hardcoded here ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_11 {
+    label = "profile_key_commitment.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_commitment/tests/test_commitment()." [label="test_commitment", tooltip="    fn test_commitment() {         let profile_key = profile_key_struct::ProfileKeyStruct::new(TEST_ARRAY_32, TEST_ARRAY_16);         let c1 = CommitmentWithSecretNonce::new(profile_key, TEST_ARRAY_16...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_12 {
+    label = "profile_key_credential_request.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_credential_request/tests/test_request_response()." [label="test_request_response", tooltip="    fn test_request_response() {         let mut sho = Sho::new(b' Test_Profile_Key_Credential_Request' , b' ' );          // client         let blind_key_pair = KeyPair::generate(&mut sho);          ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_13 {
+    label = "profile_key_encryption.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/tests/test_profile_key_encryption()." [label="test_profile_key_encryption", tooltip="    fn test_profile_key_encryption() {         let master_key = TEST_ARRAY_32_1;         let mut sho = Sho::new(b' Test_Profile_Key_Encryption' , &master_key);          //let system = SystemParams::ge...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/impl#[ProfileKeyEncryptionDomain]decrypt()." [label="decrypt", tooltip="    pub(crate) fn decrypt(         key_pair: &KeyPair,         ciphertext: &Ciphertext,         uid_bytes: UidBytes,     ) -> Result<profile_key_struct::ProfileKeyStruct, ZkGroupVerificationFailure> {...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_14 {
+    label = "profile_key_struct.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [label="new", tooltip="    pub fn new(profile_key_bytes: ProfileKeyBytes, uid_bytes: UidBytes) -> Self {         let mut encoded_profile_key = profile_key_bytes;         encoded_profile_key[0] &= 254;         encoded_profil...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]calc_M3()." [label="calc_M3", tooltip="    pub fn calc_M3(profile_key_bytes: ProfileKeyBytes, uid_bytes: UidBytes) -> RistrettoPoint {         let mut combined_array = [0u8; PROFILE_KEY_LEN + UUID_LEN];         combined_array[..PROFILE_KEY...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_15 {
+    label = "proofs.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ExpiringProfileKeyCredentialPresentationProof]new()." [label="new", tooltip="    pub fn new(         uid_enc_key_pair: uid_encryption::KeyPair,         profile_key_enc_key_pair: profile_key_encryption::KeyPair,         credentials_public_key: credentials::PublicKey,         cr...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_16 {
+    label = "zkcredential_examples.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/zkcredential_examples/test_profile_key_credential()." [label="test_profile_key_credential", tooltip="fn test_profile_key_credential() {     let mut sho = ShoSha256::new(b' Test_Credentials' );     let keypair = CredentialKeyPair::generate(sho.squeeze_and_ratchet_as_array());     let blinding_keypair ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/zkcredential_examples/test_profile_key_credential_only_verifying_one_encryption_key()." [label="test_profile_key_credential_only_verifying_one_encryption_key", tooltip="fn test_profile_key_credential_only_verifying_one_encryption_key() {     let mut sho = ShoSha256::new(b' Test_Credentials' );     let keypair = CredentialKeyPair::generate(sho.squeeze_and_ratchet_as_a...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_17 {
+    label = "integration_tests.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 test_integration_expiring_profile()." [label="test_integration_expiring_profile", tooltip="fn test_integration_expiring_profile() {     // SERVER     let server_secret_params = zkgroup::ServerSecretParams::generate(zkgroup::TEST_ARRAY_32);     let server_public_params = server_secret_params...", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo zkgroup 0.9.0 common/sho/impl#[Sho]get_point_single_elligator()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]from_uniform_bytes_single_elligator()." [color=blue]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/tests/test_profile_key_encryption()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/tests/test_profile_key_encryption()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/impl#[ProfileKeyEncryptionDomain]decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]from_uniform_bytes_single_elligator()." [color=blue]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]calc_M3()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_expiring_profile_key_credential_presentation()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]encrypt_profile_key_bytes()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_expiring_profile_key_credential_presentation()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ExpiringProfileKeyCredentialPresentationProof]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ExpiringProfileKeyCredentialPresentationProof]new()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]encrypt_profile_key_bytes()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSecretParams_EncryptProfileKey()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]encrypt_profile_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/profiles/profile_key/impl#[ProfileKey]get_commitment()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/ProfileKey_GetCommitment()." -> "rust-analyzer cargo zkgroup 0.9.0 api/profiles/profile_key/impl#[ProfileKey]get_commitment()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/credentials/tests/test_mac()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/profiles/test/test_unsuccessful_requests()." -> "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_profile_key_credential_request_context()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benches()." -> "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_integration_expiring_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_expiring_profile_key_credential_presentation()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_integration_expiring_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_profile_key_credential_request_context()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_integration_expiring_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]encrypt_profile_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_integration_expiring_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_integration_expiring_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/profiles/profile_key/impl#[ProfileKey]get_commitment()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/impl#[ProfileKeyEncryptionDomain]decrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_profile_key_credential_request_context()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]calc_M3()." -> "rust-analyzer cargo zkgroup 0.9.0 common/sho/impl#[Sho]get_point_single_elligator()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/profiles/profile_key/impl#[ProfileKey]get_commitment()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_profile_key_credential_request_context()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]encrypt_profile_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_integration_profile()." -> "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_expiring_profile_key_credential_presentation()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSecretParams_DecryptProfileKey()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]decrypt_profile_key()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-net-chat 0.1.0 main()." -> "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_profile_key_credential_request_context()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/zkcredential_examples/test_profile_key_credential()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/profiles/test/test_successful_request()." -> "rust-analyzer cargo zkgroup 0.9.0 api/profiles/profile_key/impl#[ProfileKey]get_commitment()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-net-chat 0.1.0 ws/profiles/test/test_successful_request()." -> "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_profile_key_credential_request_context()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/ServerPublicParams_CreateExpiringProfileKeyCredentialPresentationDeterministic()." -> "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_expiring_profile_key_credential_presentation()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]encrypt_profile_key()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_params/impl#[GroupSecretParams]encrypt_profile_key_bytes()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/zkcredential_examples/test_profile_key_credential_only_verifying_one_encryption_key()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_commitment/tests/test_commitment()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_credential_request/tests/test_request_response()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/ServerPublicParams_CreateProfileKeyCredentialRequestContextDeterministic()." -> "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_profile_key_credential_request_context()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_encryption/impl#[ProfileKeyEncryptionDomain]decrypt()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/profile_key_struct/impl#[ProfileKeyStruct]calc_M3()." [color=blue, style=dashed]
+}
