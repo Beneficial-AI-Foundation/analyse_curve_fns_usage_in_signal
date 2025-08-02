@@ -22,4 +22,4 @@ The generated graphs are stored as SVG files in the `curve25519-dalek_public_api
 
 ### Remark
 
-I haven't checked, but the name of any curve25519-dalek node in any graph should be in `curve25519_dalek_svg_files.md`, meaning, it should be the sink node of a graph. 
+The script `extract_grey_nodes.py` lists the unique grey nodes and confirms that any curve25519-dalek node in any graph appears in `curve25519_dalek_svg_files.md`, meaning, it should be the sink node of a graph. So the 119 functions should be all functions called in signal: say we have `f` appear in one of the graphs; if `f` calls `g`, then `g` is one of the 119 functions and appears in one of the graphs.
