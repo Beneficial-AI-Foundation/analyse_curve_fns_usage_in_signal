@@ -6,7 +6,6 @@ This repository contains an analysis of how the curve25519-dalek public API func
 
 - **Total public functions in curve25519-dalek**: 557
 - **Functions with non-empty call graphs**: 119
-- **Functions appearing in the generated graphs**: 528
 
 ## Overview
 
