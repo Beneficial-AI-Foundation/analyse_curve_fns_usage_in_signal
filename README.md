@@ -11,7 +11,7 @@ This repository contains an analysis of how the curve25519-dalek public API func
 
 This analysis generated call graphs showing the relationships between curve25519-dalek public API functions and their usage in libsignal. Out of 557 total public functions, methods, and constants in the curve25519-dalek library, 119 functions have non-empty call graphs indicating they are referenced in libsignal code. 
 
-The generated graphs are stored as SVG files in the `curve25519-dalek_public_apis_graphs/` directory, with each graph visualizing the call relationships for a specific function.
+The generated graphs are stored as SVG files in the [curve25519-dalek_public_apis_graphs](https://github.com/Beneficial-AI-Foundation/analyse_curve_fns_usage_in_signal/tree/master/curve25519-dalek_public_apis_graphs) directory, with each graph visualizing the call relationships for a specific function. The names of the 119 sink nodes are enumerated [here](https://github.com/Beneficial-AI-Foundation/analyse_curve_fns_usage_in_signal/blob/master/curve25519_dalek_svg_files.md). 
 
 ## Files
 
