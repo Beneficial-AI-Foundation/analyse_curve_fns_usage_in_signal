@@ -15,6 +15,7 @@ generate-curve25519-graphs = "curve25519_usage.generate_curve25519_graphs:main"
 generate-curve25519-graphs-parallel = "curve25519_usage.generate_curve25519_graphs_parallel:main"
 extract-grey-nodes = "curve25519_usage.extract_grey_nodes:main"
 extract-functions-with-graphs = "curve25519_usage.extract_functions_with_graphs:main"
+extract-public-api-from-scip = "curve25519_usage.extract_public_api_from_scip:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/curve25519_usage"]

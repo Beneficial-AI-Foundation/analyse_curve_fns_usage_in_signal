@@ -1,0 +1,538 @@
+{
+  "library": "curve25519-dalek",
+  "version": "4.1.3",
+  "generated": "2025-10-08",
+  "modules": {
+    "backend": {
+      "types": {
+        "VartimePrecomputedStraus": {
+          "methods": [
+            {
+              "name": "new",
+              "signature": "pub fn new<I>(static_points: I) -> Self\nwhere\n    I: IntoIterator,\n    I::Item: core::borrow::Borrow<EdwardsPoint>,",
+              "category": "construction"
+            },
+            {
+              "name": "optional_mixed_multiscalar_mul",
+              "signature": "pub fn optional_mixed_multiscalar_mul<I, J, K>(&self, static_scalars: I, dynamic_scalars: J, dynamic_points: K) -> Option<EdwardsPoint>\nwhere\n    I: IntoIterator,\n    I::Item: core::borrow::Borrow<Scalar>,\n    J: IntoIterator,\n    J::Item: core::borrow::Borrow<Scalar>,\n    K: IntoIterator<Item = Option<EdwardsPoint>>,",
+              "category": "multiscalar_multiplication"
+            }
+          ]
+        }
+      },
+      "functions": [
+        {
+          "name": "pippenger_optional_multiscalar_mul",
+          "signature": "pub fn pippenger_optional_multiscalar_mul<I, J>(scalars: I, points: J) -> Option<EdwardsPoint>\nwhere\n    I: IntoIterator,\n    I::Item: core::borrow::Borrow<Scalar>,\n    J: IntoIterator<Item = Option<EdwardsPoint>>,",
+          "category": "multiscalar_multiplication"
+        },
+        {
+          "name": "straus_multiscalar_mul",
+          "signature": "pub fn straus_multiscalar_mul<I, J>(scalars: I, points: J) -> EdwardsPoint\nwhere\n    I: IntoIterator,\n    I::Item: core::borrow::Borrow<Scalar>,\n    J: IntoIterator,\n    J::Item: core::borrow::Borrow<EdwardsPoint>,",
+          "category": "multiscalar_multiplication"
+        },
+        {
+          "name": "straus_optional_multiscalar_mul",
+          "signature": "pub fn straus_optional_multiscalar_mul<I, J>(scalars: I, points: J) -> Option<EdwardsPoint>\nwhere\n    I: IntoIterator,\n    I::Item: core::borrow::Borrow<Scalar>,\n    J: IntoIterator<Item = Option<EdwardsPoint>>,",
+          "category": "multiscalar_multiplication"
+        },
+        {
+          "name": "variable_base_mul",
+          "signature": "pub fn variable_base_mul(point: &EdwardsPoint, scalar: &Scalar) -> EdwardsPoint",
+          "category": "scalar_multiplication"
+        },
+        {
+          "name": "vartime_double_base_mul",
+          "signature": "pub fn vartime_double_base_mul(a: &Scalar, A: &EdwardsPoint, b: &Scalar) -> EdwardsPoint",
+          "category": "scalar_multiplication"
+        }
+      ]
+    },
+    "backend/serial/u64/field": {
+      "types": {
+        "FieldElement51": {
+          "constants": [
+            {
+              "name": "MINUS_ONE",
+              "signature": "pub const MINUS_ONE: FieldElement51"
+            },
+            {
+              "name": "ONE",
+              "signature": "pub const ONE: FieldElement51"
+            },
+            {
+              "name": "ZERO",
+              "signature": "pub const ZERO: FieldElement51"
+            }
+          ],
+          "methods": [
+            {
+              "name": "as_bytes",
+              "signature": "pub fn as_bytes(&self) -> [u8; {const}]",
+              "category": "serialization"
+            },
+            {
+              "name": "from_bytes",
+              "signature": "pub fn from_bytes(bytes: &[u8; {const}]) -> FieldElement51",
+              "category": "construction"
+            },
+            {
+              "name": "negate",
+              "signature": "pub fn negate(&mut self)",
+              "category": "arithmetic"
+            },
+            {
+              "name": "pow2k",
+              "signature": "pub fn pow2k(&self, mut k: u32) -> FieldElement51",
+              "category": "arithmetic"
+            },
+            {
+              "name": "square",
+              "signature": "pub fn square(&self) -> FieldElement51",
+              "category": "arithmetic"
+            },
+            {
+              "name": "square2",
+              "signature": "pub fn square2(&self) -> FieldElement51",
+              "category": "arithmetic"
+            }
+          ]
+        }
+      }
+    },
+    "backend/serial/u64/scalar": {
+      "types": {
+        "Scalar52": {
+          "constants": [
+            {
+              "name": "ZERO",
+              "signature": "pub const ZERO: Scalar52"
+            }
+          ],
+          "methods": [
+            {
+              "name": "add",
+              "signature": "pub fn add(a: &Scalar52, b: &Scalar52) -> Scalar52",
+              "category": "arithmetic"
+            },
+            {
+              "name": "as_bytes",
+              "signature": "pub fn as_bytes(&self) -> [u8; {const}]",
+              "category": "serialization"
+            },
+            {
+              "name": "as_montgomery",
+              "signature": "pub fn as_montgomery(&self) -> Scalar52",
+              "category": "conversion"
+            },
+            {
+              "name": "from_bytes",
+              "signature": "pub fn from_bytes(bytes: &[u8; {const}]) -> Scalar52",
+              "category": "construction"
+            },
+            {
+              "name": "from_bytes_wide",
+              "signature": "pub fn from_bytes_wide(bytes: &[u8; {const}]) -> Scalar52",
+              "category": "construction"
+            },
+            {
+              "name": "from_montgomery",
+              "signature": "pub fn from_montgomery(&self) -> Scalar52",
+              "category": "construction"
+            },
+            {
+              "name": "montgomery_mul",
+              "signature": "pub fn montgomery_mul(a: &Scalar52, b: &Scalar52) -> Scalar52",
+              "category": "arithmetic"
+            },
+            {
+              "name": "montgomery_square",
+              "signature": "pub fn montgomery_square(&self) -> Scalar52",
+              "category": "arithmetic"
+            },
+            {
+              "name": "mul",
+              "signature": "pub fn mul(a: &Scalar52, b: &Scalar52) -> Scalar52",
+              "category": "arithmetic"
+            },
+            {
+              "name": "square",
+              "signature": "pub fn square(&self) -> Scalar52",
+              "category": "arithmetic"
+            },
+            {
+              "name": "sub",
+              "signature": "pub fn sub(a: &Scalar52, b: &Scalar52) -> Scalar52",
+              "category": "arithmetic"
+            }
+          ]
+        }
+      }
+    },
+    "constants": {
+      "constants": [
+        {
+          "name": "BASEPOINT_ORDER",
+          "signature": "pub const BASEPOINT_ORDER: Scalar",
+          "type": "Scalar"
+        },
+        {
+          "name": "ED25519_BASEPOINT_COMPRESSED",
+          "signature": "pub const ED25519_BASEPOINT_COMPRESSED: CompressedEdwardsY",
+          "type": "CompressedEdwardsY"
+        },
+        {
+          "name": "RISTRETTO_BASEPOINT_COMPRESSED",
+          "signature": "pub const RISTRETTO_BASEPOINT_COMPRESSED: CompressedRistretto",
+          "type": "CompressedRistretto"
+        },
+        {
+          "name": "RISTRETTO_BASEPOINT_POINT",
+          "signature": "pub const RISTRETTO_BASEPOINT_POINT: RistrettoPoint",
+          "type": "RistrettoPoint"
+        },
+        {
+          "name": "RISTRETTO_BASEPOINT_TABLE",
+          "signature": "pub static RISTRETTO_BASEPOINT_TABLE: &RistrettoBasepointTable",
+          "type": "&RistrettoBasepointTable"
+        },
+        {
+          "name": "X25519_BASEPOINT",
+          "signature": "pub const X25519_BASEPOINT: MontgomeryPoint",
+          "type": "MontgomeryPoint"
+        }
+      ]
+    },
+    "edwards": {
+      "types": {
+        "CompressedEdwardsY": {
+          "methods": [
+            {
+              "name": "as_bytes",
+              "signature": "pub const fn as_bytes(&self) -> &[u8; {const}]",
+              "category": "serialization"
+            },
+            {
+              "name": "decompress",
+              "signature": "pub fn decompress(&self) -> Option<EdwardsPoint>",
+              "category": "decompression"
+            },
+            {
+              "name": "from_slice",
+              "signature": "pub fn from_slice(bytes: &[u8]) -> Result<CompressedEdwardsY, TryFromSliceError>",
+              "category": "construction"
+            },
+            {
+              "name": "to_bytes",
+              "signature": "pub const fn to_bytes(&self) -> [u8; {const}]",
+              "category": "serialization"
+            }
+          ]
+        },
+        "EdwardsPoint": {
+          "methods": [
+            {
+              "name": "compress",
+              "signature": "pub fn compress(&self) -> CompressedEdwardsY",
+              "category": "compression"
+            },
+            {
+              "name": "is_small_order",
+              "signature": "pub fn is_small_order(&self) -> bool",
+              "category": "group_operations"
+            },
+            {
+              "name": "is_torsion_free",
+              "signature": "pub fn is_torsion_free(&self) -> bool",
+              "category": "group_operations"
+            },
+            {
+              "name": "mul_base",
+              "signature": "pub fn mul_base(scalar: &Scalar) -> Self",
+              "category": "scalar_multiplication"
+            },
+            {
+              "name": "mul_base_clamped",
+              "signature": "pub fn mul_base_clamped(bytes: [u8; {const}]) -> Self",
+              "category": "scalar_multiplication"
+            },
+            {
+              "name": "mul_by_cofactor",
+              "signature": "pub fn mul_by_cofactor(&self) -> EdwardsPoint",
+              "category": "arithmetic"
+            },
+            {
+              "name": "mul_clamped",
+              "signature": "pub fn mul_clamped(self, bytes: [u8; {const}]) -> Self",
+              "category": "scalar_multiplication"
+            },
+            {
+              "name": "nonspec_map_to_curve",
+              "signature": "pub fn nonspec_map_to_curve<D>(bytes: &[u8]) -> EdwardsPoint\nwhere\n    D: Digest<OutputSize = U64> + Default,",
+              "category": "conversion"
+            },
+            {
+              "name": "to_montgomery",
+              "signature": "pub fn to_montgomery(&self) -> MontgomeryPoint",
+              "category": "conversion"
+            },
+            {
+              "name": "vartime_double_scalar_mul_basepoint",
+              "signature": "pub fn vartime_double_scalar_mul_basepoint(a: &Scalar, A: &EdwardsPoint, b: &Scalar) -> EdwardsPoint",
+              "category": "scalar_multiplication"
+            }
+          ]
+        }
+      }
+    },
+    "montgomery": {
+      "types": {
+        "MontgomeryPoint": {
+          "methods": [
+            {
+              "name": "as_bytes",
+              "signature": "pub const fn as_bytes(&self) -> &[u8; {const}]",
+              "category": "serialization"
+            },
+            {
+              "name": "mul_base",
+              "signature": "pub fn mul_base(scalar: &Scalar) -> Self",
+              "category": "scalar_multiplication"
+            },
+            {
+              "name": "mul_base_clamped",
+              "signature": "pub fn mul_base_clamped(bytes: [u8; {const}]) -> Self",
+              "category": "scalar_multiplication"
+            },
+            {
+              "name": "mul_bits_be",
+              "signature": "pub fn mul_bits_be(&self, bits: impl Iterator<Item = bool>) -> MontgomeryPoint",
+              "category": "arithmetic"
+            },
+            {
+              "name": "mul_clamped",
+              "signature": "pub fn mul_clamped(self, bytes: [u8; {const}]) -> Self",
+              "category": "scalar_multiplication"
+            },
+            {
+              "name": "to_bytes",
+              "signature": "pub const fn to_bytes(&self) -> [u8; {const}]",
+              "category": "serialization"
+            },
+            {
+              "name": "to_edwards",
+              "signature": "pub fn to_edwards(&self, sign: u8) -> Option<EdwardsPoint>",
+              "category": "conversion"
+            }
+          ]
+        },
+        "ProjectivePoint": {
+          "methods": [
+            {
+              "name": "as_affine",
+              "signature": "pub fn as_affine(&self) -> MontgomeryPoint",
+              "category": "conversion"
+            }
+          ]
+        }
+      }
+    },
+    "ristretto": {
+      "types": {
+        "CompressedRistretto": {
+          "methods": [
+            {
+              "name": "as_bytes",
+              "signature": "pub const fn as_bytes(&self) -> &[u8; {const}]",
+              "category": "serialization"
+            },
+            {
+              "name": "decompress",
+              "signature": "pub fn decompress(&self) -> Option<RistrettoPoint>",
+              "category": "decompression"
+            },
+            {
+              "name": "from_slice",
+              "signature": "pub fn from_slice(bytes: &[u8]) -> Result<CompressedRistretto, TryFromSliceError>",
+              "category": "construction"
+            },
+            {
+              "name": "to_bytes",
+              "signature": "pub const fn to_bytes(&self) -> [u8; {const}]",
+              "category": "serialization"
+            }
+          ]
+        },
+        "RistrettoBasepointTable": {
+          "methods": [
+            {
+              "name": "basepoint",
+              "signature": "pub fn basepoint(&self) -> RistrettoPoint",
+              "category": "accessor"
+            },
+            {
+              "name": "create",
+              "signature": "pub fn create(basepoint: &RistrettoPoint) -> RistrettoBasepointTable",
+              "category": "construction"
+            }
+          ]
+        },
+        "RistrettoPoint": {
+          "methods": [
+            {
+              "name": "compress",
+              "signature": "pub fn compress(&self) -> CompressedRistretto",
+              "category": "compression"
+            },
+            {
+              "name": "double_and_compress_batch",
+              "signature": "pub fn double_and_compress_batch<'a, I>(points: I) -> Vec<CompressedRistretto>\nwhere\n    I: IntoIterator<Item = &'a RistrettoPoint>,",
+              "category": "compression"
+            },
+            {
+              "name": "from_hash",
+              "signature": "pub fn from_hash<D>(hash: D) -> RistrettoPoint\nwhere\n    D: Digest<OutputSize = U64> + Default,",
+              "category": "construction"
+            },
+            {
+              "name": "from_uniform_bytes",
+              "signature": "pub fn from_uniform_bytes(bytes: &[u8; {const}]) -> RistrettoPoint",
+              "category": "construction"
+            },
+            {
+              "name": "hash_from_bytes",
+              "signature": "pub fn hash_from_bytes<D>(input: &[u8]) -> RistrettoPoint\nwhere\n    D: Digest<OutputSize = U64> + Default,",
+              "category": "construction"
+            },
+            {
+              "name": "mul_base",
+              "signature": "pub fn mul_base(scalar: &Scalar) -> Self",
+              "category": "scalar_multiplication"
+            },
+            {
+              "name": "random",
+              "signature": "pub fn random<R>(rng: &mut R) -> Self\nwhere\n    R: CryptoRngCore + ?Sized,",
+              "category": "construction"
+            },
+            {
+              "name": "vartime_double_scalar_mul_basepoint",
+              "signature": "pub fn vartime_double_scalar_mul_basepoint(a: &Scalar, A: &RistrettoPoint, b: &Scalar) -> RistrettoPoint",
+              "category": "scalar_multiplication"
+            }
+          ]
+        }
+      }
+    },
+    "scalar": {
+      "types": {
+        "Scalar": {
+          "constants": [
+            {
+              "name": "ONE",
+              "signature": "pub const ONE: Self"
+            },
+            {
+              "name": "ZERO",
+              "signature": "pub const ZERO: Self"
+            }
+          ],
+          "methods": [
+            {
+              "name": "as_bytes",
+              "signature": "pub const fn as_bytes(&self) -> &[u8; {const}]",
+              "category": "serialization"
+            },
+            {
+              "name": "batch_invert",
+              "signature": "pub fn batch_invert(inputs: &mut [Scalar]) -> Scalar",
+              "category": "arithmetic"
+            },
+            {
+              "name": "from_bytes_mod_order",
+              "signature": "pub fn from_bytes_mod_order(bytes: [u8; {const}]) -> Scalar",
+              "category": "construction"
+            },
+            {
+              "name": "from_bytes_mod_order_wide",
+              "signature": "pub fn from_bytes_mod_order_wide(input: &[u8; {const}]) -> Scalar",
+              "category": "construction"
+            },
+            {
+              "name": "from_canonical_bytes",
+              "signature": "pub fn from_canonical_bytes(bytes: [u8; {const}]) -> CtOption<Scalar>",
+              "category": "construction"
+            },
+            {
+              "name": "from_hash",
+              "signature": "pub fn from_hash<D>(hash: D) -> Scalar\nwhere\n    D: Digest<OutputSize = U64>,",
+              "category": "construction"
+            },
+            {
+              "name": "hash_from_bytes",
+              "signature": "pub fn hash_from_bytes<D>(input: &[u8]) -> Scalar\nwhere\n    D: Digest<OutputSize = U64> + Default,",
+              "category": "construction"
+            },
+            {
+              "name": "invert",
+              "signature": "pub fn invert(&self) -> Scalar",
+              "category": "arithmetic"
+            },
+            {
+              "name": "random",
+              "signature": "pub fn random<R>(rng: &mut R) -> Self\nwhere\n    R: CryptoRngCore + ?Sized,",
+              "category": "construction"
+            },
+            {
+              "name": "to_bytes",
+              "signature": "pub const fn to_bytes(&self) -> [u8; {const}]",
+              "category": "serialization"
+            }
+          ]
+        },
+        "Scalar52": {
+          "methods": [
+            {
+              "name": "invert",
+              "signature": "pub fn invert(&self) -> UnpackedScalar",
+              "category": "arithmetic"
+            },
+            {
+              "name": "montgomery_invert",
+              "signature": "pub fn montgomery_invert(&self) -> UnpackedScalar",
+              "category": "arithmetic"
+            }
+          ]
+        }
+      },
+      "functions": [
+        {
+          "name": "clamp_integer",
+          "signature": "pub const fn clamp_integer(mut bytes: [u8; {const}]) -> [u8; {const}]",
+          "category": "utility"
+        }
+      ]
+    },
+    "window": {
+      "types": {
+        "NafLookupTable5<T>": {
+          "methods": [
+            {
+              "name": "select",
+              "signature": "pub fn select(&self, x: usize) -> T",
+              "category": "lookup"
+            }
+          ]
+        },
+        "NafLookupTable8<T>": {
+          "methods": [
+            {
+              "name": "select",
+              "signature": "pub fn select(&self, x: usize) -> T",
+              "category": "lookup"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

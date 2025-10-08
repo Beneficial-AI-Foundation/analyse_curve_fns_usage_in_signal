@@ -49,6 +49,7 @@ uv pip install -e .
 uv run generate-curve25519-graphs-parallel
 uv run extract-grey-nodes
 uv run extract-functions-with-graphs
+uv run extract-public-api-from-scip  # Extract public API from SCIP index
 ```
 
 ## Project Structure
@@ -87,12 +88,14 @@ uv run generate-curve25519-graphs
 uv run generate-curve25519-graphs-parallel
 uv run extract-grey-nodes
 uv run extract-functions-with-graphs
+uv run extract-public-api-from-scip
 
 # Or with activated virtual environment
 generate-curve25519-graphs
 generate-curve25519-graphs-parallel
 extract-grey-nodes
 extract-functions-with-graphs
+extract-public-api-from-scip
 ```
 
 ## Development
@@ -123,9 +126,20 @@ uv add --dev <package-name>
 ## Data Files
 
 - `data/index_scip_libsignal_deps.json` - SCIP index containing all symbols and call relationships for curve25519-dalek v4.1.3 and libsignal (generated with rust-analyzer and scip)
-- `data/curve25519-dalek-public-api.json` - Reference documentation of public APIs in curve25519-dalek v4.1.3
+- `data/index_scip_curve25519-4.1.3.json` - SCIP index for curve25519-dalek v4.1.3 only
+- `data/curve25519-dalek-public-api.json` - Reference documentation of public APIs in curve25519-dalek v4.1.3 (can be regenerated with `extract-public-api-from-scip`)
 - `docs/curve25519_dalek_svg_files.md` - Index of all 119 generated SVG graph files
 - `outputs/curve25519-dalek_public_apis_graphs/processing_results.json` - Processing statistics and metadata
+
+### Regenerating the Public API JSON
+
+The `curve25519-dalek-public-api.json` file can be regenerated from the SCIP index:
+
+```bash
+uv run extract-public-api-from-scip
+```
+
+This script extracts all public API functions, methods, and constants from the SCIP index and organizes them by module and type. Note that the extracted API depends on the compilation configuration used when generating the SCIP index (e.g., 64-bit vs 32-bit backends).
 
 ## Remarks
 
