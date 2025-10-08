@@ -27,12 +27,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 pip install uv
 ```
 
-2. **Set up rust-analyzer directory** (required for graph generation):
-   - If the `rust-analyzer-test` directory is not in the parent directory, set the environment variable:
-   ```bash
-   export RUST_ANALYZER_DIR=/path/to/rust-analyzer-test
-   ```
-   - Or copy `.env.example` to `.env` and configure the path there
+2. Install [scip-callgraph](https://github.com/Beneficial-AI-Foundation/scip-callgraph)
 
 ### Install the project:
 ```bash
