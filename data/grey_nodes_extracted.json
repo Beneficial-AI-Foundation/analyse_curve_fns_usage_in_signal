@@ -1,0 +1,1238 @@
+{
+  "total_grey_nodes": 47,
+  "total_unique_sink_nodes": 111,
+  "total_sink_nodes_per_file": 119,
+  "grey_nodes": [
+    {
+      "file": "backend.rs",
+      "function": "straus_multiscalar_mul"
+    },
+    {
+      "file": "backend/serial/curve_models.rs",
+      "function": "as_extended"
+    },
+    {
+      "file": "backend/serial/curve_models.rs",
+      "function": "double"
+    },
+    {
+      "file": "backend/serial/scalar_mul/straus.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "file": "backend/serial/u64/field.rs",
+      "function": "square"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "add"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "as_montgomery"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "montgomery_mul"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "montgomery_square"
+    },
+    {
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "double"
+    },
+    {
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "from"
+    },
+    {
+      "file": "backend/vector/avx2/field.rs",
+      "function": "diff_sum"
+    },
+    {
+      "file": "backend/vector/scalar_mul/straus/spec_avx2.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "decompress"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "double"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "is_small_order"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "mul_by_cofactor"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "mul_by_pow_2"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "to_montgomery"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "vartime_double_scalar_mul_basepoint"
+    },
+    {
+      "file": "edwards/decompress.rs",
+      "function": "step_1"
+    },
+    {
+      "file": "edwards/decompress.rs",
+      "function": "step_2"
+    },
+    {
+      "file": "field.rs",
+      "function": "ct_eq"
+    },
+    {
+      "file": "field.rs",
+      "function": "invert"
+    },
+    {
+      "file": "field.rs",
+      "function": "invsqrt"
+    },
+    {
+      "file": "field.rs",
+      "function": "pow22501"
+    },
+    {
+      "file": "field.rs",
+      "function": "pow_p58"
+    },
+    {
+      "file": "field.rs",
+      "function": "sqrt_ratio_i"
+    },
+    {
+      "file": "lizard/jacobi_quartic.rs",
+      "function": "elligator_inv"
+    },
+    {
+      "file": "montgomery.rs",
+      "function": "to_edwards"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "compress"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "decompress"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "default"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "elligator_ristretto_flavor"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "identity"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "file": "ristretto/decompress.rs",
+      "function": "step_1"
+    },
+    {
+      "file": "ristretto/decompress.rs",
+      "function": "step_2"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "invert"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "is_canonical"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "montgomery_invert"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "pack"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "reduce"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "unpack"
+    },
+    {
+      "file": "traits.rs",
+      "function": "VartimeMultiscalarMul#vartime_multiscalar_mul"
+    },
+    {
+      "file": "traits.rs",
+      "function": "is_identity"
+    }
+  ],
+  "unique_sink_nodes": [
+    {
+      "file": "backend.rs",
+      "function": "get_selected_backend"
+    },
+    {
+      "file": "backend.rs",
+      "function": "straus_multiscalar_mul"
+    },
+    {
+      "file": "backend.rs",
+      "function": "vartime_double_base_mul"
+    },
+    {
+      "file": "backend/cpuid_avx2.rs",
+      "function": "get"
+    },
+    {
+      "file": "backend/cpuid_avx2.rs",
+      "function": "init"
+    },
+    {
+      "file": "backend/serial/curve_models.rs",
+      "function": "as_extended"
+    },
+    {
+      "file": "backend/serial/curve_models.rs",
+      "function": "as_projective"
+    },
+    {
+      "file": "backend/serial/curve_models.rs",
+      "function": "double"
+    },
+    {
+      "file": "backend/serial/curve_models.rs",
+      "function": "identity"
+    },
+    {
+      "file": "backend/serial/scalar_mul/straus.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "file": "backend/serial/scalar_mul/vartime_double_base.rs",
+      "function": "mul"
+    },
+    {
+      "file": "backend/serial/u64/field.rs",
+      "function": "as_bytes"
+    },
+    {
+      "file": "backend/serial/u64/field.rs",
+      "function": "conditional_assign"
+    },
+    {
+      "file": "backend/serial/u64/field.rs",
+      "function": "from_bytes"
+    },
+    {
+      "file": "backend/serial/u64/field.rs",
+      "function": "pow2k"
+    },
+    {
+      "file": "backend/serial/u64/field.rs",
+      "function": "reduce"
+    },
+    {
+      "file": "backend/serial/u64/field.rs",
+      "function": "square"
+    },
+    {
+      "file": "backend/serial/u64/field.rs",
+      "function": "square2"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "add"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "as_bytes"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "as_montgomery"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "from_bytes"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "from_bytes_wide"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "from_montgomery"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "m"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "montgomery_mul"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "montgomery_reduce"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "montgomery_square"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "mul_internal"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "square_internal"
+    },
+    {
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "sub"
+    },
+    {
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "double"
+    },
+    {
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "from"
+    },
+    {
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "identity"
+    },
+    {
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "mul_by_pow_2"
+    },
+    {
+      "file": "backend/vector/avx2/field.rs",
+      "function": "blend"
+    },
+    {
+      "file": "backend/vector/avx2/field.rs",
+      "function": "negate_lazy"
+    },
+    {
+      "file": "backend/vector/avx2/field.rs",
+      "function": "shuffle"
+    },
+    {
+      "file": "backend/vector/avx2/field.rs",
+      "function": "square_and_negate_D"
+    },
+    {
+      "file": "backend/vector/scalar_mul/straus/spec_avx2.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "file": "backend/vector/scalar_mul/vartime_double_base/spec_avx2.rs",
+      "function": "mul"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "as_bytes"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "as_projective"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "as_projective_niels"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "compress"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "decompress"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "double"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "identity"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "is_small_order"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "mul_by_cofactor"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "mul_by_pow_2"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "to_montgomery"
+    },
+    {
+      "file": "edwards.rs",
+      "function": "vartime_double_scalar_mul_basepoint"
+    },
+    {
+      "file": "edwards/decompress.rs",
+      "function": "step_1"
+    },
+    {
+      "file": "edwards/decompress.rs",
+      "function": "step_2"
+    },
+    {
+      "file": "field.rs",
+      "function": "ct_eq"
+    },
+    {
+      "file": "field.rs",
+      "function": "invert"
+    },
+    {
+      "file": "field.rs",
+      "function": "invsqrt"
+    },
+    {
+      "file": "field.rs",
+      "function": "is_negative"
+    },
+    {
+      "file": "field.rs",
+      "function": "is_zero"
+    },
+    {
+      "file": "field.rs",
+      "function": "pow22501"
+    },
+    {
+      "file": "field.rs",
+      "function": "pow_p58"
+    },
+    {
+      "file": "field.rs",
+      "function": "sqrt_ratio_i"
+    },
+    {
+      "file": "lizard/jacobi_quartic.rs",
+      "function": "dual"
+    },
+    {
+      "file": "lizard/jacobi_quartic.rs",
+      "function": "elligator_inv"
+    },
+    {
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "decode_253_bits"
+    },
+    {
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "elligator_ristretto_flavor_inverse"
+    },
+    {
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "from_uniform_bytes_single_elligator"
+    },
+    {
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "lizard_decode"
+    },
+    {
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "lizard_encode"
+    },
+    {
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "to_jacobi_quartic_ristretto"
+    },
+    {
+      "file": "montgomery.rs",
+      "function": "to_edwards"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "as_bytes"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "compress"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "decompress"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "default"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "double_and_compress_batch"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "elligator_ristretto_flavor"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "from_slice"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "from_uniform_bytes"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "identity"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "mul_base"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "file": "ristretto.rs",
+      "function": "to_bytes"
+    },
+    {
+      "file": "ristretto/decompress.rs",
+      "function": "step_1"
+    },
+    {
+      "file": "ristretto/decompress.rs",
+      "function": "step_2"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "as_bytes"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "clamp_integer"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "ct_eq"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "from"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "from_bytes_mod_order"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "from_bytes_mod_order_wide"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "from_canonical_bytes"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "from_hash"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "hash_from_bytes"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "invert"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "is_canonical"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "montgomery_invert"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "non_adjacent_form"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "pack"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "read_le_u64_into"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "reduce"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "to_bytes"
+    },
+    {
+      "file": "scalar.rs",
+      "function": "unpack"
+    },
+    {
+      "file": "traits.rs",
+      "function": "Identity#identity"
+    },
+    {
+      "file": "traits.rs",
+      "function": "VartimeMultiscalarMul#optional_multiscalar_mul"
+    },
+    {
+      "file": "traits.rs",
+      "function": "VartimeMultiscalarMul#vartime_multiscalar_mul"
+    },
+    {
+      "file": "traits.rs",
+      "function": "is_identity"
+    },
+    {
+      "file": "window.rs",
+      "function": "from"
+    },
+    {
+      "file": "window.rs",
+      "function": "select"
+    }
+  ],
+  "all_sink_nodes": [
+    {
+      "dot_file": "backend_cpuid_avx2_impl__InitToken_get_5.dot",
+      "file": "backend/cpuid_avx2.rs",
+      "function": "get"
+    },
+    {
+      "dot_file": "backend_cpuid_avx2_init_5.dot",
+      "file": "backend/cpuid_avx2.rs",
+      "function": "init"
+    },
+    {
+      "dot_file": "backend_get_selected_backend_5.dot",
+      "file": "backend.rs",
+      "function": "get_selected_backend"
+    },
+    {
+      "dot_file": "backend_serial_curve_models_impl__CompletedPoint_as_extended_5.dot",
+      "file": "backend/serial/curve_models.rs",
+      "function": "as_extended"
+    },
+    {
+      "dot_file": "backend_serial_curve_models_impl__CompletedPoint_as_projective_5.dot",
+      "file": "backend/serial/curve_models.rs",
+      "function": "as_projective"
+    },
+    {
+      "dot_file": "backend_serial_curve_models_impl__ProjectivePoint__Identity_identity_5.dot",
+      "file": "backend/serial/curve_models.rs",
+      "function": "identity"
+    },
+    {
+      "dot_file": "backend_serial_curve_models_impl__ProjectivePoint_as_extended_5.dot",
+      "file": "backend/serial/curve_models.rs",
+      "function": "as_extended"
+    },
+    {
+      "dot_file": "backend_serial_curve_models_impl__ProjectivePoint_double_5.dot",
+      "file": "backend/serial/curve_models.rs",
+      "function": "double"
+    },
+    {
+      "dot_file": "backend_serial_scalar_mul_straus_impl__Straus__MultiscalarMul_multiscalar_mul_5.dot",
+      "file": "backend/serial/scalar_mul/straus.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "dot_file": "backend_serial_scalar_mul_vartime_double_base_mul_5.dot",
+      "file": "backend/serial/scalar_mul/vartime_double_base.rs",
+      "function": "mul"
+    },
+    {
+      "dot_file": "backend_serial_u64_field_impl__FieldElement51__ConditionallySelectable_conditional_assign_5.dot",
+      "file": "backend/serial/u64/field.rs",
+      "function": "conditional_assign"
+    },
+    {
+      "dot_file": "backend_serial_u64_field_impl__FieldElement51_as_bytes_5.dot",
+      "file": "backend/serial/u64/field.rs",
+      "function": "as_bytes"
+    },
+    {
+      "dot_file": "backend_serial_u64_field_impl__FieldElement51_from_bytes_5.dot",
+      "file": "backend/serial/u64/field.rs",
+      "function": "from_bytes"
+    },
+    {
+      "dot_file": "backend_serial_u64_field_impl__FieldElement51_pow2k_5.dot",
+      "file": "backend/serial/u64/field.rs",
+      "function": "pow2k"
+    },
+    {
+      "dot_file": "backend_serial_u64_field_impl__FieldElement51_reduce_5.dot",
+      "file": "backend/serial/u64/field.rs",
+      "function": "reduce"
+    },
+    {
+      "dot_file": "backend_serial_u64_field_impl__FieldElement51_square2_5.dot",
+      "file": "backend/serial/u64/field.rs",
+      "function": "square2"
+    },
+    {
+      "dot_file": "backend_serial_u64_field_impl__FieldElement51_square_5.dot",
+      "file": "backend/serial/u64/field.rs",
+      "function": "square"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_add_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "add"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_as_bytes_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "as_bytes"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_as_montgomery_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "as_montgomery"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_from_bytes_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "from_bytes"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_from_bytes_wide_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "from_bytes_wide"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_from_montgomery_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "from_montgomery"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_montgomery_mul_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "montgomery_mul"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_montgomery_reduce_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "montgomery_reduce"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_montgomery_square_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "montgomery_square"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_mul_internal_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "mul_internal"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_square_internal_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "square_internal"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_impl__Scalar52_sub_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "sub"
+    },
+    {
+      "dot_file": "backend_serial_u64_scalar_m_5.dot",
+      "file": "backend/serial/u64/scalar.rs",
+      "function": "m"
+    },
+    {
+      "dot_file": "backend_straus_multiscalar_mul_5.dot",
+      "file": "backend.rs",
+      "function": "straus_multiscalar_mul"
+    },
+    {
+      "dot_file": "backend_vartime_double_base_mul_5.dot",
+      "file": "backend.rs",
+      "function": "vartime_double_base_mul"
+    },
+    {
+      "dot_file": "backend_vector_avx2_edwards_impl__CachedPoint__`From<ExtendedPoint>`_from_5.dot",
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "from"
+    },
+    {
+      "dot_file": "backend_vector_avx2_edwards_impl__ExtendedPoint__Identity_identity_5.dot",
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "identity"
+    },
+    {
+      "dot_file": "backend_vector_avx2_edwards_impl__ExtendedPoint__`From<crate_EdwardsPoint>`_from_5.dot",
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "from"
+    },
+    {
+      "dot_file": "backend_vector_avx2_edwards_impl__ExtendedPoint_double_5.dot",
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "double"
+    },
+    {
+      "dot_file": "backend_vector_avx2_edwards_impl__ExtendedPoint_mul_by_pow_2_5.dot",
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "mul_by_pow_2"
+    },
+    {
+      "dot_file": "backend_vector_avx2_edwards_impl__`LookupTable<CachedPoint>`__`From<&crate_EdwardsPoint>`_from_5.dot",
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "from"
+    },
+    {
+      "dot_file": "backend_vector_avx2_edwards_impl__`NafLookupTable5<CachedPoint>`__`From<&crate_EdwardsPoint>`_from_5.dot",
+      "file": "backend/vector/avx2/edwards.rs",
+      "function": "from"
+    },
+    {
+      "dot_file": "backend_vector_avx2_field_impl__FieldElement2625x4_blend_5.dot",
+      "file": "backend/vector/avx2/field.rs",
+      "function": "blend"
+    },
+    {
+      "dot_file": "backend_vector_avx2_field_impl__FieldElement2625x4_negate_lazy_5.dot",
+      "file": "backend/vector/avx2/field.rs",
+      "function": "negate_lazy"
+    },
+    {
+      "dot_file": "backend_vector_avx2_field_impl__FieldElement2625x4_shuffle_5.dot",
+      "file": "backend/vector/avx2/field.rs",
+      "function": "shuffle"
+    },
+    {
+      "dot_file": "backend_vector_avx2_field_impl__FieldElement2625x4_square_and_negate_D_5.dot",
+      "file": "backend/vector/avx2/field.rs",
+      "function": "square_and_negate_D"
+    },
+    {
+      "dot_file": "backend_vector_scalar_mul_straus_spec_avx2_impl__Straus__MultiscalarMul_multiscalar_mul_5.dot",
+      "file": "backend/vector/scalar_mul/straus/spec_avx2.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "dot_file": "backend_vector_scalar_mul_vartime_double_base_spec_avx2_mul_5.dot",
+      "file": "backend/vector/scalar_mul/vartime_double_base/spec_avx2.rs",
+      "function": "mul"
+    },
+    {
+      "dot_file": "edwards_decompress_step_1_5.dot",
+      "file": "edwards/decompress.rs",
+      "function": "step_1"
+    },
+    {
+      "dot_file": "edwards_decompress_step_2_5.dot",
+      "file": "edwards/decompress.rs",
+      "function": "step_2"
+    },
+    {
+      "dot_file": "edwards_impl__CompressedEdwardsY_as_bytes_5.dot",
+      "file": "edwards.rs",
+      "function": "as_bytes"
+    },
+    {
+      "dot_file": "edwards_impl__CompressedEdwardsY_decompress_5.dot",
+      "file": "edwards.rs",
+      "function": "decompress"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint__Identity_identity_5.dot",
+      "file": "edwards.rs",
+      "function": "identity"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint__MultiscalarMul_multiscalar_mul_5.dot",
+      "file": "edwards.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint_as_projective_5.dot",
+      "file": "edwards.rs",
+      "function": "as_projective"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint_as_projective_niels_5.dot",
+      "file": "edwards.rs",
+      "function": "as_projective_niels"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint_compress_5.dot",
+      "file": "edwards.rs",
+      "function": "compress"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint_double_5.dot",
+      "file": "edwards.rs",
+      "function": "double"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint_is_small_order_5.dot",
+      "file": "edwards.rs",
+      "function": "is_small_order"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint_mul_by_cofactor_5.dot",
+      "file": "edwards.rs",
+      "function": "mul_by_cofactor"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint_mul_by_pow_2_5.dot",
+      "file": "edwards.rs",
+      "function": "mul_by_pow_2"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint_to_montgomery_5.dot",
+      "file": "edwards.rs",
+      "function": "to_montgomery"
+    },
+    {
+      "dot_file": "edwards_impl__EdwardsPoint_vartime_double_scalar_mul_basepoint_5.dot",
+      "file": "edwards.rs",
+      "function": "vartime_double_scalar_mul_basepoint"
+    },
+    {
+      "dot_file": "field_impl__`crate_lizard_lizard_constants_FieldElement51`__ConstantTimeEq_ct_eq_5.dot",
+      "file": "field.rs",
+      "function": "ct_eq"
+    },
+    {
+      "dot_file": "field_impl__`crate_lizard_lizard_constants_FieldElement51`_invert_5.dot",
+      "file": "field.rs",
+      "function": "invert"
+    },
+    {
+      "dot_file": "field_impl__`crate_lizard_lizard_constants_FieldElement51`_invsqrt_5.dot",
+      "file": "field.rs",
+      "function": "invsqrt"
+    },
+    {
+      "dot_file": "field_impl__`crate_lizard_lizard_constants_FieldElement51`_is_negative_5.dot",
+      "file": "field.rs",
+      "function": "is_negative"
+    },
+    {
+      "dot_file": "field_impl__`crate_lizard_lizard_constants_FieldElement51`_is_zero_5.dot",
+      "file": "field.rs",
+      "function": "is_zero"
+    },
+    {
+      "dot_file": "field_impl__`crate_lizard_lizard_constants_FieldElement51`_pow22501_5.dot",
+      "file": "field.rs",
+      "function": "pow22501"
+    },
+    {
+      "dot_file": "field_impl__`crate_lizard_lizard_constants_FieldElement51`_pow_p58_5.dot",
+      "file": "field.rs",
+      "function": "pow_p58"
+    },
+    {
+      "dot_file": "field_impl__`crate_lizard_lizard_constants_FieldElement51`_sqrt_ratio_i_5.dot",
+      "file": "field.rs",
+      "function": "sqrt_ratio_i"
+    },
+    {
+      "dot_file": "lizard_jacobi_quartic_impl__JacobiPoint_dual_5.dot",
+      "file": "lizard/jacobi_quartic.rs",
+      "function": "dual"
+    },
+    {
+      "dot_file": "lizard_jacobi_quartic_impl__JacobiPoint_elligator_inv_5.dot",
+      "file": "lizard/jacobi_quartic.rs",
+      "function": "elligator_inv"
+    },
+    {
+      "dot_file": "lizard_lizard_ristretto_impl__RistrettoPoint_decode_253_bits_5.dot",
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "decode_253_bits"
+    },
+    {
+      "dot_file": "lizard_lizard_ristretto_impl__RistrettoPoint_elligator_ristretto_flavor_inverse_5.dot",
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "elligator_ristretto_flavor_inverse"
+    },
+    {
+      "dot_file": "lizard_lizard_ristretto_impl__RistrettoPoint_from_uniform_bytes_single_elligator_5.dot",
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "from_uniform_bytes_single_elligator"
+    },
+    {
+      "dot_file": "lizard_lizard_ristretto_impl__RistrettoPoint_lizard_decode_5.dot",
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "lizard_decode"
+    },
+    {
+      "dot_file": "lizard_lizard_ristretto_impl__RistrettoPoint_lizard_encode_5.dot",
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "lizard_encode"
+    },
+    {
+      "dot_file": "lizard_lizard_ristretto_impl__RistrettoPoint_to_jacobi_quartic_ristretto_5.dot",
+      "file": "lizard/lizard_ristretto.rs",
+      "function": "to_jacobi_quartic_ristretto"
+    },
+    {
+      "dot_file": "montgomery_impl__MontgomeryPoint_to_edwards_5.dot",
+      "file": "montgomery.rs",
+      "function": "to_edwards"
+    },
+    {
+      "dot_file": "ristretto_decompress_step_1_5.dot",
+      "file": "ristretto/decompress.rs",
+      "function": "step_1"
+    },
+    {
+      "dot_file": "ristretto_decompress_step_2_5.dot",
+      "file": "ristretto/decompress.rs",
+      "function": "step_2"
+    },
+    {
+      "dot_file": "ristretto_impl__CompressedRistretto_as_bytes_5.dot",
+      "file": "ristretto.rs",
+      "function": "as_bytes"
+    },
+    {
+      "dot_file": "ristretto_impl__CompressedRistretto_decompress_5.dot",
+      "file": "ristretto.rs",
+      "function": "decompress"
+    },
+    {
+      "dot_file": "ristretto_impl__CompressedRistretto_from_slice_5.dot",
+      "file": "ristretto.rs",
+      "function": "from_slice"
+    },
+    {
+      "dot_file": "ristretto_impl__CompressedRistretto_to_bytes_5.dot",
+      "file": "ristretto.rs",
+      "function": "to_bytes"
+    },
+    {
+      "dot_file": "ristretto_impl__RistrettoPoint__Default_default_5.dot",
+      "file": "ristretto.rs",
+      "function": "default"
+    },
+    {
+      "dot_file": "ristretto_impl__RistrettoPoint__Identity_identity_5.dot",
+      "file": "ristretto.rs",
+      "function": "identity"
+    },
+    {
+      "dot_file": "ristretto_impl__RistrettoPoint__MultiscalarMul_multiscalar_mul_5.dot",
+      "file": "ristretto.rs",
+      "function": "multiscalar_mul"
+    },
+    {
+      "dot_file": "ristretto_impl__RistrettoPoint_compress_5.dot",
+      "file": "ristretto.rs",
+      "function": "compress"
+    },
+    {
+      "dot_file": "ristretto_impl__RistrettoPoint_double_and_compress_batch_5.dot",
+      "file": "ristretto.rs",
+      "function": "double_and_compress_batch"
+    },
+    {
+      "dot_file": "ristretto_impl__RistrettoPoint_elligator_ristretto_flavor_5.dot",
+      "file": "ristretto.rs",
+      "function": "elligator_ristretto_flavor"
+    },
+    {
+      "dot_file": "ristretto_impl__RistrettoPoint_from_uniform_bytes_5.dot",
+      "file": "ristretto.rs",
+      "function": "from_uniform_bytes"
+    },
+    {
+      "dot_file": "ristretto_impl__RistrettoPoint_mul_base_5.dot",
+      "file": "ristretto.rs",
+      "function": "mul_base"
+    },
+    {
+      "dot_file": "scalar_clamp_integer_5.dot",
+      "file": "scalar.rs",
+      "function": "clamp_integer"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar__ConstantTimeEq_ct_eq_5.dot",
+      "file": "scalar.rs",
+      "function": "ct_eq"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar__`From<u32>`_from_5.dot",
+      "file": "scalar.rs",
+      "function": "from"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar__`From<u64>`_from_5.dot",
+      "file": "scalar.rs",
+      "function": "from"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar__`From<u8>`_from_5.dot",
+      "file": "scalar.rs",
+      "function": "from"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_as_bytes_5.dot",
+      "file": "scalar.rs",
+      "function": "as_bytes"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_from_bytes_mod_order_5.dot",
+      "file": "scalar.rs",
+      "function": "from_bytes_mod_order"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_from_bytes_mod_order_wide_5.dot",
+      "file": "scalar.rs",
+      "function": "from_bytes_mod_order_wide"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_from_canonical_bytes_5.dot",
+      "file": "scalar.rs",
+      "function": "from_canonical_bytes"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_from_hash_5.dot",
+      "file": "scalar.rs",
+      "function": "from_hash"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_hash_from_bytes_5.dot",
+      "file": "scalar.rs",
+      "function": "hash_from_bytes"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_invert_5.dot",
+      "file": "scalar.rs",
+      "function": "invert"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_is_canonical_5.dot",
+      "file": "scalar.rs",
+      "function": "is_canonical"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_non_adjacent_form_5.dot",
+      "file": "scalar.rs",
+      "function": "non_adjacent_form"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_reduce_5.dot",
+      "file": "scalar.rs",
+      "function": "reduce"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_to_bytes_5.dot",
+      "file": "scalar.rs",
+      "function": "to_bytes"
+    },
+    {
+      "dot_file": "scalar_impl__Scalar_unpack_5.dot",
+      "file": "scalar.rs",
+      "function": "unpack"
+    },
+    {
+      "dot_file": "scalar_impl__`backend_serial_u64_scalar_Scalar52`_invert_5.dot",
+      "file": "scalar.rs",
+      "function": "invert"
+    },
+    {
+      "dot_file": "scalar_impl__`backend_serial_u64_scalar_Scalar52`_montgomery_invert_5.dot",
+      "file": "scalar.rs",
+      "function": "montgomery_invert"
+    },
+    {
+      "dot_file": "scalar_impl__`backend_serial_u64_scalar_Scalar52`_pack_5.dot",
+      "file": "scalar.rs",
+      "function": "pack"
+    },
+    {
+      "dot_file": "scalar_read_le_u64_into_5.dot",
+      "file": "scalar.rs",
+      "function": "read_le_u64_into"
+    },
+    {
+      "dot_file": "traits_Identity_identity_5.dot",
+      "file": "traits.rs",
+      "function": "Identity#identity"
+    },
+    {
+      "dot_file": "traits_VartimeMultiscalarMul_optional_multiscalar_mul_5.dot",
+      "file": "traits.rs",
+      "function": "VartimeMultiscalarMul#optional_multiscalar_mul"
+    },
+    {
+      "dot_file": "traits_VartimeMultiscalarMul_vartime_multiscalar_mul_5.dot",
+      "file": "traits.rs",
+      "function": "VartimeMultiscalarMul#vartime_multiscalar_mul"
+    },
+    {
+      "dot_file": "traits_impl__T__IsIdentity_is_identity_5.dot",
+      "file": "traits.rs",
+      "function": "is_identity"
+    },
+    {
+      "dot_file": "window_impl__`NafLookupTable5<ProjectiveNielsPoint>`__`From<&EdwardsPoint>`_from_5.dot",
+      "file": "window.rs",
+      "function": "from"
+    },
+    {
+      "dot_file": "window_impl__`NafLookupTable5<T>`_select_5.dot",
+      "file": "window.rs",
+      "function": "select"
+    },
+    {
+      "dot_file": "window_impl__`NafLookupTable8<T>`_select_5.dot",
+      "file": "window.rs",
+      "function": "select"
+    }
+  ]
+}

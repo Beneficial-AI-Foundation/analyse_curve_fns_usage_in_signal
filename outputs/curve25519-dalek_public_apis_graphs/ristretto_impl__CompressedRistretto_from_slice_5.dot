@@ -1,0 +1,56 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "ristretto.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto]from_slice()." [label="from_slice", tooltip="    pub fn from_slice(bytes: &[u8]) -> Result<CompressedRistretto, TryFromSliceError> {         bytes.try_into().map(CompressedRistretto)     }", fillcolor=green, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "ppss_ops.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-net 0.1.0 svrb/ppss_ops/do_restore()." [label="do_restore", tooltip="pub async fn do_restore<Env: PpssSetup>(     connect_results: impl IntoConnectionResults,     password: &[u8], ) -> Result<Secret, Error> {     let mut rng = OsRng.unwrap_err();     let ConnectionCont...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-net 0.1.0 svrb/ppss_ops/test/do_restore_fails_with_the_first_error()." [label="do_restore_fails_with_the_first_error", tooltip="    async fn do_restore_fails_with_the_first_error() {         let result = do_restore::<TestEnv>(NotConnectedResults, b' ' ).await;         assert_matches!(result, Err(crate::svrb::Error::ConnectionT...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_2 {
+    label = "traits.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-net 0.1.0 svrb/traits/impl#[T][Restore]restore()." [label="restore", tooltip="    async fn restore(&self, password: &[u8]) -> Result<Secret, Error> {         ppss_ops::do_restore::<T::Env>(self.connect().await, password).await     }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_3 {
+    label = "lib.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]create()." [label="create", tooltip="        fn create(&mut self, req_bytes: &[u8]) {             self.versions.clear();             let req = match svrb::Request4::decode(req_bytes)                 .expect(' decode Request4' )          ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]restore2()." [label="restore2", tooltip="        fn restore2(&self, req_bytes: &[u8], handshake_hash: &[u8]) -> Vec<u8> {             let req = match svrb::Request4::decode(req_bytes)                 .expect(' decode Request4' )             ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 impl#[`Restore1<'a>`]restore2()." [label="restore2", tooltip="    pub fn restore2<R: Rng + CryptoRng>(         self,         responses1_bytes: &[Vec<u8>],         handshake_hashes: &[&[u8]],         rng: &mut R,     ) -> Result<Restore2<'a>, Error> {         if ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]restore1()." [label="restore1", tooltip="        fn restore1(&mut self, req_bytes: &[u8]) -> Vec<u8> {             let req = match svrb::Request4::decode(req_bytes)                 .expect(' decode Request4' )                 .inner         ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServerVersion]new()." [label="new", tooltip="        fn new(req: &svrb::request4::Create) -> Self {             Self {                 auth_commitment: to_ristretto_pt(&req.auth_commitment)                     .expect(' decode auth_commitment' )...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/full_create_restore()." [label="full_create_restore", tooltip="    fn full_create_restore() {         let mut rng = OsRng.unwrap_err();         let server_ids = vec![1u64, 2u64, 3u64];         let mut servers = server_ids             .iter()             .map(|_| ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 to_ristretto_pt()." [label="to_ristretto_pt", tooltip="fn to_ristretto_pt(b: &[u8]) -> Option<RistrettoPoint> {     CompressedRistretto::from_slice(b).ok()?.decompress() }", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo libsignal-net 0.1.0 svrb/ppss_ops/do_restore()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 impl#[`Restore1<'a>`]restore2()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]create()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServerVersion]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]restore2()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 to_ristretto_pt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-net 0.1.0 svrb/traits/impl#[T][Restore]restore()." -> "rust-analyzer cargo libsignal-net 0.1.0 svrb/ppss_ops/do_restore()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 impl#[`Restore1<'a>`]restore2()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 to_ristretto_pt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]restore1()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 to_ristretto_pt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServerVersion]new()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 to_ristretto_pt()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/full_create_restore()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]restore2()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/full_create_restore()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]create()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/full_create_restore()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 impl#[`Restore1<'a>`]restore2()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/full_create_restore()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]restore1()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 to_ristretto_pt()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto]from_slice()." [color=blue]
+  "rust-analyzer cargo libsignal-net 0.1.0 svrb/ppss_ops/test/do_restore_fails_with_the_first_error()." -> "rust-analyzer cargo libsignal-net 0.1.0 svrb/ppss_ops/do_restore()." [color=blue, style=dashed]
+}

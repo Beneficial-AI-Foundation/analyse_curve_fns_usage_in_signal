@@ -1,0 +1,23 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "ristretto.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][Default]default()." [label="default", tooltip="    fn default() -> RistrettoPoint {         RistrettoPoint::identity()     }", fillcolor=green, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "attributes.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkcredential 0.1.0 attributes/tests/derive_default_generator_points_checks_for_reuse_in_debug_builds()." [label="derive_default_generator_points_checks_for_reuse_in_debug_builds", tooltip="    fn derive_default_generator_points_checks_for_reuse_in_debug_builds() {         let storage = std::sync::OnceLock::from([RistrettoPoint::default(); 2]);         derive_default_generator_points::<E...", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo zkcredential 0.1.0 attributes/tests/derive_default_generator_points_checks_for_reuse_in_debug_builds()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][Default]default()." [color=blue]
+}

@@ -1,0 +1,439 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "scalar.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]is_canonical()." [label="is_canonical", tooltip="    fn is_canonical(&self) -> Choice {         self.ct_eq(&self.reduce())     }", fillcolor=lightgray, style="filled,dotted"]
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]reduce()." [label="reduce", tooltip="    fn reduce(&self) -> Scalar {         let x = self.unpack();         let xR = UnpackedScalar::mul_internal(&x, &constants::R);         let x_mod_l = UnpackedScalar::montgomery_reduce(&xR);         ...", fillcolor=green, style="filled,dotted"]
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_bytes_mod_order()." [label="from_bytes_mod_order", tooltip="    pub fn from_bytes_mod_order(bytes: [u8; 32]) -> Scalar {         // Temporarily allow s_unreduced.bytes > 2^255 ...         let s_unreduced = Scalar { bytes };          // Then reduce mod the grou...", fillcolor=lightgray, style="filled,dotted"]
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_canonical_bytes()." [label="from_canonical_bytes", tooltip="    pub fn from_canonical_bytes(bytes: [u8; 32]) -> CtOption<Scalar> {         let high_bit_unset = (bytes[31] >> 7).ct_eq(&0);         let candidate = Scalar { bytes };         CtOption::new(candidat...", fillcolor=lightgray, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "protocol.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_Sign()." [label="ECPrivateKey_Sign", tooltip="fn ECPrivateKey_Sign(key: &PrivateKey, message: &[u8]) -> Result<Vec<u8>> {     let mut rng = rand::rngs::OsRng.unwrap_err();     Ok(key.calculate_signature(message, &mut rng)?.into_vec()) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPublicKey_Verify()." [label="ECPublicKey_Verify", tooltip="fn ECPublicKey_Verify(key: &PublicKey, message: &[u8], signature: &[u8]) -> bool {     key.verify_signature(message, signature) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/IdentityKeyPair_SignAlternateIdentity()." [label="IdentityKeyPair_SignAlternateIdentity", tooltip="fn IdentityKeyPair_SignAlternateIdentity(     public_key: &PublicKey,     private_key: &PrivateKey,     other_identity: &PublicKey, ) -> Result<Vec<u8>> {     let mut rng = rand::rngs::OsRng.unwrap_er...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/IdentityKey_VerifyAlternateIdentity()." [label="IdentityKey_VerifyAlternateIdentity", tooltip="fn IdentityKey_VerifyAlternateIdentity(     public_key: &PublicKey,     other_identity: &PublicKey,     signature: &[u8], ) -> Result<bool> {     let identity = IdentityKey::new(*public_key);     let ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_2 {
+    label = "zkgroup.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSendEndorsementsResponse_ReceiveAndCombineWithCiphertexts()." [label="GroupSendEndorsementsResponse_ReceiveAndCombineWithCiphertexts", tooltip="fn GroupSendEndorsementsResponse_ReceiveAndCombineWithCiphertexts(     response_bytes: &[u8],     concatenated_group_member_ciphertexts: &[u8],     local_user_ciphertext: &[u8],     now: Timestamp,   ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSendEndorsementsResponse_ReceiveAndCombineWithServiceIds()." [label="GroupSendEndorsementsResponse_ReceiveAndCombineWithServiceIds", tooltip="fn GroupSendEndorsementsResponse_ReceiveAndCombineWithServiceIds(     response_bytes: &[u8],     group_members: ServiceIdSequence<'_>,     local_user: ServiceId,     now: Timestamp,     group_params: ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSendEndorsementsResponse_IssueDeterministic()." [label="GroupSendEndorsementsResponse_IssueDeterministic", tooltip="fn GroupSendEndorsementsResponse_IssueDeterministic(     concatenated_group_member_ciphertexts: &[u8],     key_pair: &[u8],     randomness: &[u8; RANDOMNESS_LEN], ) -> Vec<u8> {     assert!(concatenat...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_3 {
+    label = "curve.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 signatures()." [label="signatures", tooltip="pub fn signatures(c: &mut Criterion) {     let rng = &mut rng();     let alice_key = KeyPair::generate(rng);     let mut some_data = [0; 1024];     rng.fill(&mut some_data);      c.bench_function(' ge...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_4 {
+    label = "ed_to_xed.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 main()." [label="main", tooltip="fn main() {     let mut input = vec![];     std::io::stdin()         .read_to_end(&mut input)         .expect(' can read input' );     let key = boring::pkey::PKey::public_key_from_pem(&input).expect(...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_5 {
+    label = "curve.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [label="verify_signature", tooltip="    pub fn verify_signature(&self, message: &[u8], signature: &[u8]) -> bool {         self.verify_signature_for_multipart_message(&[message], signature)     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [label="calculate_signature", tooltip="    pub fn calculate_signature<R: CryptoRng + Rng>(         &self,         message: &[u8],         csprng: &mut R,     ) -> Result<Box<[u8]>, CurveError> {         self.calculate_signature_for_multipa...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." [label="verify_signature_for_multipart_message", tooltip="    pub fn verify_signature_for_multipart_message(         &self,         message: &[&[u8]],         signature: &[u8],     ) -> bool {         match &self.key {             PublicKeyData::DjbPublicKey...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_signature()." [label="calculate_signature", tooltip="    pub fn calculate_signature<R: CryptoRng + Rng>(         &self,         message: &[u8],         csprng: &mut R,     ) -> Result<Box<[u8]>, CurveError> {         self.private_key.calculate_signature...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." [label="test_large_signatures", tooltip="    fn test_large_signatures() -> Result<(), CurveError> {         let mut csprng = OsRng.unwrap_err();         let key_pair = KeyPair::generate(&mut csprng);         let mut message = [0u8; 1024 * 10...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." [label="calculate_signature_for_multipart_message", tooltip="    pub fn calculate_signature_for_multipart_message<R: CryptoRng + Rng>(         &self,         message: &[&[u8]],         csprng: &mut R,     ) -> Result<Box<[u8]>, CurveError> {         match self....", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_6 {
+    label = "curve25519.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." [label="verify_signature", tooltip="    pub fn verify_signature(         their_public_key: &[u8; PUBLIC_KEY_LENGTH],         message: &[&[u8]],         signature: &[u8; SIGNATURE_LENGTH],     ) -> bool {         let mont_point = Montgom...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_random_signatures()." [label="test_random_signatures", tooltip="    fn test_random_signatures() {         let mut csprng = OsRng.unwrap_err();         for _ in 0..50 {             let mut message = [0u8; 64];             csprng.fill_bytes(&mut message);           ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_signature()." [label="test_signature", tooltip="    fn test_signature() {         let alice_identity_private: [u8; PRIVATE_KEY_LENGTH] = [             0xc0, 0x97, 0x24, 0x84, 0x12, 0xe5, 0x8b, 0xf0, 0x5d, 0xf4, 0x87, 0x96, 0x82, 0x05,             0...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]calculate_signature()." [label="calculate_signature", tooltip="    pub fn calculate_signature<R>(         &self,         csprng: &mut R,         message: &[&[u8]],     ) -> [u8; SIGNATURE_LENGTH]     where         R: CryptoRng + Rng,     {         let mut random_...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_7 {
+    label = "verify.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/evaluate_vrf_proof()." [label="evaluate_vrf_proof", tooltip="fn evaluate_vrf_proof(     proof: &[u8],     vrf_key: &vrf::PublicKey,     search_key: &[u8], ) -> Result<[u8; 32]> {     let proof = proof.try_into().map_err(|_| MalformedProof)?;     Ok(vrf_key.proo...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_search_internal()." [label="verify_search_internal", tooltip="fn verify_search_internal(     config: &PublicConfig,     req: SlimSearchRequest,     res: FullSearchResponse,     context: SearchContext,     monitor: bool,     now: SystemTime, ) -> Result<SearchSta...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_8 {
+    label = "vrf.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/tests/test_proof_to_hash()." [label="test_proof_to_hash", tooltip="    fn test_proof_to_hash() {         for v in TEST_VECTORS {             let pk = PublicKey::try_from(v.pk).unwrap();             let index = pk.proof_to_hash(v.alpha, &v.pi).unwrap();             as...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." [label="proof_to_hash", tooltip="    pub fn proof_to_hash(&self, m: &[u8], proof: &[u8; 80]) -> Result<[u8; 32]> {         // Decode proof into its component parts: gamma, c, and s.         let gamma = CompressedEdwardsY(proof[..32]....", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/tests/test_proof_to_hash_fails()." [label="test_proof_to_hash_fails", tooltip="    fn test_proof_to_hash_fails() {         for v in TEST_VECTORS {             let pk = PublicKey::try_from(v.pk).unwrap();              assert!(pk.proof_to_hash(b' a' , &v.pi).is_err());            ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_9 {
+    label = "proof.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo poksho 0.7.0 proof/impl#[Proof]from_slice()." [label="from_slice", tooltip="    pub fn from_slice(bytes: &[u8]) -> Option<Self> {         // TODO use Iterator::array_chunks once that's stabilized.         // See https://github.com/rust-lang/rust/issues/100450.         let chu...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_10 {
+    label = "scalar.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo poksho 0.7.0 scalar/scalar_from_slice_canonical()." [label="scalar_from_slice_canonical", tooltip="pub fn scalar_from_slice_canonical(bytes: &[u8]) -> Option<Scalar> {     let mut scalar_bytes = [0u8; 32];     scalar_bytes.copy_from_slice(bytes);     Scalar::from_canonical_bytes(scalar_bytes).into(...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_11 {
+    label = "sign.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo poksho 0.7.0 sign/verify_signature()." [label="verify_signature", tooltip="pub fn verify_signature(     signature: &[u8],     public_key: RistrettoPoint,     message: &[u8], ) -> Result<(), PokshoError> {     let mut st = Statement::new();     st.add(' public_key' , &[(' pri...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_12 {
+    label = "statement.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [label="verify_proof", tooltip="    pub fn verify_proof(         &self,         proof_bytes: &[u8],         point_args: &PointArgs,         message: &[u8],     ) -> Result<(), PokshoError> {         let proof = Proof::from_slice(pro...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]prove()." [label="prove", tooltip="    pub fn prove(         &self,         scalar_args: &ScalarArgs,         point_args: &PointArgs,         message: &[u8],         randomness: &[u8], // must be 32 bytes     ) -> Result<Vec<u8>, Poksh...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo poksho 0.7.0 statement/tests/test_complex_statement()." [label="test_complex_statement", tooltip="    fn test_complex_statement() {         let mut block32 = [0u8; 32];         let mut block64a = [0u8; 64];         let mut block64b = [0u8; 64];         let mut block64c = [0u8; 64];         let mut...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_13 {
+    label = "session.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." [label="session_encrypt_result", tooltip="pub fn session_encrypt_result(c: &mut Criterion) -> Result<(), SignalProtocolError> {     let (alice_session_record, bob_session_record) = support::initialize_sessions_v4()?;      let alice_address = ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_14 {
+    label = "identity_key.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]sign_alternate_identity()." [label="sign_alternate_identity", tooltip="    pub fn sign_alternate_identity<R: Rng + CryptoRng>(         &self,         other: &IdentityKey,         rng: &mut R,     ) -> Result<Box<[u8]>> {         Ok(self.private_key.calculate_signature_fo...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_alternate_identity_signing()." [label="test_alternate_identity_signing", tooltip="    fn test_alternate_identity_signing() -> Result<()> {         let mut rng = OsRng.unwrap_err();         let primary = IdentityKeyPair::generate(&mut rng);         let secondary = IdentityKeyPair::g...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKey]verify_alternate_identity()." [label="verify_alternate_identity", tooltip="    pub fn verify_alternate_identity(&self, other: &IdentityKey, signature: &[u8]) -> Result<bool> {         Ok(self.public_key.verify_signature_for_multipart_message(             &[                 A...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_15 {
+    label = "protocol.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]new()." [label="new", tooltip="    pub fn new<R: CryptoRng + Rng>(         message_version: u8,         distribution_id: Uuid,         chain_id: u32,         iteration: u32,         ciphertext: Box<[u8]>,         csprng: &mut R,   ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]verify_signature()." [label="verify_signature", tooltip="    pub fn verify_signature(&self, signature_key: &PublicKey) -> Result<bool> {         let valid = signature_key.verify_signature(             &self.serialized[..self.serialized.len() - Self::SIGNATU...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_16 {
+    label = "sealed_sender.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]validate()." [label="validate", tooltip="    pub fn validate(&self, trust_root: &PublicKey) -> Result<bool> {         if REVOKED_SERVER_CERTIFICATE_KEY_IDS.contains(&self.key_id()?) {             log::error!(                 ' received serve...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]validate()." [label="validate", tooltip="    pub fn validate(&self, trust_root: &PublicKey, validation_time: Timestamp) -> Result<bool> {         if !self.signer.validate(trust_root)? {             log::error!(                 ' sender certi...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." [label="new", tooltip="    pub fn new<R: Rng + CryptoRng>(         sender_uuid: String,         sender_e164: Option<String>,         key: PublicKey,         sender_device_id: DeviceId,         expiration: Timestamp,        ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." [label="new", tooltip="    pub fn new<R: Rng + CryptoRng>(         key_id: u32,         key: PublicKey,         trust_root: &PrivateKey,         rng: &mut R,     ) -> Result<Self> {         let certificate_pb = proto::seale...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_17 {
+    label = "session.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [label="process_prekey_bundle", tooltip="pub async fn process_prekey_bundle<R: Rng + CryptoRng>(     remote_address: &ProtocolAddress,     session_store: &mut dyn SessionStore,     identity_store: &mut dyn IdentityKeyStore,     bundle: &PreK...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_18 {
+    label = "kyber_prekey.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 state/kyber_prekey/impl#[KyberPreKeyRecord]generate()." [label="generate", tooltip="    pub fn generate(         kyber_key_type: kem::KeyType,         id: KyberPreKeyId,         signing_key: &PrivateKey,     ) -> Result<KyberPreKeyRecord> {         let mut rng = rand::rngs::OsRng.unw...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_19 {
+    label = "mod.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." [label="create_pre_key_bundle", tooltip="pub async fn create_pre_key_bundle<R: Rng + CryptoRng>(     store: &mut dyn ProtocolStore,     mut csprng: &mut R, ) -> Result<PreKeyBundle, SignalProtocolError> {     let pre_key_pair = KeyPair::gene...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]sign()." [label="sign", tooltip="    fn sign(&mut self, message: &[u8]) -> Box<[u8]> {         let identity_key_pair = self             .store             .get_identity_key_pair()             .now_or_never()             .expect(' syn...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_20 {
+    label = "lib.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]create()." [label="create", tooltip="        fn create(&mut self, req_bytes: &[u8]) {             self.versions.clear();             let req = match svrb::Request4::decode(req_bytes)                 .expect(' decode Request4' )          ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]restore2()." [label="restore2", tooltip="        fn restore2(&self, req_bytes: &[u8], handshake_hash: &[u8]) -> Vec<u8> {             let req = match svrb::Request4::decode(req_bytes)                 .expect(' decode Request4' )             ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServerVersion]new()." [label="new", tooltip="        fn new(req: &svrb::request4::Create) -> Self {             Self {                 auth_commitment: to_ristretto_pt(&req.auth_commitment)                     .expect(' decode auth_commitment' )...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/to_ristretto_scalar()." [label="to_ristretto_scalar", tooltip="    fn to_ristretto_scalar(b: &[u8]) -> Option<Scalar> {         Scalar::from_canonical_bytes(b.try_into().ok()?).into_option()     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-svrb 0.1.0 test/full_create_restore()." [label="full_create_restore", tooltip="    fn full_create_restore() {         let mut rng = OsRng.unwrap_err();         let server_ids = vec![1u64, 2u64, 3u64];         let mut servers = server_ids             .iter()             .map(|_| ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_21 {
+    label = "username.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]verify_proof()." [label="verify_proof", tooltip="    pub fn verify_proof(proof: &[u8], hash: [u8; 32]) -> Result<(), ProofVerificationFailure> {         let hash_point = CompressedRistretto(hash)             .decompress()             .ok_or(ProofVer...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_22 {
+    label = "endorsements.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkcredential 0.1.0 benches()." [label="benches", tooltip="criterion_group!(benches, endorsement_flow, key_derivation); criterion_main!(benches);", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsement_flow()." [label="endorsement_flow", tooltip="fn endorsement_flow(c: &mut Criterion) {     let mut group = c.benchmark_group(' endorsements' );      let mut input_sho = poksho::ShoSha256::new(b' test' );     let inputs: Vec<RistrettoPoint> = (0.....", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_23 {
+    label = "endorsements.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]generate_weights_for_proof()." [label="generate_weights_for_proof", tooltip="    fn generate_weights_for_proof(         public_key: &ServerDerivedPublicKey,         E: &[RistrettoPoint],         R: &[CompressedRistretto],     ) -> Vec<Scalar> {         debug_assert_eq!(E.len()...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/round_trip()." [label="round_trip", tooltip="        fn round_trip<T: Serialize + for<'a> Deserialize<'a> + PartialDefault>(             value: &T,             expected_len: usize,         ) {             let bincode_options = bincode::DefaultOp...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." [label="receive", tooltip="    pub fn receive(         self,         hidden_attribute_points: impl IntoIterator<Item = RistrettoPoint>,         server_public_key: &ServerDerivedPublicKey,     ) -> Result<ReceivedEndorsements, V...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_is_identity()." [label="default_is_identity", tooltip="    fn default_is_identity() {         assert_eq!(Endorsement::combine([]).R, Endorsement::default().R);          let mut input_sho = poksho::ShoSha256::new(b' test' );         let root_key = ServerRo...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/combining_endorsements()." [label="combining_endorsements", tooltip="    fn combining_endorsements() {         let mut input_sho = poksho::ShoSha256::new(b' test' );         let root_key = ServerRootKeyPair::generate([42; RANDOMNESS_LEN]);          // Client          l...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [label="issue", tooltip="    pub fn issue(         hidden_attribute_points: impl IntoIterator<Item = RistrettoPoint>,         private_key: &ServerDerivedKeyPair,         randomness: [u8; RANDOMNESS_LEN],     ) -> EndorsementR...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_flow()." [label="default_flow", tooltip="    fn default_flow() {         let mut input_sho = poksho::ShoSha256::new(b' test' );         let root_key = ServerRootKeyPair::generate([42; RANDOMNESS_LEN]);          // Client          let client_...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_24 {
+    label = "issuance.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkcredential 0.1.0 issuance/impl#[`IssuanceProofBuilder<'a>`]verify()." [label="verify", tooltip="    pub fn verify(         mut self,         public_key: &CredentialPublicKey,         // Even though it would work with a borrow, this deliberately consumes         // IssuanceProof to indicate that ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_25 {
+    label = "blind.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkcredential 0.1.0 issuance/blind/impl#[`BlindedIssuanceProofBuilder<'_>`]verify()." [label="verify", tooltip="    pub fn verify(         mut self,         public_key: &CredentialPublicKey,         blinding_key: &BlindingKeyPair,         proof: BlindedIssuanceProof,     ) -> Result<Credential, VerificationFail...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_26 {
+    label = "presentation.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkcredential 0.1.0 presentation/impl#[`PresentationProofVerifier<'a>`]verify()." [label="verify", tooltip="    pub fn verify(         mut self,         key_pair: &CredentialKeyPair,         proof: &PresentationProof,     ) -> Result<(), VerificationFailure> {         self.finalize_public_attrs();          ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_27 {
+    label = "zkgroup_benchmarks.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 benchmark_group_send_endorsements()." [label="benchmark_group_send_endorsements", tooltip="pub fn benchmark_group_send_endorsements(c: &mut Criterion) {     const DAY_ALIGNED_TIMESTAMP: zkgroup::Timestamp =         zkgroup::Timestamp::from_epoch_seconds(1681344000); // 2023-04-13 00:00:00 U...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_28 {
+    label = "group_send_endorsement.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids()." [label="receive_with_service_ids", tooltip="    pub fn receive_with_service_ids<T>(         self,         user_ids: T,         now: Timestamp,         group_params: &GroupSecretParams,         root_public_key: impl AsRef<zkcredential::endorseme...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids_single_threaded()." [label="receive_with_service_ids_single_threaded", tooltip="    pub fn receive_with_service_ids_single_threaded(         self,         user_ids: impl IntoIterator<Item = libsignal_core::ServiceId>,         now: Timestamp,         group_params: &GroupSecretPara...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_ciphertexts()." [label="receive_with_ciphertexts", tooltip="    pub fn receive_with_ciphertexts(         self,         member_ciphertexts: impl IntoIterator<Item = UuidCiphertext>,         now: Timestamp,         root_public_key: impl AsRef<zkcredential::endor...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]issue()." [label="issue", tooltip="    pub fn issue(         member_ciphertexts: impl IntoIterator<Item = UuidCiphertext>,         key_pair: &GroupSendDerivedKeyPair,         randomness: RandomnessBytes,     ) -> Self {         // Note...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_29 {
+    label = "server_params.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_receipt_credential_request_context()." [label="create_receipt_credential_request_context", tooltip="    pub fn create_receipt_credential_request_context(         &self,         randomness: RandomnessBytes,         receipt_serial_bytes: ReceiptSerialBytes,     ) -> api::receipts::ReceiptCredentialReq...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]receive_receipt_credential()." [label="receive_receipt_credential", tooltip="    pub fn receive_receipt_credential(         &self,         context: &api::receipts::ReceiptCredentialRequestContext,         response: &api::receipts::ReceiptCredentialResponse,     ) -> Result<api...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerSecretParams]verify_receipt_credential_presentation()." [label="verify_receipt_credential_presentation", tooltip="    pub fn verify_receipt_credential_presentation(         &self,         presentation: &api::receipts::ReceiptCredentialPresentation,     ) -> Result<(), ZkGroupVerificationFailure> {         present...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_30 {
+    label = "simple_types.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 common/simple_types/encode_redemption_time()." [label="encode_redemption_time", tooltip="pub fn encode_redemption_time(redemption_time: u32) -> Scalar {     let mut scalar_bytes: [u8; 32] = Default::default();     scalar_bytes[0..4].copy_from_slice(&redemption_time.to_be_bytes());     Sca...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 common/simple_types/encode_receipt_serial_bytes()." [label="encode_receipt_serial_bytes", tooltip="pub fn encode_receipt_serial_bytes(receipt_serial_bytes: ReceiptSerialBytes) -> Scalar {     let mut scalar_bytes: [u8; 32] = Default::default();     scalar_bytes[0..16].copy_from_slice(&receipt_seria...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_31 {
+    label = "credentials.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/credentials/convert_to_point_M2_receipt_serial_bytes()." [label="convert_to_point_M2_receipt_serial_bytes", tooltip="pub(crate) fn convert_to_point_M2_receipt_serial_bytes(     receipt_serial_bytes: ReceiptSerialBytes, ) -> RistrettoPoint {     let system = SystemParams::get_hardcoded();     let receipt_serial_scala...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/credentials/convert_to_points_receipt_struct()." [label="convert_to_points_receipt_struct", tooltip="pub(crate) fn convert_to_points_receipt_struct(     receipt: receipt_struct::ReceiptStruct, ) -> Vec<RistrettoPoint> {     let system = SystemParams::get_hardcoded();     let m1 = receipt.calc_m1();  ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_32 {
+    label = "proofs.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialIssuanceProof]verify()." [label="verify", tooltip="    pub fn verify(         &self,         credentials_public_key: credentials::PublicKey,         request_public_key: receipt_credential_request::PublicKey,         request: receipt_credential_request...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ProfileKeyCredentialRequestProof]verify()." [label="verify", tooltip="    pub fn verify(         &self,         public_key: profile_key_credential_request::PublicKey,         ciphertext: profile_key_credential_request::Ciphertext,         commitment: profile_key_commitm...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialPresentationProof]verify()." [label="verify", tooltip="    pub fn verify(         &self,         credentials_key_pair: credentials::KeyPair<credentials::ReceiptCredential>,         receipt_struct: ReceiptStruct,     ) -> Result<(), ZkGroupVerificationFail...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ExpiringProfileKeyCredentialIssuanceProof]verify()." [label="verify", tooltip="    pub fn verify(         &self,         credentials_public_key: credentials::PublicKey,         request_public_key: profile_key_credential_request::PublicKey,         aci_bytes: UidBytes,         re...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ExpiringProfileKeyCredentialPresentationProof]verify()." [label="verify", tooltip="    pub fn verify(         &self,         credentials_key_pair: credentials::KeyPair<credentials::ExpiringProfileKeyCredential>,         uid_ciphertext: uid_encryption::Ciphertext,         uid_enc_pub...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_33 {
+    label = "receipt_credential_request.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/receipt_credential_request/impl#[KeyPair]encrypt()." [label="encrypt", tooltip="    pub fn encrypt(         &self,         receipt_serial_bytes: ReceiptSerialBytes,         sho: &mut Sho,     ) -> CiphertextWithSecretNonce {         let M2 = credentials::convert_to_point_M2_recei...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_34 {
+    label = "zkcredential_examples.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 crypto/zkcredential_examples/impl#[RoomId][RevealedAttribute]as_point()." [label="as_point", tooltip="        fn as_point(&self) -> RistrettoPoint {             self.opaque_id         }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_35 {
+    label = "group_send_endorsements.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 test_endorsement()." [label="test_endorsement", tooltip="fn test_endorsement() {     let randomness1: RandomnessBytes = [0x43u8; RANDOMNESS_LEN];     let randomness2: RandomnessBytes = [0x44u8; RANDOMNESS_LEN];     let randomness3: RandomnessBytes = [0x45u8...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 test_client_rejects_bad_expirations()." [label="test_client_rejects_bad_expirations", tooltip="fn test_client_rejects_bad_expirations() {     let randomness1: RandomnessBytes = [0x43u8; RANDOMNESS_LEN];     let randomness2: RandomnessBytes = [0x44u8; RANDOMNESS_LEN];     let randomness3: Random...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkgroup 0.9.0 test_single_member_group()." [label="test_single_member_group", tooltip="fn test_single_member_group() {     let randomness1: RandomnessBytes = [0x43u8; RANDOMNESS_LEN];     let randomness2: RandomnessBytes = [0x44u8; RANDOMNESS_LEN];     let randomness3: RandomnessBytes =...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_36 {
+    label = "receipt_flow.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 test_request_response()." [label="test_request_response", tooltip="fn test_request_response() {     let mut sho = Sho::new(b' Test_Receipt_Credential_Request' , b' ' );      // client receives in response to initial request     let receipt_expiration_time: Timestamp ...", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session_encrypt_result()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]generate_weights_for_proof()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_bytes_mod_order()." [color=blue]
+  "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]is_canonical()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]reduce()." [color=gray, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/evaluate_vrf_proof()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]sign_alternate_identity()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialIssuanceProof]verify()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialIssuanceProof]verify()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/credentials/convert_to_points_receipt_struct()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]create()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServerVersion]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 presentation/impl#[`PresentationProofVerifier<'a>`]verify()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_bytes_mod_order()." [color=blue]
+  "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." -> "rust-analyzer cargo poksho 0.7.0 proof/impl#[Proof]from_slice()." [color=blue, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]prove()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/tests/test_proof_to_hash()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ProfileKeyCredentialRequestProof]verify()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/zkcredential_examples/impl#[RoomId][RevealedAttribute]as_point()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/zkcredential_examples/impl#[RoomId][RevealedAttribute]as_point()." -> "rust-analyzer cargo zkcredential 0.1.0 presentation/impl#[`PresentationProofVerifier<'a>`]verify()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/zkcredential_examples/impl#[RoomId][RevealedAttribute]as_point()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]prove()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/zkcredential_examples/impl#[RoomId][RevealedAttribute]as_point()." -> "rust-analyzer cargo zkcredential 0.1.0 issuance/blind/impl#[`BlindedIssuanceProofBuilder<'_>`]verify()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialPresentationProof]verify()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/credentials/convert_to_points_receipt_struct()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialPresentationProof]verify()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_alternate_identity_signing()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]sign_alternate_identity()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/tests/test_alternate_identity_signing()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKey]verify_alternate_identity()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/round_trip()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/round_trip()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 common/simple_types/encode_redemption_time()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_bytes_mod_order()." [color=blue]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/verify_search_internal()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 verify/evaluate_vrf_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ExpiringProfileKeyCredentialIssuanceProof]verify()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPrivateKey_Sign()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/ECPublicKey_Verify()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 common/simple_types/encode_receipt_serial_bytes()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_bytes_mod_order()." [color=blue]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ExpiringProfileKeyCredentialPresentationProof]verify()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/create_pre_key_bundle()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 main()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 main()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_random_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_random_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 state/kyber_prekey/impl#[KyberPreKeyRecord]generate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]create_receipt_credential_request_context()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/receipt_credential_request/impl#[KeyPair]encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]verify_proof()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]restore2()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 test/to_ristretto_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]validate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 proof/impl#[Proof]from_slice()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_canonical_bytes()." [color=blue]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]new()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSendEndorsementsResponse_ReceiveAndCombineWithCiphertexts()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_ciphertexts()." [color=blue, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 statement/tests/test_complex_statement()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]prove()." [color=blue, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 statement/tests/test_complex_statement()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_request_response()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/receipt_credential_request/impl#[KeyPair]encrypt()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_request_response()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialIssuanceProof]verify()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_request_response()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialPresentationProof]verify()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSendEndorsementsResponse_ReceiveAndCombineWithServiceIds()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids()." [color=blue, style=dashed]
+  "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_bytes_mod_order()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]reduce()." [color=gray, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/IdentityKeyPair_SignAlternateIdentity()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKeyPair]sign_alternate_identity()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/tests/test_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 benches()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsement_flow()." [color=blue, style=dashed]
+  "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_canonical_bytes()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]is_canonical()." [color=gray, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 support/impl#[TestStoreBuilder]sign()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsement_flow()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsement_flow()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_canonical_bytes()." [color=blue]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]generate_weights_for_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServerVersion]new()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 test/to_ristretto_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_endorsement()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_endorsement()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_endorsement()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_ciphertexts()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerPublicParams]receive_receipt_credential()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialIssuanceProof]verify()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/credentials/convert_to_point_M2_receipt_serial_bytes()." -> "rust-analyzer cargo zkgroup 0.9.0 common/simple_types/encode_receipt_serial_bytes()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/tests/test_proof_to_hash_fails()." -> "rust-analyzer cargo libsignal-keytrans 0.0.1 vrf/impl#[PublicKey]proof_to_hash()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_client_rejects_bad_expirations()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_client_rejects_bad_expirations()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/receipt_credential_request/impl#[KeyPair]encrypt()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/credentials/convert_to_point_M2_receipt_serial_bytes()." [color=blue, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 sign/verify_signature()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]validate()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]validate()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]validate()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 session/process_prekey_bundle()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_is_identity()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_is_identity()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/combining_endorsements()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/combining_endorsements()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 zkgroup/GroupSendEndorsementsResponse_IssueDeterministic()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 protocol/impl#[SenderKeyMessage]verify_signature()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_single_member_group()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 test_single_member_group()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[SenderCertificate]new()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids_single_threaded()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKey]verify_alternate_identity()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/tests/test_large_signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/to_ristretto_scalar()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_canonical_bytes()." [color=blue]
+  "rust-analyzer cargo libsignal-protocol 0.1.0 sealed_sender/impl#[ServerCertificate]new()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/server_params/impl#[ServerSecretParams]verify_receipt_credential_presentation()." -> "rust-analyzer cargo zkgroup 0.9.0 crypto/proofs/impl#[ReceiptCredentialPresentationProof]verify()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_ciphertexts()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PrivateKey]calculate_signature_for_multipart_message()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]prove()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]generate_weights_for_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]issue()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 issuance/blind/impl#[`BlindedIssuanceProofBuilder<'_>`]verify()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 protocol/IdentityKey_VerifyAlternateIdentity()." -> "rust-analyzer cargo libsignal-protocol 0.1.0 identity_key/impl#[IdentityKey]verify_alternate_identity()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 curve/curve25519/impl#[PrivateKey]calculate_signature()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_bytes_mod_order()." [color=blue]
+  "rust-analyzer cargo libsignal-core 0.1.0 signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[PublicKey]verify_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-core 0.1.0 signatures()." -> "rust-analyzer cargo libsignal-core 0.1.0 curve/impl#[KeyPair]calculate_signature()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 crypto/credentials/convert_to_points_receipt_struct()." -> "rust-analyzer cargo zkgroup 0.9.0 common/simple_types/encode_receipt_serial_bytes()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 issuance/impl#[`IssuanceProofBuilder<'a>`]verify()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/full_create_restore()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]restore2()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-svrb 0.1.0 test/full_create_restore()." -> "rust-analyzer cargo libsignal-svrb 0.1.0 test/impl#[TestServer]create()." [color=blue, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 scalar/scalar_from_slice_canonical()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_canonical_bytes()." [color=blue]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_flow()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_flow()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]receive()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_group_send_endorsements()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_ciphertexts()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_group_send_endorsements()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_group_send_endorsements()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkgroup 0.9.0 benchmark_group_send_endorsements()." -> "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]receive_with_service_ids_single_threaded()." [color=blue, style=dashed]
+}

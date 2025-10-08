@@ -1,0 +1,2318 @@
+{
+  "total_symbols": 557,
+  "generated_graphs": 119,
+  "failed_symbols": [
+    [
+      "backend/serial/curve_models/impl#[AffineNielsPoint][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "backend/impl#[VartimePrecomputedStraus]optional_mixed_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[AffineNielsPoint][ConditionallySelectable]conditional_assign().",
+      "empty graph"
+    ],
+    [
+      "backend/pippenger_optional_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/impl#[VartimePrecomputedStraus]new().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[AffineNielsPoint][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[AffineNielsPoint][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[AffineNielsPoint][Default]default().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[CompletedPoint][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[AffineNielsPoint][Identity]identity().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][ConditionallySelectable]conditional_assign().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Default]default().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Identity]identity().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[ProjectivePoint][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[ProjectivePoint][ValidityCheck]is_valid().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[`&EdwardsPoint`][`Add<&AffineNielsPoint>`]add().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[`&EdwardsPoint`][`Add<&ProjectiveNielsPoint>`]add().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[`&EdwardsPoint`][`Sub<&AffineNielsPoint>`]sub().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[`&AffineNielsPoint`][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[`&EdwardsPoint`][`Sub<&ProjectiveNielsPoint>`]sub().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[`&ProjectiveNielsPoint`][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/scalar_mul/pippenger/impl#[Pippenger][VartimeMultiscalarMul]optional_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/scalar_mul/precomputed_straus/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]new().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/scalar_mul/precomputed_straus/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/scalar_mul/pippenger/test/test_vartime_pippenger().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/scalar_mul/straus/impl#[Straus][VartimeMultiscalarMul]optional_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/scalar_mul/variable_base/mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51][ConditionallySelectable]conditional_swap().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51][`AddAssign<&FieldElement51>`]add_assign().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51][`MulAssign<&FieldElement51>`]mul_assign().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51][`SubAssign<&FieldElement51>`]sub_assign().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51]negate().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51]from_limbs().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[`&FieldElement51`][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/m().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[`&FieldElement51`][`Sub<&FieldElement51>`]sub().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[`&FieldElement51`][`Mul<&FieldElement51>`]mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[`&FieldElement51`][`Add<&FieldElement51>`]add().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/black_box().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/impl#[Scalar52][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/impl#[Scalar52][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/impl#[Scalar52][`Index<usize>`]index().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/impl#[Scalar52][`IndexMut<usize>`]index_mut().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/impl#[Scalar52]mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/impl#[Scalar52]square().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/part1().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/part2().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/from_bytes_wide().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/montgomery_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/add().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/montgomery_mul_max().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/montgomery_square_max().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/mul_max().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/square_max().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/sub().",
+      "empty graph"
+    ],
+    [
+      "backend/straus_optional_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/variable_base_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[CachedPoint][ConditionallySelectable]conditional_assign().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[CachedPoint][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[CachedPoint][Default]default().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[CachedPoint][Identity]identity().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[ExtendedPoint][Default]default().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[ExtendedPoint][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[ExtendedPoint][ConditionallySelectable]conditional_assign().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[`&CachedPoint`][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[`&ExtendedPoint`][`Sub<&CachedPoint>`]sub().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[`&ExtendedPoint`][`Add<&CachedPoint>`]add().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[`NafLookupTable8<CachedPoint>`][`From<&crate::EdwardsPoint>`]from().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[`crate::EdwardsPoint`][`From<ExtendedPoint>`]from().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/blend_lanes().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4][ConditionallySelectable]conditional_assign().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4][`Add<Self>`]add().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4][`Mul<(u32, u32, u32, u32)>`]mul().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4]diff_sum().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4]new().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4]reduce().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4]reduce64().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4]splat().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[FieldElement2625x4]split().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/m().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/impl#[`&FieldElement2625x4`][`Mul<Self>`]mul().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/m_lo().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/repack_pair().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/field/shuffle_lanes().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u32x8][`From<u64x4>`]from().",
+      "error: 1"
+    ],
+    [
+      "backend/vector/avx2/field/unpack_pair().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u32x8]extract().",
+      "error: 1"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u32x8]new().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u32x8]new_const().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u32x8]shl().",
+      "error: 1"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u32x8]splat().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u32x8]mul32().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u32x8]splat_const().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u64x4]new().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u64x4]new_const().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u64x4]shl().",
+      "error: 1"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u64x4]splat().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/scalar_mul/precomputed_straus/spec_avx2/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]new().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u64x4]splat_const().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/packed_simd/impl#[u64x4]shr().",
+      "error: 1"
+    ],
+    [
+      "backend/vector/scalar_mul/pippenger/spec_avx2/impl#[Pippenger][VartimeMultiscalarMul]optional_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/scalar_mul/precomputed_straus/spec_avx2/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/scalar_mul/straus/spec_avx2/impl#[Straus][VartimeMultiscalarMul]optional_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "constants/test/test_eight_torsion().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/scalar_mul/variable_base/spec_avx2/mul().",
+      "empty graph"
+    ],
+    [
+      "constants/test/test_four_torsion().",
+      "empty graph"
+    ],
+    [
+      "constants/test/test_d_vs_ratio().",
+      "empty graph"
+    ],
+    [
+      "constants/test/test_sqrt_ad_minus_one().",
+      "empty graph"
+    ],
+    [
+      "constants/test/test_sqrt_constants_sign().",
+      "empty graph"
+    ],
+    [
+      "constants/test/test_sqrt_minus_one().",
+      "empty graph"
+    ],
+    [
+      "deterministic/determine_curve25519_dalek_bits_warning().",
+      "empty graph"
+    ],
+    [
+      "constants/test/test_two_torsion().",
+      "empty graph"
+    ],
+    [
+      "deterministic/determine_curve25519_dalek_bits().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY][ConstantTimeEq]ct_eq().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY][Identity]identity().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY][Default]default().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY][`TryFrom<&[u8]>`]try_from().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY]from_slice().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY]to_bytes().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsBasepointTableRadix128][BasepointTable]create().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsBasepointTableRadix256][BasepointTable]create().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsBasepointTableRadix32][BasepointTable]create().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsBasepointTableRadix64][BasepointTable]create().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsBasepointTable][BasepointTable]create().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsBasepointTable][BasepointTable]basepoint().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][ConstantTimeEq]ct_eq().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][ValidityCheck]is_valid().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][Default]default().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][VartimeMultiscalarMul]optional_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][`AddAssign<&EdwardsPoint>`]add_assign().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][`MulAssign<&Scalar>`]mul_assign().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][`PartialEq<Self>`]eq().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][`Sum<T>`]sum().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint]as_affine_niels().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][`SubAssign<&EdwardsPoint>`]sub_assign().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint]is_torsion_free().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint]mul_base_clamped().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint]mul_base().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint]mul_clamped().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint]nonspec_map_to_curve().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[VartimeEdwardsPrecomputation][VartimePrecomputedMultiscalarMul]new().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[VartimeEdwardsPrecomputation][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[`&EdwardsPoint`][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[`&EdwardsPoint`][`Mul<&Scalar>`]mul().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[`&EdwardsPoint`][`Sub<&EdwardsPoint>`]sub().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[`&Scalar`][`Mul<&EdwardsPoint>`]mul().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint16_vs_mul_by_pow_2_4().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[`&EdwardsPoint`][`Add<&EdwardsPoint>`]add().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_decompression_compression().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_double_vs_basepoint2().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_mult_by_basepoint_order().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_mult_one_vs_basepoint().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_mult_two_vs_basepoint2().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_mult_vs_ed25519py().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_plus_basepoint_affine_niels_vs_basepoint2().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_plus_basepoint_vs_basepoint2().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_projective_extended_round_trip().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_table_basepoint_function_correct().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_plus_basepoint_projective_niels_vs_basepoint2().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_tables().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/compressed_identity().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_tables_unreduced_scalar().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/conditional_assign_for_affine_niels_point().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/decompression_sign_handling().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/elligator_signal_test_vectors().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/extended_point_equality_handles_scaling().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/is_identity().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/impl_sum().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/is_small_order().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/mul_base_clamped().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/monte_carlo_overflow_underflow_debug_assert_test().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/multiscalar_consistency_iter().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/multiscalar_consistency_n_100().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/multiscalar_consistency_n_1000().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/multiscalar_consistency_n_250().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/multiscalar_consistency_n_500().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/scalarmult_extended_point_works_both_ways().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/scalar_mul_vs_ed25519py().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/test_precomputed_basepoint_mult().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/test_vectors().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/vartime/double_scalar_mul_basepoint_vs_ed25519py().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/to_affine_niels_clears_denominators().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/vartime/multiscalar_mul_vartime_vs_consttime().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/vartime/multiscalar_mul_vs_ed25519py().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/vartime_precomputed_vs_nonprecomputed_multiscalar().",
+      "empty graph"
+    ],
+    [
+      "edwards_benches/consttime_fixed_base_scalar_mul().",
+      "empty graph"
+    ],
+    [
+      "edwards_benches/consttime_variable_base_scalar_mul().",
+      "empty graph"
+    ],
+    [
+      "edwards_benches/edwards_benches().",
+      "empty graph"
+    ],
+    [
+      "edwards_benches/decompress().",
+      "empty graph"
+    ],
+    [
+      "edwards_benches/compress().",
+      "empty graph"
+    ],
+    [
+      "edwards_benches/vartime_double_base_scalar_mul().",
+      "empty graph"
+    ],
+    [
+      "field/impl#[`crate::lizard::lizard_constants::FieldElement51`]batch_invert().",
+      "empty graph"
+    ],
+    [
+      "field/impl#[`crate::lizard::lizard_constants::FieldElement51`][`PartialEq<Self>`]eq().",
+      "empty graph"
+    ],
+    [
+      "field/test/a_invert_vs_inverse_of_a_constant().",
+      "empty graph"
+    ],
+    [
+      "field/test/a_mul_a_vs_a_squared_constant().",
+      "empty graph"
+    ],
+    [
+      "field/test/a_square2_vs_a_squared_constant().",
+      "empty graph"
+    ],
+    [
+      "field/test/a_p58_vs_ap58_constant().",
+      "empty graph"
+    ],
+    [
+      "field/test/a_square_vs_a_squared_constant().",
+      "empty graph"
+    ],
+    [
+      "field/test/batch_invert_empty().",
+      "empty graph"
+    ],
+    [
+      "field/test/batch_invert_a_matches_nonbatched().",
+      "empty graph"
+    ],
+    [
+      "field/test/conditional_negate().",
+      "empty graph"
+    ],
+    [
+      "field/test/encoding_is_canonical().",
+      "empty graph"
+    ],
+    [
+      "field/test/equality().",
+      "empty graph"
+    ],
+    [
+      "field/test/from_bytes_highbit_is_ignored().",
+      "empty graph"
+    ],
+    [
+      "is_capable_simd().",
+      "empty graph"
+    ],
+    [
+      "impl#[DalekBits][Display]fmt().",
+      "empty graph"
+    ],
+    [
+      "lizard/lizard_constants/test/test_lizard_constants().",
+      "empty graph"
+    ],
+    [
+      "field/test/sqrt_ratio_behavior().",
+      "empty graph"
+    ],
+    [
+      "lizard/lizard_ristretto/impl#[RistrettoPoint]encode_253_bits().",
+      "empty graph"
+    ],
+    [
+      "lizard/lizard_ristretto/test/test_elligator_inv().",
+      "empty graph"
+    ],
+    [
+      "lizard/lizard_ristretto/impl#[RistrettoPoint]xcoset4().",
+      "empty graph"
+    ],
+    [
+      "lizard/lizard_ristretto/test/test_lizard_encode().",
+      "empty graph"
+    ],
+    [
+      "lizard/lizard_ristretto/test/test_lizard_encode_helper().",
+      "empty graph"
+    ],
+    [
+      "lizard/u64_constants/field_element().",
+      "empty graph"
+    ],
+    [
+      "main().",
+      "empty graph"
+    ],
+    [
+      "montgomery/differential_add_and_double().",
+      "empty graph"
+    ],
+    [
+      "montgomery/elligator_encode().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint][Hash]hash().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint][ConstantTimeEq]ct_eq().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint][Identity]identity().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint][`PartialEq<Self>`]eq().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint][`MulAssign<&Scalar>`]mul_assign().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint]mul_base().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint]mul_base_clamped().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint]as_bytes().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint]mul_clamped().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint]mul_bits_be().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[ProjectivePoint][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint]to_bytes().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[ProjectivePoint]as_affine().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[ProjectivePoint][Default]default().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[ProjectivePoint][Identity]identity().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[`&MontgomeryPoint`][`Mul<&Scalar>`]mul().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/basepoint_edwards_to_montgomery().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[`&Scalar`][`Mul<&MontgomeryPoint>`]mul().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/basepoint_montgomery_to_edwards().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/bytestring_bits_le().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/eq_defined_mod_p().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/identity_in_different_coordinates().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/identity_in_different_models().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/montgomery_elligator_correct().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/montgomery_ladder_matches_edwards_scalarmult().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/montgomery_mul_bits_be().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/montgomery_elligator_zero_zero().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/montgomery_mul_bits_be_twist().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/montgomery_to_edwards_rejects_twist().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/mul_base_clamped().",
+      "empty graph"
+    ],
+    [
+      "montgomery_benches/consttime_fixed_base_scalar_mul().",
+      "empty graph"
+    ],
+    [
+      "montgomery/test/rand_prime_order_point().",
+      "empty graph"
+    ],
+    [
+      "montgomery_benches/montgomery_benches().",
+      "empty graph"
+    ],
+    [
+      "montgomery_benches/montgomery_ladder().",
+      "empty graph"
+    ],
+    [
+      "multiscalar_benches/construct_points().",
+      "empty graph"
+    ],
+    [
+      "multiscalar_benches/construct_scalars().",
+      "empty graph"
+    ],
+    [
+      "multiscalar_benches/consttime_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "multiscalar_benches/multiscalar_benches().",
+      "empty graph"
+    ],
+    [
+      "multiscalar_benches/vartime_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "multiscalar_benches/vartime_precomputed_helper().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[BatchCompressState][`From<&RistrettoPoint>`]from().",
+      "empty graph"
+    ],
+    [
+      "multiscalar_benches/vartime_precomputed_pure_static().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[BatchCompressState]efgh().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[CompressedRistretto][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[CompressedRistretto][ConstantTimeEq]ct_eq().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[CompressedRistretto][Default]default().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[CompressedRistretto][Identity]identity().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[CompressedRistretto][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[CompressedRistretto][`TryFrom<&[u8]>`]try_from().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoBasepointTable]basepoint().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoBasepointTable]create().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][ConstantTimeEq]ct_eq().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][VartimeMultiscalarMul]optional_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][`Add<Self>`]add().",
+      "error: 1"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][`AddAssign<&RistrettoPoint>`]add_assign().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][`MulAssign<&Scalar>`]mul_assign().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][`Sum<T>`]sum().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][`PartialEq<Self>`]eq().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][`SubAssign<&RistrettoPoint>`]sub_assign().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint]coset4().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint]from_hash().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint]hash_from_bytes().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint]random().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint]vartime_double_scalar_mul_basepoint().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[VartimeRistrettoPrecomputation][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[`&RistrettoBasepointTable`][`Mul<&Scalar>`]mul().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[`&RistrettoPoint`][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[`&RistrettoPoint`][`Mul<&Scalar>`]mul().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[VartimeRistrettoPrecomputation][VartimePrecomputedMultiscalarMul]new().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[`&RistrettoPoint`][`Add<&RistrettoPoint>`]add().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[`&RistrettoPoint`][`Sub<&RistrettoPoint>`]sub().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[`&Scalar`][`Mul<&RistrettoBasepointTable>`]mul().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[`&Scalar`][`Mul<&RistrettoPoint>`]mul().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/basepoint_roundtrip().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/decompress_negative_s_fails().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/double_and_compress_1024_random_points().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/decompress_id().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/compress_id().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/encodings_of_small_multiples_of_basepoint().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/elligator_vs_ristretto_sage().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/four_torsion_random().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/four_torsion_basepoint().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/impl_sum().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/one_way_map().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/random_roundtrip().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/scalarmult_ristrettopoint_works_both_ways().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/vartime_precomputed_vs_nonprecomputed_multiscalar().",
+      "empty graph"
+    ],
+    [
+      "ristretto_benches/double_and_compress_batch().",
+      "empty graph"
+    ],
+    [
+      "ristretto_benches/compress().",
+      "empty graph"
+    ],
+    [
+      "ristretto_benches/ristretto_benches().",
+      "empty graph"
+    ],
+    [
+      "ristretto_benches/elligator().",
+      "empty graph"
+    ],
+    [
+      "ristretto_benches/decompress().",
+      "empty graph"
+    ],
+    [
+      "scalar/bot_half().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][Serialize]serialize().",
+      "error: 1"
+    ],
+    [
+      "scalar/impl#[Scalar][Default]default().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`Deserialize<'de>`]deserialize().",
+      "error: 1"
+    ],
+    [
+      "scalar/impl#[Scalar][`From<u128>`]from().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`AddAssign<&Scalar>`]add_assign().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`From<u16>`]from().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`Index<usize>`]index().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`Product<T>`]product().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`MulAssign<&Scalar>`]mul_assign().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`SubAssign<&Scalar>`]sub_assign().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`PartialEq<Self>`]eq().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`Sum<T>`]sum().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar]as_radix_16().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar]as_radix_2w().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar]batch_invert().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar]bits_le().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar]random().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar]to_radix_2w_size_hint().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[`&Scalar`][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[`&Scalar`][`Mul<&Scalar>`]mul().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[`&Scalar`][`Sub<&Scalar>`]sub().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[`&Scalar`][`Add<&Scalar>`]add().",
+      "empty graph"
+    ],
+    [
+      "scalar/square_multiply().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/add_reduces().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/batch_invert_consistency().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/batch_invert_with_a_zero_input_panics().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/from_u64().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/batch_invert_empty().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/fuzzer_testcase_reduction().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/from_bytes_mod_order_wide().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/canonical_decoding().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/impl_add().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/impl_mul().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/impl_product().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/montgomery_reduce_matches_from_bytes_mod_order_wide().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/impl_sum().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/invert().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/non_adjacent_form_iter().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/neg_twice_is_identity().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/non_adjacent_form_test_vector().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/non_adjacent_form_random().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/reduce().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/scalar_mul_by_one().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/square().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/sub_reduces().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/test_pippenger_radix().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/test_mul_reduction_invariance().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/test_pippenger_radix_iter().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/test_read_le_u64_into().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/test_read_le_u64_into_should_panic_on_bad_input().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/test_scalar_from_int().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/test_scalar_clamp().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/to_bytes_from_bytes_roundtrips().",
+      "empty graph"
+    ],
+    [
+      "scalar/top_half().",
+      "empty graph"
+    ],
+    [
+      "scalar_benches/scalar_arith().",
+      "empty graph"
+    ],
+    [
+      "scalar_benches/batch_scalar_inversion().",
+      "empty graph"
+    ],
+    [
+      "scalar_benches/scalar_benches().",
+      "empty graph"
+    ],
+    [
+      "traits/BasepointTable#basepoint().",
+      "error: 1"
+    ],
+    [
+      "traits/BasepointTable#create().",
+      "empty graph"
+    ],
+    [
+      "traits/BasepointTable#mul_base_clamped().",
+      "empty graph"
+    ],
+    [
+      "traits/BasepointTable#mul_base().",
+      "error: 1"
+    ],
+    [
+      "traits/IsIdentity#is_identity().",
+      "error: 1"
+    ],
+    [
+      "traits/MultiscalarMul#multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "traits/ValidityCheck#is_valid().",
+      "error: 1"
+    ],
+    [
+      "traits/VartimePrecomputedMultiscalarMul#optional_mixed_multiscalar_mul().",
+      "error: 1"
+    ],
+    [
+      "traits/VartimePrecomputedMultiscalarMul#new().",
+      "empty graph"
+    ],
+    [
+      "traits/VartimePrecomputedMultiscalarMul#vartime_mixed_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "traits/VartimePrecomputedMultiscalarMul#vartime_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "window/impl#[`LookupTable<ProjectiveNielsPoint>`][`From<&EdwardsPoint>`]from().",
+      "error: 1"
+    ],
+    [
+      "window/impl#[`LookupTable<T>`]select().",
+      "error: 1"
+    ],
+    [
+      "window/impl#[`NafLookupTable5<AffineNielsPoint>`][`From<&EdwardsPoint>`]from().",
+      "empty graph"
+    ],
+    [
+      "window/impl#[`NafLookupTable5<T>`][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "window/impl#[`NafLookupTable8<AffineNielsPoint>`][`From<&EdwardsPoint>`]from().",
+      "empty graph"
+    ],
+    [
+      "window/impl#[`NafLookupTable8<ProjectiveNielsPoint>`][`From<&EdwardsPoint>`]from().",
+      "empty graph"
+    ],
+    [
+      "window/impl#[`NafLookupTable8<T>`][Debug]fmt().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_rustfmt_skip().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_where_clause().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_const_arg().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Conditional][Parse]parse().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg][Parse]parse().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg]condition().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg]lit().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArgs][Parse]parse().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Struct]member_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`()`][`From<&Struct>`]from().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Struct]member_function_with_const_arg().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`StructWithGenerics<T>`]member_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`StructWithGenericsNoWhere<T>`]member_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner/inner_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_sse2/tests/test_specialized_inner().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_sse2/spec_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_sse2/test_specialized().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_avx2/spec_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 is_path_eq().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 kw/conditional().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_impl().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_item().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_mod().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 test_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 test_sse2_only().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 unsafe_target_feature().",
+      "error: 1"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 unsafe_target_feature_specialize().",
+      "error: 1"
+    ]
+  ],
+  "elapsed_seconds": 318.1237144470215,
+  "all_symbols": [
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/cpuid_avx2/impl#[InitToken]get().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/cpuid_avx2/init().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/get_selected_backend().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/impl#[VartimePrecomputedStraus]new().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/impl#[VartimePrecomputedStraus]optional_mixed_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/pippenger_optional_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[AffineNielsPoint][ConditionallySelectable]conditional_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[AffineNielsPoint][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[AffineNielsPoint][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[AffineNielsPoint][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[AffineNielsPoint][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[AffineNielsPoint][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[CompletedPoint][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[CompletedPoint]as_extended().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[CompletedPoint]as_projective().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectiveNielsPoint][ConditionallySelectable]conditional_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectiveNielsPoint][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectiveNielsPoint][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectiveNielsPoint][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectiveNielsPoint][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectiveNielsPoint][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectivePoint][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectivePoint][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectivePoint][ValidityCheck]is_valid().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectivePoint]as_extended().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[ProjectivePoint]double().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[`&AffineNielsPoint`][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[`&EdwardsPoint`][`Add<&AffineNielsPoint>`]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[`&EdwardsPoint`][`Add<&ProjectiveNielsPoint>`]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[`&EdwardsPoint`][`Sub<&AffineNielsPoint>`]sub().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[`&EdwardsPoint`][`Sub<&ProjectiveNielsPoint>`]sub().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/curve_models/impl#[`&ProjectiveNielsPoint`][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/pippenger/impl#[Pippenger][VartimeMultiscalarMul]optional_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/pippenger/test/test_vartime_pippenger().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/precomputed_straus/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]new().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/precomputed_straus/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/straus/impl#[Straus][MultiscalarMul]multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/straus/impl#[Straus][VartimeMultiscalarMul]optional_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/variable_base/mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/vartime_double_base/mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51][ConditionallySelectable]conditional_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51][ConditionallySelectable]conditional_swap().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51][`AddAssign<&FieldElement51>`]add_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51][`MulAssign<&FieldElement51>`]mul_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51][`SubAssign<&FieldElement51>`]sub_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51]as_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51]from_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51]from_limbs().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51]negate().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51]pow2k().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51]reduce().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51]square().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[FieldElement51]square2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[`&FieldElement51`][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[`&FieldElement51`][`Add<&FieldElement51>`]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[`&FieldElement51`][`Mul<&FieldElement51>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/impl#[`&FieldElement51`][`Sub<&FieldElement51>`]sub().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/field/m().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/black_box().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52][`Index<usize>`]index().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52][`IndexMut<usize>`]index_mut().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]as_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]as_montgomery().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]from_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]from_bytes_wide().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]from_montgomery().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]montgomery_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]montgomery_reduce().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]montgomery_square().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]mul_internal().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]square().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]square_internal().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/impl#[Scalar52]sub().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/m().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/part1().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/part2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/test/add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/test/from_bytes_wide().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/test/montgomery_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/test/montgomery_mul_max().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/test/montgomery_square_max().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/test/mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/test/mul_max().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/test/square_max().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/u64/scalar/test/sub().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/straus_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/straus_optional_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/variable_base_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vartime_double_base_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[CachedPoint][ConditionallySelectable]conditional_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[CachedPoint][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[CachedPoint][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[CachedPoint][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[CachedPoint][`From<ExtendedPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[ExtendedPoint][ConditionallySelectable]conditional_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[ExtendedPoint][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[ExtendedPoint][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[ExtendedPoint][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[ExtendedPoint][`From<crate::EdwardsPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[ExtendedPoint]double().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[ExtendedPoint]mul_by_pow_2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[`&CachedPoint`][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[`&ExtendedPoint`][`Add<&CachedPoint>`]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[`&ExtendedPoint`][`Sub<&CachedPoint>`]sub().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[`LookupTable<CachedPoint>`][`From<&crate::EdwardsPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[`NafLookupTable5<CachedPoint>`][`From<&crate::EdwardsPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[`NafLookupTable8<CachedPoint>`][`From<&crate::EdwardsPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/edwards/impl#[`crate::EdwardsPoint`][`From<ExtendedPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/blend_lanes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4][ConditionallySelectable]conditional_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4][`Add<Self>`]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4][`Mul<(u32, u32, u32, u32)>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]blend().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]diff_sum().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]negate_lazy().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]new().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]reduce().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]reduce64().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]shuffle().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]splat().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]split().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[FieldElement2625x4]square_and_negate_D().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/impl#[`&FieldElement2625x4`][`Mul<Self>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/m().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/m_lo().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/repack_pair().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/shuffle_lanes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/avx2/field/unpack_pair().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u32x8][`From<u64x4>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u32x8]extract().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u32x8]mul32().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u32x8]new().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u32x8]new_const().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u32x8]shl().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u32x8]splat().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u32x8]splat_const().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u64x4]new().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u64x4]new_const().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u64x4]shl().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u64x4]shr().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u64x4]splat().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/packed_simd/impl#[u64x4]splat_const().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/scalar_mul/pippenger/spec_avx2/impl#[Pippenger][VartimeMultiscalarMul]optional_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/scalar_mul/precomputed_straus/spec_avx2/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]new().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/scalar_mul/precomputed_straus/spec_avx2/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/scalar_mul/straus/spec_avx2/impl#[Straus][MultiscalarMul]multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/scalar_mul/straus/spec_avx2/impl#[Straus][VartimeMultiscalarMul]optional_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/scalar_mul/variable_base/spec_avx2/mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/vector/scalar_mul/vartime_double_base/spec_avx2/mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 constants/test/test_d_vs_ratio().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 constants/test/test_eight_torsion().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 constants/test/test_four_torsion().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 constants/test/test_sqrt_ad_minus_one().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 constants/test/test_sqrt_constants_sign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 constants/test/test_sqrt_minus_one().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 constants/test/test_two_torsion().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 deterministic/determine_curve25519_dalek_bits().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 deterministic/determine_curve25519_dalek_bits_warning().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/decompress/step_1().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/decompress/step_2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY][ConstantTimeEq]ct_eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY][`TryFrom<&[u8]>`]try_from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY]as_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY]decompress().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY]from_slice().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[CompressedEdwardsY]to_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsBasepointTableRadix128][BasepointTable]create().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsBasepointTableRadix256][BasepointTable]create().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsBasepointTableRadix32][BasepointTable]create().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsBasepointTableRadix64][BasepointTable]create().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsBasepointTable][BasepointTable]basepoint().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsBasepointTable][BasepointTable]create().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][ConstantTimeEq]ct_eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][MultiscalarMul]multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][ValidityCheck]is_valid().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][VartimeMultiscalarMul]optional_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][`AddAssign<&EdwardsPoint>`]add_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][`MulAssign<&Scalar>`]mul_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][`PartialEq<Self>`]eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][`SubAssign<&EdwardsPoint>`]sub_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][`Sum<T>`]sum().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]as_affine_niels().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]as_projective().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]as_projective_niels().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]compress().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]double().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]is_small_order().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]is_torsion_free().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]mul_base().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]mul_base_clamped().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]mul_by_cofactor().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]mul_by_pow_2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]mul_clamped().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]nonspec_map_to_curve().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]to_montgomery().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint]vartime_double_scalar_mul_basepoint().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[VartimeEdwardsPrecomputation][VartimePrecomputedMultiscalarMul]new().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[VartimeEdwardsPrecomputation][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[`&EdwardsPoint`][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[`&EdwardsPoint`][`Add<&EdwardsPoint>`]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[`&EdwardsPoint`][`Mul<&Scalar>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[`&EdwardsPoint`][`Sub<&EdwardsPoint>`]sub().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[`&Scalar`][`Mul<&EdwardsPoint>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint16_vs_mul_by_pow_2_4().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_decompression_compression().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_double_vs_basepoint2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_mult_by_basepoint_order().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_mult_one_vs_basepoint().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_mult_two_vs_basepoint2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_mult_vs_ed25519py().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_plus_basepoint_affine_niels_vs_basepoint2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_plus_basepoint_projective_niels_vs_basepoint2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_plus_basepoint_vs_basepoint2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_projective_extended_round_trip().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_table_basepoint_function_correct().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_tables().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/basepoint_tables_unreduced_scalar().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/compressed_identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/conditional_assign_for_affine_niels_point().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/decompression_sign_handling().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/elligator_signal_test_vectors().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/extended_point_equality_handles_scaling().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/impl_sum().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/is_identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/is_small_order().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/monte_carlo_overflow_underflow_debug_assert_test().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/mul_base_clamped().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/multiscalar_consistency_iter().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/multiscalar_consistency_n_100().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/multiscalar_consistency_n_1000().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/multiscalar_consistency_n_250().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/multiscalar_consistency_n_500().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/scalar_mul_vs_ed25519py().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/scalarmult_extended_point_works_both_ways().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/test_precomputed_basepoint_mult().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/test_vectors().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/to_affine_niels_clears_denominators().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/vartime/double_scalar_mul_basepoint_vs_ed25519py().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/vartime/multiscalar_mul_vartime_vs_consttime().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/vartime/multiscalar_mul_vs_ed25519py().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/test/vartime_precomputed_vs_nonprecomputed_multiscalar().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards_benches/compress().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards_benches/consttime_fixed_base_scalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards_benches/consttime_variable_base_scalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards_benches/decompress().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards_benches/edwards_benches().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards_benches/vartime_double_base_scalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`][ConstantTimeEq]ct_eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`][`PartialEq<Self>`]eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`]batch_invert().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`]invert().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`]invsqrt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`]is_negative().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`]is_zero().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`]pow22501().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`]pow_p58().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/impl#[`crate::lizard::lizard_constants::FieldElement51`]sqrt_ratio_i().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/a_invert_vs_inverse_of_a_constant().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/a_mul_a_vs_a_squared_constant().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/a_p58_vs_ap58_constant().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/a_square2_vs_a_squared_constant().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/a_square_vs_a_squared_constant().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/batch_invert_a_matches_nonbatched().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/batch_invert_empty().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/conditional_negate().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/encoding_is_canonical().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/equality().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/from_bytes_highbit_is_ignored().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 field/test/sqrt_ratio_behavior().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 impl#[DalekBits][Display]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 is_capable_simd().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/jacobi_quartic/impl#[JacobiPoint]dual().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/jacobi_quartic/impl#[JacobiPoint]elligator_inv().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_constants/test/test_lizard_constants().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]decode_253_bits().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]elligator_ristretto_flavor_inverse().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]encode_253_bits().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]from_uniform_bytes_single_elligator().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]lizard_decode().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]lizard_encode().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]to_jacobi_quartic_ristretto().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/impl#[RistrettoPoint]xcoset4().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/test/test_elligator_inv().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/test/test_lizard_encode().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/lizard_ristretto/test/test_lizard_encode_helper().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 lizard/u64_constants/field_element().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 main().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/differential_add_and_double().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/elligator_encode().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint][ConstantTimeEq]ct_eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint][Hash]hash().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint][`MulAssign<&Scalar>`]mul_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint][`PartialEq<Self>`]eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint]as_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint]mul_base().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint]mul_base_clamped().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint]mul_bits_be().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint]mul_clamped().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint]to_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[MontgomeryPoint]to_edwards().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[ProjectivePoint][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[ProjectivePoint][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[ProjectivePoint][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[ProjectivePoint]as_affine().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[`&MontgomeryPoint`][`Mul<&Scalar>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/impl#[`&Scalar`][`Mul<&MontgomeryPoint>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/basepoint_edwards_to_montgomery().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/basepoint_montgomery_to_edwards().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/bytestring_bits_le().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/eq_defined_mod_p().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/identity_in_different_coordinates().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/identity_in_different_models().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/montgomery_elligator_correct().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/montgomery_elligator_zero_zero().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/montgomery_ladder_matches_edwards_scalarmult().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/montgomery_mul_bits_be().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/montgomery_mul_bits_be_twist().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/montgomery_to_edwards_rejects_twist().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/mul_base_clamped().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery/test/rand_prime_order_point().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery_benches/consttime_fixed_base_scalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery_benches/montgomery_benches().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 montgomery_benches/montgomery_ladder().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 multiscalar_benches/construct_points().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 multiscalar_benches/construct_scalars().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 multiscalar_benches/consttime_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 multiscalar_benches/multiscalar_benches().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 multiscalar_benches/vartime_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 multiscalar_benches/vartime_precomputed_helper().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 multiscalar_benches/vartime_precomputed_pure_static().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/decompress/step_1().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/decompress/step_2().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[BatchCompressState][`From<&RistrettoPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[BatchCompressState]efgh().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto][ConstantTimeEq]ct_eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto][`TryFrom<&[u8]>`]try_from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto]as_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto]decompress().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto]from_slice().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[CompressedRistretto]to_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoBasepointTable]basepoint().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoBasepointTable]create().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][ConstantTimeEq]ct_eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][Identity]identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][MultiscalarMul]multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][VartimeMultiscalarMul]optional_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][`Add<Self>`]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][`AddAssign<&RistrettoPoint>`]add_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][`MulAssign<&Scalar>`]mul_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][`PartialEq<Self>`]eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][`SubAssign<&RistrettoPoint>`]sub_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][`Sum<T>`]sum().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]compress().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]coset4().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]double_and_compress_batch().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]elligator_ristretto_flavor().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]from_hash().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]from_uniform_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]hash_from_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]mul_base().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]random().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint]vartime_double_scalar_mul_basepoint().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[VartimeRistrettoPrecomputation][VartimePrecomputedMultiscalarMul]new().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[VartimeRistrettoPrecomputation][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[`&RistrettoBasepointTable`][`Mul<&Scalar>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[`&RistrettoPoint`][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[`&RistrettoPoint`][`Add<&RistrettoPoint>`]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[`&RistrettoPoint`][`Mul<&Scalar>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[`&RistrettoPoint`][`Sub<&RistrettoPoint>`]sub().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[`&Scalar`][`Mul<&RistrettoBasepointTable>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[`&Scalar`][`Mul<&RistrettoPoint>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/basepoint_roundtrip().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/compress_id().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/decompress_id().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/decompress_negative_s_fails().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/double_and_compress_1024_random_points().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/elligator_vs_ristretto_sage().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/encodings_of_small_multiples_of_basepoint().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/four_torsion_basepoint().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/four_torsion_random().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/impl_sum().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/one_way_map().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/random_roundtrip().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/scalarmult_ristrettopoint_works_both_ways().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/test/vartime_precomputed_vs_nonprecomputed_multiscalar().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto_benches/compress().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto_benches/decompress().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto_benches/double_and_compress_batch().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto_benches/elligator().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto_benches/ristretto_benches().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/bot_half().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/clamp_integer().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][ConditionallySelectable]conditional_select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][ConstantTimeEq]ct_eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][Default]default().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][Serialize]serialize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][Zeroize]zeroize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`AddAssign<&Scalar>`]add_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`Deserialize<'de>`]deserialize().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`From<u128>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`From<u16>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`From<u32>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`From<u64>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`From<u8>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`Index<usize>`]index().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`MulAssign<&Scalar>`]mul_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`PartialEq<Self>`]eq().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`Product<T>`]product().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`SubAssign<&Scalar>`]sub_assign().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`Sum<T>`]sum().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]as_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]as_radix_16().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]as_radix_2w().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]batch_invert().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]bits_le().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_bytes_mod_order().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_bytes_mod_order_wide().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_canonical_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]from_hash().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]hash_from_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]invert().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]is_canonical().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]non_adjacent_form().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]random().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]reduce().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]to_bytes().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]to_radix_2w_size_hint().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar]unpack().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[`&Scalar`][Neg]neg().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[`&Scalar`][`Add<&Scalar>`]add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[`&Scalar`][`Mul<&Scalar>`]mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[`&Scalar`][`Sub<&Scalar>`]sub().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[`backend::serial::u64::scalar::Scalar52`]invert().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[`backend::serial::u64::scalar::Scalar52`]montgomery_invert().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[`backend::serial::u64::scalar::Scalar52`]pack().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/read_le_u64_into().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/square_multiply().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/add_reduces().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/batch_invert_consistency().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/batch_invert_empty().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/batch_invert_with_a_zero_input_panics().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/canonical_decoding().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/from_bytes_mod_order_wide().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/from_u64().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/fuzzer_testcase_reduction().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/impl_add().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/impl_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/impl_product().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/impl_sum().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/invert().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/montgomery_reduce_matches_from_bytes_mod_order_wide().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/neg_twice_is_identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/non_adjacent_form_iter().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/non_adjacent_form_random().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/non_adjacent_form_test_vector().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/reduce().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/scalar_mul_by_one().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/square().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/sub_reduces().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/test_mul_reduction_invariance().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/test_pippenger_radix().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/test_pippenger_radix_iter().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/test_read_le_u64_into().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/test_read_le_u64_into_should_panic_on_bad_input().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/test_scalar_clamp().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/test_scalar_from_int().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/test/to_bytes_from_bytes_roundtrips().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/top_half().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar_benches/batch_scalar_inversion().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar_benches/scalar_arith().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar_benches/scalar_benches().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/BasepointTable#basepoint().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/BasepointTable#create().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/BasepointTable#mul_base().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/BasepointTable#mul_base_clamped().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/Identity#identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/IsIdentity#is_identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/MultiscalarMul#multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/ValidityCheck#is_valid().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/VartimeMultiscalarMul#optional_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/VartimeMultiscalarMul#vartime_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/VartimePrecomputedMultiscalarMul#new().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/VartimePrecomputedMultiscalarMul#optional_mixed_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/VartimePrecomputedMultiscalarMul#vartime_mixed_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/VartimePrecomputedMultiscalarMul#vartime_multiscalar_mul().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 traits/impl#[T][IsIdentity]is_identity().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`LookupTable<ProjectiveNielsPoint>`][`From<&EdwardsPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`LookupTable<T>`]select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`NafLookupTable5<AffineNielsPoint>`][`From<&EdwardsPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`NafLookupTable5<ProjectiveNielsPoint>`][`From<&EdwardsPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`NafLookupTable5<T>`][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`NafLookupTable5<T>`]select().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`NafLookupTable8<AffineNielsPoint>`][`From<&EdwardsPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`NafLookupTable8<ProjectiveNielsPoint>`][`From<&EdwardsPoint>`]from().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`NafLookupTable8<T>`][Debug]fmt().",
+    "rust-analyzer cargo curve25519-dalek 4.1.3 window/impl#[`NafLookupTable8<T>`]select().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_const_arg().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_rustfmt_skip().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_where_clause().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Conditional][Parse]parse().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg][Parse]parse().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg]condition().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg]lit().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArgs][Parse]parse().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Struct]member_function().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Struct]member_function_with_const_arg().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`()`][`From<&Struct>`]from().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`StructWithGenerics<T>`]member_function().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`StructWithGenericsNoWhere<T>`]member_function().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner/inner_function().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_avx2/spec_function().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_sse2/spec_function().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_sse2/test_specialized().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_sse2/tests/test_specialized_inner().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 is_path_eq().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 kw/conditional().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_function().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_impl().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_item().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_mod().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 test_function().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 test_sse2_only().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 unsafe_target_feature().",
+    "rust-analyzer cargo curve25519-dalek-derive 0.1.1 unsafe_target_feature_specialize()."
+  ]
+}

@@ -1,0 +1,88 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "mod.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/straus_multiscalar_mul()." [label="straus_multiscalar_mul", tooltip="pub fn straus_multiscalar_mul<I, J>(scalars: I, points: J) -> EdwardsPoint where     I: IntoIterator,     I::Item: core::borrow::Borrow<Scalar>,     J: IntoIterator,     J::Item: core::borrow::Borrow<...", fillcolor=lightgray, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "straus.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/straus/impl#[Straus][MultiscalarMul]multiscalar_mul()." [label="multiscalar_mul", tooltip="    fn multiscalar_mul<I, J>(scalars: I, points: J) -> EdwardsPoint     where         I: IntoIterator,         I::Item: Borrow<Scalar>,         J: IntoIterator,         J::Item: Borrow<EdwardsPoint>, ...", fillcolor=green, style="filled,dotted"]
+  }
+  subgraph cluster_2 {
+    label = "edwards.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][MultiscalarMul]multiscalar_mul()." [label="multiscalar_mul", tooltip="    fn multiscalar_mul<I, J>(scalars: I, points: J) -> EdwardsPoint     where         I: IntoIterator,         I::Item: Borrow<Scalar>,         J: IntoIterator,         J::Item: Borrow<EdwardsPoint>, ...", fillcolor=lightgray, style="filled,dotted"]
+  }
+  subgraph cluster_3 {
+    label = "ristretto.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][MultiscalarMul]multiscalar_mul()." [label="multiscalar_mul", tooltip="    fn multiscalar_mul<I, J>(scalars: I, points: J) -> RistrettoPoint     where         I: IntoIterator,         I::Item: Borrow<Scalar>,         J: IntoIterator,         J::Item: Borrow<RistrettoPoin...", fillcolor=lightgray, style="filled,dotted"]
+  }
+  subgraph cluster_4 {
+    label = "statement.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [label="verify_proof", tooltip="    pub fn verify_proof(         &self,         proof_bytes: &[u8],         point_args: &PointArgs,         message: &[u8],     ) -> Result<(), PokshoError> {         let proof = Proof::from_slice(pro...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]prove()." [label="prove", tooltip="    pub fn prove(         &self,         scalar_args: &ScalarArgs,         point_args: &PointArgs,         message: &[u8],         randomness: &[u8], // must be 32 bytes     ) -> Result<Vec<u8>, Poksh...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]homomorphism_with_subtraction()." [label="homomorphism_with_subtraction", tooltip="    fn homomorphism_with_subtraction(         &self,         g1: &[Scalar],         all_points: &[RistrettoPoint],         challenge: Option<Scalar>,     ) -> G2 {         self.equations             ....", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_5 {
+    label = "endorsements.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkcredential 0.1.0 endorsement_flow()." [label="endorsement_flow", tooltip="fn endorsement_flow(c: &mut Criterion) {     let mut group = c.benchmark_group(' endorsements' );      let mut input_sho = poksho::ShoSha256::new(b' test' );     let inputs: Vec<RistrettoPoint> = (0.....", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_6 {
+    label = "endorsements.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/combining_endorsements()." [label="combining_endorsements", tooltip="    fn combining_endorsements() {         let mut input_sho = poksho::ShoSha256::new(b' test' );         let root_key = ServerRootKeyPair::generate([42; RANDOMNESS_LEN]);          // Client          l...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_flow()." [label="default_flow", tooltip="    fn default_flow() {         let mut input_sho = poksho::ShoSha256::new(b' test' );         let root_key = ServerRootKeyPair::generate([42; RANDOMNESS_LEN]);          // Client          let client_...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/round_trip()." [label="round_trip", tooltip="        fn round_trip<T: Serialize + for<'a> Deserialize<'a> + PartialDefault>(             value: &T,             expected_len: usize,         ) {             let bincode_options = bincode::DefaultOp...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_is_identity()." [label="default_is_identity", tooltip="    fn default_is_identity() {         assert_eq!(Endorsement::combine([]).R, Endorsement::default().R);          let mut input_sho = poksho::ShoSha256::new(b' test' );         let root_key = ServerRo...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [label="issue", tooltip="    pub fn issue(         hidden_attribute_points: impl IntoIterator<Item = RistrettoPoint>,         private_key: &ServerDerivedKeyPair,         randomness: [u8; RANDOMNESS_LEN],     ) -> EndorsementR...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_7 {
+    label = "group_send_endorsement.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]issue()." [label="issue", tooltip="    pub fn issue(         member_ciphertexts: impl IntoIterator<Item = UuidCiphertext>,         key_pair: &GroupSendDerivedKeyPair,         randomness: RandomnessBytes,     ) -> Self {         // Note...", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo curve25519-dalek 4.1.3 backend/straus_multiscalar_mul()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 backend/serial/scalar_mul/straus/impl#[Straus][MultiscalarMul]multiscalar_mul()." [color=gray, style=dashed]
+  "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][MultiscalarMul]multiscalar_mul()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 backend/straus_multiscalar_mul()." [color=gray, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]homomorphism_with_subtraction()." [color=blue, style=dashed]
+  "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][MultiscalarMul]multiscalar_mul()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 edwards/impl#[EdwardsPoint][MultiscalarMul]multiscalar_mul()." [color=gray, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]prove()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]verify_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]prove()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]homomorphism_with_subtraction()." [color=blue, style=dashed]
+  "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]homomorphism_with_subtraction()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][MultiscalarMul]multiscalar_mul()." [color=blue]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/combining_endorsements()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_flow()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/round_trip()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/tests/default_is_identity()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." -> "rust-analyzer cargo poksho 0.7.0 statement/impl#[Statement]prove()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 ristretto/impl#[RistrettoPoint][MultiscalarMul]multiscalar_mul()." [color=blue]
+  "rust-analyzer cargo zkgroup 0.9.0 api/groups/group_send_endorsement/impl#[GroupSendEndorsementsResponse]issue()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+  "rust-analyzer cargo zkcredential 0.1.0 endorsement_flow()." -> "rust-analyzer cargo zkcredential 0.1.0 endorsements/impl#[EndorsementResponse]issue()." [color=blue, style=dashed]
+}

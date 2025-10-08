@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "curve25519-usage-analysis"
+version = "0.1.0"
+description = "Analysis of how the curve25519-dalek public API functions are used within the libsignal codebase"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = []
+
+[project.scripts]
+generate-curve25519-graphs = "curve25519_usage.generate_curve25519_graphs:main"
+generate-curve25519-graphs-parallel = "curve25519_usage.generate_curve25519_graphs_parallel:main"
+extract-grey-nodes = "curve25519_usage.extract_grey_nodes:main"
+extract-functions-with-graphs = "curve25519_usage.extract_functions_with_graphs:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/curve25519_usage"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0",
+    "ruff>=0.1.0",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
