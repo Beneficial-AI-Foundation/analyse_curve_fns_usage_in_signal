@@ -78,51 +78,6 @@ uv run extract-public-api-from-scip  # Extract public API from SCIP index
 └── README.md                 # This file
 ```
 
-## Usage
-
-After installation, you can use the command-line tools:
-
-```bash
-# With uv (recommended - no activation needed)
-uv run generate-curve25519-graphs
-uv run generate-curve25519-graphs-parallel
-uv run extract-grey-nodes
-uv run extract-functions-with-graphs
-uv run extract-public-api-from-scip
-
-# Or with activated virtual environment
-generate-curve25519-graphs
-generate-curve25519-graphs-parallel
-extract-grey-nodes
-extract-functions-with-graphs
-extract-public-api-from-scip
-```
-
-## Development
-
-Common development tasks with `uv`:
-
-```bash
-# Sync dependencies (install/update all dependencies)
-uv sync
-
-# Run tests
-uv run pytest
-
-# Format code
-uv run black src/
-uv run ruff check src/
-
-# Run a script directly
-uv run python src/curve25519_usage/generate_curve25519_graphs.py
-
-# Add a new dependency
-uv add <package-name>
-
-# Add a dev dependency
-uv add --dev <package-name>
-```
-
 ## Data Files
 
 - `data/index_scip_libsignal_deps.json` - SCIP index containing all symbols and call relationships for curve25519-dalek v4.1.3 and libsignal (generated with rust-analyzer and scip)
@@ -139,7 +94,7 @@ The `curve25519-dalek-public-api.json` file can be regenerated from the SCIP ind
 uv run extract-public-api-from-scip
 ```
 
-This script extracts all public API functions, methods, and constants from the SCIP index and organizes them by module and type. Note that the extracted API depends on the compilation configuration used when generating the SCIP index (e.g., 64-bit vs 32-bit backends).
+This script extracts all public API functions, methods, and constants from the SCIP index and organizes them by module and type. Note that the extracted API depends on the compilation configuration used when generating the SCIP index (e.g., 64-bit vs 32-bit backends). I don't remember how i generated [data/curve25519-dalek-public-api.json](https://github.com/Beneficial-AI-Foundation/analyse_curve_fns_usage_in_signal/blob/master/data/curve25519-dalek-public-api.json).)
 
 ## Remarks
 
