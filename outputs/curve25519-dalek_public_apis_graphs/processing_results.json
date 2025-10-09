@@ -1,9 +1,13 @@
 {
   "total_symbols": 557,
-  "generated_graphs": 119,
+  "generated_graphs": 125,
   "failed_symbols": [
     [
       "backend/serial/curve_models/impl#[AffineNielsPoint][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "backend/impl#[VartimePrecomputedStraus]new().",
       "empty graph"
     ],
     [
@@ -19,19 +23,15 @@
       "empty graph"
     ],
     [
-      "backend/impl#[VartimePrecomputedStraus]new().",
-      "empty graph"
-    ],
-    [
       "backend/serial/curve_models/impl#[AffineNielsPoint][Debug]fmt().",
       "empty graph"
     ],
     [
-      "backend/serial/curve_models/impl#[AffineNielsPoint][Zeroize]zeroize().",
+      "backend/serial/curve_models/impl#[AffineNielsPoint][Default]default().",
       "empty graph"
     ],
     [
-      "backend/serial/curve_models/impl#[AffineNielsPoint][Default]default().",
+      "backend/serial/curve_models/impl#[AffineNielsPoint][Zeroize]zeroize().",
       "empty graph"
     ],
     [
@@ -51,7 +51,7 @@
       "empty graph"
     ],
     [
-      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Default]default().",
+      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Debug]fmt().",
       "empty graph"
     ],
     [
@@ -59,19 +59,23 @@
       "empty graph"
     ],
     [
-      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Identity]identity().",
-      "empty graph"
-    ],
-    [
       "backend/serial/curve_models/impl#[ProjectivePoint][Debug]fmt().",
       "empty graph"
     ],
     [
-      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Debug]fmt().",
+      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Default]default().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[ProjectiveNielsPoint][Identity]identity().",
       "empty graph"
     ],
     [
       "backend/serial/curve_models/impl#[ProjectivePoint][ValidityCheck]is_valid().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/curve_models/impl#[`&AffineNielsPoint`][Neg]neg().",
       "empty graph"
     ],
     [
@@ -84,10 +88,6 @@
     ],
     [
       "backend/serial/curve_models/impl#[`&EdwardsPoint`][`Sub<&AffineNielsPoint>`]sub().",
-      "empty graph"
-    ],
-    [
-      "backend/serial/curve_models/impl#[`&AffineNielsPoint`][Neg]neg().",
       "empty graph"
     ],
     [
@@ -111,15 +111,19 @@
       "empty graph"
     ],
     [
-      "backend/serial/scalar_mul/pippenger/test/test_vartime_pippenger().",
-      "empty graph"
-    ],
-    [
       "backend/serial/scalar_mul/straus/impl#[Straus][VartimeMultiscalarMul]optional_multiscalar_mul().",
       "empty graph"
     ],
     [
+      "backend/serial/scalar_mul/pippenger/test/test_vartime_pippenger().",
+      "empty graph"
+    ],
+    [
       "backend/serial/scalar_mul/variable_base/mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[FieldElement51][ConditionallySelectable]conditional_select().",
       "empty graph"
     ],
     [
@@ -131,6 +135,10 @@
       "empty graph"
     ],
     [
+      "backend/serial/u64/field/impl#[FieldElement51][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
       "backend/serial/u64/field/impl#[FieldElement51][`MulAssign<&FieldElement51>`]mul_assign().",
       "empty graph"
     ],
@@ -139,19 +147,7 @@
       "empty graph"
     ],
     [
-      "backend/serial/u64/field/impl#[FieldElement51][Zeroize]zeroize().",
-      "empty graph"
-    ],
-    [
       "backend/serial/u64/field/impl#[FieldElement51][`SubAssign<&FieldElement51>`]sub_assign().",
-      "empty graph"
-    ],
-    [
-      "backend/serial/u64/field/impl#[FieldElement51][ConditionallySelectable]conditional_select().",
-      "empty graph"
-    ],
-    [
-      "backend/serial/u64/field/impl#[FieldElement51]negate().",
       "empty graph"
     ],
     [
@@ -159,7 +155,19 @@
       "empty graph"
     ],
     [
+      "backend/serial/u64/field/impl#[FieldElement51]negate().",
+      "empty graph"
+    ],
+    [
       "backend/serial/u64/field/impl#[`&FieldElement51`][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[`&FieldElement51`][`Add<&FieldElement51>`]add().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/field/impl#[`&FieldElement51`][`Mul<&FieldElement51>`]mul().",
       "empty graph"
     ],
     [
@@ -171,19 +179,11 @@
       "empty graph"
     ],
     [
-      "backend/serial/u64/field/impl#[`&FieldElement51`][`Mul<&FieldElement51>`]mul().",
-      "empty graph"
-    ],
-    [
-      "backend/serial/u64/field/impl#[`&FieldElement51`][`Add<&FieldElement51>`]add().",
+      "backend/serial/u64/scalar/impl#[Scalar52][Debug]fmt().",
       "empty graph"
     ],
     [
       "backend/serial/u64/scalar/black_box().",
-      "empty graph"
-    ],
-    [
-      "backend/serial/u64/scalar/impl#[Scalar52][Debug]fmt().",
       "empty graph"
     ],
     [
@@ -215,15 +215,11 @@
       "empty graph"
     ],
     [
-      "backend/serial/u64/scalar/test/from_bytes_wide().",
-      "empty graph"
-    ],
-    [
-      "backend/serial/u64/scalar/test/montgomery_mul().",
-      "empty graph"
-    ],
-    [
       "backend/serial/u64/scalar/test/add().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/from_bytes_wide().",
       "empty graph"
     ],
     [
@@ -231,11 +227,15 @@
       "empty graph"
     ],
     [
-      "backend/serial/u64/scalar/test/montgomery_square_max().",
+      "backend/serial/u64/scalar/test/montgomery_mul().",
       "empty graph"
     ],
     [
       "backend/serial/u64/scalar/test/mul().",
+      "empty graph"
+    ],
+    [
+      "backend/serial/u64/scalar/test/montgomery_square_max().",
       "empty graph"
     ],
     [
@@ -251,11 +251,11 @@
       "empty graph"
     ],
     [
-      "backend/straus_optional_multiscalar_mul().",
+      "backend/variable_base_mul().",
       "empty graph"
     ],
     [
-      "backend/variable_base_mul().",
+      "backend/straus_optional_multiscalar_mul().",
       "empty graph"
     ],
     [
@@ -267,15 +267,15 @@
       "empty graph"
     ],
     [
-      "backend/vector/avx2/edwards/impl#[CachedPoint][Default]default().",
-      "empty graph"
-    ],
-    [
       "backend/vector/avx2/edwards/impl#[CachedPoint][Identity]identity().",
       "empty graph"
     ],
     [
-      "backend/vector/avx2/edwards/impl#[ExtendedPoint][Default]default().",
+      "backend/vector/avx2/edwards/impl#[CachedPoint][Default]default().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/avx2/edwards/impl#[ExtendedPoint][ConditionallySelectable]conditional_assign().",
       "empty graph"
     ],
     [
@@ -283,7 +283,7 @@
       "empty graph"
     ],
     [
-      "backend/vector/avx2/edwards/impl#[ExtendedPoint][ConditionallySelectable]conditional_assign().",
+      "backend/vector/avx2/edwards/impl#[ExtendedPoint][Default]default().",
       "empty graph"
     ],
     [
@@ -299,11 +299,15 @@
       "empty graph"
     ],
     [
+      "backend/vector/avx2/edwards/impl#[`crate::EdwardsPoint`][`From<ExtendedPoint>`]from().",
+      "empty graph"
+    ],
+    [
       "backend/vector/avx2/edwards/impl#[`NafLookupTable8<CachedPoint>`][`From<&crate::EdwardsPoint>`]from().",
       "empty graph"
     ],
     [
-      "backend/vector/avx2/edwards/impl#[`crate::EdwardsPoint`][`From<ExtendedPoint>`]from().",
+      "backend/vector/avx2/field/impl#[FieldElement2625x4][ConditionallySelectable]conditional_assign().",
       "empty graph"
     ],
     [
@@ -311,15 +315,11 @@
       "empty graph"
     ],
     [
-      "backend/vector/avx2/field/impl#[FieldElement2625x4][Neg]neg().",
-      "empty graph"
-    ],
-    [
       "backend/vector/avx2/field/blend_lanes().",
       "empty graph"
     ],
     [
-      "backend/vector/avx2/field/impl#[FieldElement2625x4][ConditionallySelectable]conditional_assign().",
+      "backend/vector/avx2/field/impl#[FieldElement2625x4][Neg]neg().",
       "empty graph"
     ],
     [
@@ -328,18 +328,6 @@
     ],
     [
       "backend/vector/avx2/field/impl#[FieldElement2625x4][`Mul<(u32, u32, u32, u32)>`]mul().",
-      "empty graph"
-    ],
-    [
-      "backend/vector/avx2/field/impl#[FieldElement2625x4]diff_sum().",
-      "empty graph"
-    ],
-    [
-      "backend/vector/avx2/field/impl#[FieldElement2625x4]new().",
-      "empty graph"
-    ],
-    [
-      "backend/vector/avx2/field/impl#[FieldElement2625x4]reduce().",
       "empty graph"
     ],
     [
@@ -355,11 +343,11 @@
       "empty graph"
     ],
     [
-      "backend/vector/avx2/field/m().",
+      "backend/vector/avx2/field/impl#[`&FieldElement2625x4`][`Mul<Self>`]mul().",
       "empty graph"
     ],
     [
-      "backend/vector/avx2/field/impl#[`&FieldElement2625x4`][`Mul<Self>`]mul().",
+      "backend/vector/avx2/field/m().",
       "empty graph"
     ],
     [
@@ -371,7 +359,7 @@
       "empty graph"
     ],
     [
-      "backend/vector/avx2/field/shuffle_lanes().",
+      "backend/vector/avx2/field/unpack_pair().",
       "empty graph"
     ],
     [
@@ -379,7 +367,7 @@
       "error: 1"
     ],
     [
-      "backend/vector/avx2/field/unpack_pair().",
+      "backend/vector/avx2/field/shuffle_lanes().",
       "empty graph"
     ],
     [
@@ -387,11 +375,7 @@
       "error: 1"
     ],
     [
-      "backend/vector/packed_simd/impl#[u32x8]new().",
-      "empty graph"
-    ],
-    [
-      "backend/vector/packed_simd/impl#[u32x8]new_const().",
+      "backend/vector/packed_simd/impl#[u32x8]mul32().",
       "empty graph"
     ],
     [
@@ -399,11 +383,7 @@
       "error: 1"
     ],
     [
-      "backend/vector/packed_simd/impl#[u32x8]splat().",
-      "empty graph"
-    ],
-    [
-      "backend/vector/packed_simd/impl#[u32x8]mul32().",
+      "backend/vector/packed_simd/impl#[u32x8]new_const().",
       "empty graph"
     ],
     [
@@ -415,23 +395,11 @@
       "empty graph"
     ],
     [
-      "backend/vector/packed_simd/impl#[u64x4]new_const().",
-      "empty graph"
-    ],
-    [
       "backend/vector/packed_simd/impl#[u64x4]shl().",
       "error: 1"
     ],
     [
-      "backend/vector/packed_simd/impl#[u64x4]splat().",
-      "empty graph"
-    ],
-    [
-      "backend/vector/scalar_mul/precomputed_straus/spec_avx2/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]new().",
-      "empty graph"
-    ],
-    [
-      "backend/vector/packed_simd/impl#[u64x4]splat_const().",
+      "backend/vector/packed_simd/impl#[u64x4]new_const().",
       "empty graph"
     ],
     [
@@ -439,11 +407,23 @@
       "error: 1"
     ],
     [
+      "backend/vector/packed_simd/impl#[u64x4]splat_const().",
+      "empty graph"
+    ],
+    [
       "backend/vector/scalar_mul/pippenger/spec_avx2/impl#[Pippenger][VartimeMultiscalarMul]optional_multiscalar_mul().",
       "empty graph"
     ],
     [
+      "backend/vector/scalar_mul/precomputed_straus/spec_avx2/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]new().",
+      "empty graph"
+    ],
+    [
       "backend/vector/scalar_mul/precomputed_straus/spec_avx2/impl#[VartimePrecomputedStraus][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
+      "backend/vector/scalar_mul/variable_base/spec_avx2/mul().",
       "empty graph"
     ],
     [
@@ -455,7 +435,7 @@
       "empty graph"
     ],
     [
-      "backend/vector/scalar_mul/variable_base/spec_avx2/mul().",
+      "constants/test/test_d_vs_ratio().",
       "empty graph"
     ],
     [
@@ -463,15 +443,19 @@
       "empty graph"
     ],
     [
-      "constants/test/test_d_vs_ratio().",
-      "empty graph"
-    ],
-    [
       "constants/test/test_sqrt_ad_minus_one().",
       "empty graph"
     ],
     [
+      "constants/test/test_two_torsion().",
+      "empty graph"
+    ],
+    [
       "constants/test/test_sqrt_constants_sign().",
+      "empty graph"
+    ],
+    [
+      "deterministic/determine_curve25519_dalek_bits().",
       "empty graph"
     ],
     [
@@ -483,27 +467,7 @@
       "empty graph"
     ],
     [
-      "constants/test/test_two_torsion().",
-      "empty graph"
-    ],
-    [
-      "deterministic/determine_curve25519_dalek_bits().",
-      "empty graph"
-    ],
-    [
       "edwards/impl#[CompressedEdwardsY][ConstantTimeEq]ct_eq().",
-      "empty graph"
-    ],
-    [
-      "edwards/impl#[CompressedEdwardsY][Identity]identity().",
-      "empty graph"
-    ],
-    [
-      "edwards/impl#[CompressedEdwardsY][Default]default().",
-      "empty graph"
-    ],
-    [
-      "edwards/impl#[CompressedEdwardsY][Zeroize]zeroize().",
       "empty graph"
     ],
     [
@@ -511,7 +475,19 @@
       "empty graph"
     ],
     [
+      "edwards/impl#[CompressedEdwardsY][Default]default().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY][Identity]identity().",
+      "empty graph"
+    ],
+    [
       "edwards/impl#[CompressedEdwardsY][`TryFrom<&[u8]>`]try_from().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[CompressedEdwardsY][Zeroize]zeroize().",
       "empty graph"
     ],
     [
@@ -535,19 +511,19 @@
       "empty graph"
     ],
     [
-      "edwards/impl#[EdwardsBasepointTableRadix64][BasepointTable]create().",
-      "empty graph"
-    ],
-    [
-      "edwards/impl#[EdwardsBasepointTable][BasepointTable]create().",
-      "empty graph"
-    ],
-    [
       "edwards/impl#[EdwardsBasepointTable][BasepointTable]basepoint().",
       "empty graph"
     ],
     [
+      "edwards/impl#[EdwardsBasepointTableRadix64][BasepointTable]create().",
+      "empty graph"
+    ],
+    [
       "edwards/impl#[EdwardsPoint][ConditionallySelectable]conditional_select().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsBasepointTable][BasepointTable]create().",
       "empty graph"
     ],
     [
@@ -559,7 +535,7 @@
       "empty graph"
     ],
     [
-      "edwards/impl#[EdwardsPoint][Neg]neg().",
+      "edwards/impl#[EdwardsPoint][Default]default().",
       "empty graph"
     ],
     [
@@ -567,15 +543,7 @@
       "empty graph"
     ],
     [
-      "edwards/impl#[EdwardsPoint][Default]default().",
-      "empty graph"
-    ],
-    [
       "edwards/impl#[EdwardsPoint][VartimeMultiscalarMul]optional_multiscalar_mul().",
-      "empty graph"
-    ],
-    [
-      "edwards/impl#[EdwardsPoint][Zeroize]zeroize().",
       "empty graph"
     ],
     [
@@ -583,11 +551,23 @@
       "empty graph"
     ],
     [
-      "edwards/impl#[EdwardsPoint][`MulAssign<&Scalar>`]mul_assign().",
+      "edwards/impl#[EdwardsPoint][Neg]neg().",
       "empty graph"
     ],
     [
       "edwards/impl#[EdwardsPoint][`PartialEq<Self>`]eq().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][Zeroize]zeroize().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][`MulAssign<&Scalar>`]mul_assign().",
+      "empty graph"
+    ],
+    [
+      "edwards/impl#[EdwardsPoint][`SubAssign<&EdwardsPoint>`]sub_assign().",
       "empty graph"
     ],
     [
@@ -599,15 +579,7 @@
       "empty graph"
     ],
     [
-      "edwards/impl#[EdwardsPoint][`SubAssign<&EdwardsPoint>`]sub_assign().",
-      "empty graph"
-    ],
-    [
       "edwards/impl#[EdwardsPoint]is_torsion_free().",
-      "empty graph"
-    ],
-    [
-      "edwards/impl#[EdwardsPoint]mul_base_clamped().",
       "empty graph"
     ],
     [
@@ -615,15 +587,19 @@
       "empty graph"
     ],
     [
+      "edwards/impl#[EdwardsPoint]mul_base_clamped().",
+      "empty graph"
+    ],
+    [
       "edwards/impl#[EdwardsPoint]mul_clamped().",
       "empty graph"
     ],
     [
-      "edwards/impl#[EdwardsPoint]nonspec_map_to_curve().",
+      "edwards/impl#[VartimeEdwardsPrecomputation][VartimePrecomputedMultiscalarMul]new().",
       "empty graph"
     ],
     [
-      "edwards/impl#[VartimeEdwardsPrecomputation][VartimePrecomputedMultiscalarMul]new().",
+      "edwards/impl#[EdwardsPoint]nonspec_map_to_curve().",
       "empty graph"
     ],
     [
@@ -635,11 +611,11 @@
       "empty graph"
     ],
     [
-      "edwards/impl#[`&EdwardsPoint`][`Mul<&Scalar>`]mul().",
+      "edwards/impl#[`&EdwardsPoint`][`Add<&EdwardsPoint>`]add().",
       "empty graph"
     ],
     [
-      "edwards/impl#[`&EdwardsPoint`][`Sub<&EdwardsPoint>`]sub().",
+      "edwards/impl#[`&EdwardsPoint`][`Mul<&Scalar>`]mul().",
       "empty graph"
     ],
     [
@@ -651,15 +627,11 @@
       "empty graph"
     ],
     [
-      "edwards/impl#[`&EdwardsPoint`][`Add<&EdwardsPoint>`]add().",
-      "empty graph"
-    ],
-    [
       "edwards/test/basepoint_decompression_compression().",
       "empty graph"
     ],
     [
-      "edwards/test/basepoint_double_vs_basepoint2().",
+      "edwards/impl#[`&EdwardsPoint`][`Sub<&EdwardsPoint>`]sub().",
       "empty graph"
     ],
     [
@@ -668,6 +640,10 @@
     ],
     [
       "edwards/test/basepoint_mult_one_vs_basepoint().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_double_vs_basepoint2().",
       "empty graph"
     ],
     [
@@ -691,23 +667,19 @@
       "empty graph"
     ],
     [
-      "edwards/test/basepoint_table_basepoint_function_correct().",
-      "empty graph"
-    ],
-    [
       "edwards/test/basepoint_plus_basepoint_projective_niels_vs_basepoint2().",
       "empty graph"
     ],
     [
-      "edwards/test/basepoint_tables().",
-      "empty graph"
-    ],
-    [
-      "edwards/test/compressed_identity().",
+      "edwards/test/basepoint_table_basepoint_function_correct().",
       "empty graph"
     ],
     [
       "edwards/test/basepoint_tables_unreduced_scalar().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/basepoint_tables().",
       "empty graph"
     ],
     [
@@ -719,15 +691,11 @@
       "empty graph"
     ],
     [
+      "edwards/test/compressed_identity().",
+      "empty graph"
+    ],
+    [
       "edwards/test/elligator_signal_test_vectors().",
-      "empty graph"
-    ],
-    [
-      "edwards/test/extended_point_equality_handles_scaling().",
-      "empty graph"
-    ],
-    [
-      "edwards/test/is_identity().",
       "empty graph"
     ],
     [
@@ -739,11 +707,19 @@
       "empty graph"
     ],
     [
-      "edwards/test/mul_base_clamped().",
+      "edwards/test/extended_point_equality_handles_scaling().",
       "empty graph"
     ],
     [
       "edwards/test/monte_carlo_overflow_underflow_debug_assert_test().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/is_identity().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/mul_base_clamped().",
       "empty graph"
     ],
     [
@@ -759,15 +735,11 @@
       "empty graph"
     ],
     [
-      "edwards/test/multiscalar_consistency_n_250().",
-      "empty graph"
-    ],
-    [
       "edwards/test/multiscalar_consistency_n_500().",
       "empty graph"
     ],
     [
-      "edwards/test/scalarmult_extended_point_works_both_ways().",
+      "edwards/test/multiscalar_consistency_n_250().",
       "empty graph"
     ],
     [
@@ -779,19 +751,23 @@
       "empty graph"
     ],
     [
+      "edwards/test/to_affine_niels_clears_denominators().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/scalarmult_extended_point_works_both_ways().",
+      "empty graph"
+    ],
+    [
+      "edwards/test/vartime/multiscalar_mul_vartime_vs_consttime().",
+      "empty graph"
+    ],
+    [
       "edwards/test/test_vectors().",
       "empty graph"
     ],
     [
       "edwards/test/vartime/double_scalar_mul_basepoint_vs_ed25519py().",
-      "empty graph"
-    ],
-    [
-      "edwards/test/to_affine_niels_clears_denominators().",
-      "empty graph"
-    ],
-    [
-      "edwards/test/vartime/multiscalar_mul_vartime_vs_consttime().",
       "empty graph"
     ],
     [
@@ -803,15 +779,11 @@
       "empty graph"
     ],
     [
+      "edwards_benches/compress().",
+      "empty graph"
+    ],
+    [
       "edwards_benches/consttime_fixed_base_scalar_mul().",
-      "empty graph"
-    ],
-    [
-      "edwards_benches/consttime_variable_base_scalar_mul().",
-      "empty graph"
-    ],
-    [
-      "edwards_benches/edwards_benches().",
       "empty graph"
     ],
     [
@@ -819,7 +791,7 @@
       "empty graph"
     ],
     [
-      "edwards_benches/compress().",
+      "edwards_benches/consttime_variable_base_scalar_mul().",
       "empty graph"
     ],
     [
@@ -827,11 +799,15 @@
       "empty graph"
     ],
     [
-      "field/impl#[`crate::lizard::lizard_constants::FieldElement51`]batch_invert().",
+      "edwards_benches/edwards_benches().",
       "empty graph"
     ],
     [
       "field/impl#[`crate::lizard::lizard_constants::FieldElement51`][`PartialEq<Self>`]eq().",
+      "empty graph"
+    ],
+    [
+      "field/impl#[`crate::lizard::lizard_constants::FieldElement51`]batch_invert().",
       "empty graph"
     ],
     [
@@ -843,19 +819,11 @@
       "empty graph"
     ],
     [
-      "field/test/a_square2_vs_a_squared_constant().",
-      "empty graph"
-    ],
-    [
       "field/test/a_p58_vs_ap58_constant().",
       "empty graph"
     ],
     [
-      "field/test/a_square_vs_a_squared_constant().",
-      "empty graph"
-    ],
-    [
-      "field/test/batch_invert_empty().",
+      "field/test/a_square2_vs_a_squared_constant().",
       "empty graph"
     ],
     [
@@ -863,15 +831,15 @@
       "empty graph"
     ],
     [
-      "field/test/conditional_negate().",
-      "empty graph"
-    ],
-    [
       "field/test/encoding_is_canonical().",
       "empty graph"
     ],
     [
-      "field/test/equality().",
+      "field/test/conditional_negate().",
+      "empty graph"
+    ],
+    [
+      "field/test/a_square_vs_a_squared_constant().",
       "empty graph"
     ],
     [
@@ -879,7 +847,15 @@
       "empty graph"
     ],
     [
-      "is_capable_simd().",
+      "field/test/batch_invert_empty().",
+      "empty graph"
+    ],
+    [
+      "field/test/sqrt_ratio_behavior().",
+      "empty graph"
+    ],
+    [
+      "field/test/equality().",
       "empty graph"
     ],
     [
@@ -887,11 +863,11 @@
       "empty graph"
     ],
     [
-      "lizard/lizard_constants/test/test_lizard_constants().",
+      "is_capable_simd().",
       "empty graph"
     ],
     [
-      "field/test/sqrt_ratio_behavior().",
+      "lizard/lizard_constants/test/test_lizard_constants().",
       "empty graph"
     ],
     [
@@ -903,15 +879,15 @@
       "empty graph"
     ],
     [
-      "lizard/lizard_ristretto/impl#[RistrettoPoint]xcoset4().",
-      "empty graph"
-    ],
-    [
       "lizard/lizard_ristretto/test/test_lizard_encode().",
       "empty graph"
     ],
     [
-      "lizard/lizard_ristretto/test/test_lizard_encode_helper().",
+      "lizard/lizard_ristretto/impl#[RistrettoPoint]xcoset4().",
+      "empty graph"
+    ],
+    [
+      "main().",
       "empty graph"
     ],
     [
@@ -919,7 +895,11 @@
       "empty graph"
     ],
     [
-      "main().",
+      "montgomery/impl#[MontgomeryPoint][ConstantTimeEq]ct_eq().",
+      "empty graph"
+    ],
+    [
+      "lizard/lizard_ristretto/test/test_lizard_encode_helper().",
       "empty graph"
     ],
     [
@@ -935,15 +915,7 @@
       "empty graph"
     ],
     [
-      "montgomery/impl#[MontgomeryPoint][ConstantTimeEq]ct_eq().",
-      "empty graph"
-    ],
-    [
       "montgomery/impl#[MontgomeryPoint][Identity]identity().",
-      "empty graph"
-    ],
-    [
-      "montgomery/impl#[MontgomeryPoint][`PartialEq<Self>`]eq().",
       "empty graph"
     ],
     [
@@ -959,7 +931,15 @@
       "empty graph"
     ],
     [
+      "montgomery/impl#[MontgomeryPoint][`PartialEq<Self>`]eq().",
+      "empty graph"
+    ],
+    [
       "montgomery/impl#[MontgomeryPoint]mul_base_clamped().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[MontgomeryPoint]mul_bits_be().",
       "empty graph"
     ],
     [
@@ -971,19 +951,7 @@
       "empty graph"
     ],
     [
-      "montgomery/impl#[MontgomeryPoint]mul_bits_be().",
-      "empty graph"
-    ],
-    [
-      "montgomery/impl#[ProjectivePoint][ConditionallySelectable]conditional_select().",
-      "empty graph"
-    ],
-    [
       "montgomery/impl#[MontgomeryPoint]to_bytes().",
-      "empty graph"
-    ],
-    [
-      "montgomery/impl#[ProjectivePoint]as_affine().",
       "empty graph"
     ],
     [
@@ -992,6 +960,14 @@
     ],
     [
       "montgomery/impl#[ProjectivePoint][Identity]identity().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[ProjectivePoint]as_affine().",
+      "empty graph"
+    ],
+    [
+      "montgomery/impl#[ProjectivePoint][ConditionallySelectable]conditional_select().",
       "empty graph"
     ],
     [
@@ -1007,7 +983,7 @@
       "empty graph"
     ],
     [
-      "montgomery/test/basepoint_montgomery_to_edwards().",
+      "montgomery/test/eq_defined_mod_p().",
       "empty graph"
     ],
     [
@@ -1015,11 +991,7 @@
       "empty graph"
     ],
     [
-      "montgomery/test/eq_defined_mod_p().",
-      "empty graph"
-    ],
-    [
-      "montgomery/test/identity_in_different_coordinates().",
+      "montgomery/test/basepoint_montgomery_to_edwards().",
       "empty graph"
     ],
     [
@@ -1027,15 +999,11 @@
       "empty graph"
     ],
     [
+      "montgomery/test/identity_in_different_coordinates().",
+      "empty graph"
+    ],
+    [
       "montgomery/test/montgomery_elligator_correct().",
-      "empty graph"
-    ],
-    [
-      "montgomery/test/montgomery_ladder_matches_edwards_scalarmult().",
-      "empty graph"
-    ],
-    [
-      "montgomery/test/montgomery_mul_bits_be().",
       "empty graph"
     ],
     [
@@ -1043,11 +1011,11 @@
       "empty graph"
     ],
     [
-      "montgomery/test/montgomery_mul_bits_be_twist().",
+      "montgomery/test/montgomery_ladder_matches_edwards_scalarmult().",
       "empty graph"
     ],
     [
-      "montgomery/test/montgomery_to_edwards_rejects_twist().",
+      "montgomery/test/montgomery_mul_bits_be_twist().",
       "empty graph"
     ],
     [
@@ -1055,7 +1023,7 @@
       "empty graph"
     ],
     [
-      "montgomery_benches/consttime_fixed_base_scalar_mul().",
+      "montgomery/test/montgomery_mul_bits_be().",
       "empty graph"
     ],
     [
@@ -1063,11 +1031,11 @@
       "empty graph"
     ],
     [
-      "montgomery_benches/montgomery_benches().",
+      "montgomery/test/montgomery_to_edwards_rejects_twist().",
       "empty graph"
     ],
     [
-      "montgomery_benches/montgomery_ladder().",
+      "multiscalar_benches/construct_scalars().",
       "empty graph"
     ],
     [
@@ -1075,7 +1043,7 @@
       "empty graph"
     ],
     [
-      "multiscalar_benches/construct_scalars().",
+      "montgomery_benches/consttime_fixed_base_scalar_mul().",
       "empty graph"
     ],
     [
@@ -1087,11 +1055,19 @@
       "empty graph"
     ],
     [
+      "montgomery_benches/montgomery_ladder().",
+      "empty graph"
+    ],
+    [
       "multiscalar_benches/vartime_multiscalar_mul().",
       "empty graph"
     ],
     [
-      "multiscalar_benches/vartime_precomputed_helper().",
+      "montgomery_benches/montgomery_benches().",
+      "empty graph"
+    ],
+    [
+      "multiscalar_benches/vartime_precomputed_pure_static().",
       "empty graph"
     ],
     [
@@ -1099,7 +1075,7 @@
       "empty graph"
     ],
     [
-      "multiscalar_benches/vartime_precomputed_pure_static().",
+      "multiscalar_benches/vartime_precomputed_helper().",
       "empty graph"
     ],
     [
@@ -1139,6 +1115,10 @@
       "empty graph"
     ],
     [
+      "ristretto/impl#[RistrettoPoint][ConstantTimeEq]ct_eq().",
+      "empty graph"
+    ],
+    [
       "ristretto/impl#[RistrettoPoint][ConditionallySelectable]conditional_select().",
       "empty graph"
     ],
@@ -1147,19 +1127,11 @@
       "empty graph"
     ],
     [
-      "ristretto/impl#[RistrettoPoint][ConstantTimeEq]ct_eq().",
+      "ristretto/impl#[RistrettoPoint][Zeroize]zeroize().",
       "empty graph"
     ],
     [
       "ristretto/impl#[RistrettoPoint][Neg]neg().",
-      "empty graph"
-    ],
-    [
-      "ristretto/impl#[RistrettoPoint][VartimeMultiscalarMul]optional_multiscalar_mul().",
-      "empty graph"
-    ],
-    [
-      "ristretto/impl#[RistrettoPoint][Zeroize]zeroize().",
       "empty graph"
     ],
     [
@@ -1171,11 +1143,11 @@
       "empty graph"
     ],
     [
-      "ristretto/impl#[RistrettoPoint][`MulAssign<&Scalar>`]mul_assign().",
+      "ristretto/impl#[RistrettoPoint][VartimeMultiscalarMul]optional_multiscalar_mul().",
       "empty graph"
     ],
     [
-      "ristretto/impl#[RistrettoPoint][`Sum<T>`]sum().",
+      "ristretto/impl#[RistrettoPoint][`MulAssign<&Scalar>`]mul_assign().",
       "empty graph"
     ],
     [
@@ -1183,11 +1155,15 @@
       "empty graph"
     ],
     [
-      "ristretto/impl#[RistrettoPoint][`SubAssign<&RistrettoPoint>`]sub_assign().",
+      "ristretto/impl#[RistrettoPoint]coset4().",
       "empty graph"
     ],
     [
-      "ristretto/impl#[RistrettoPoint]coset4().",
+      "ristretto/impl#[RistrettoPoint][`Sum<T>`]sum().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[RistrettoPoint][`SubAssign<&RistrettoPoint>`]sub_assign().",
       "empty graph"
     ],
     [
@@ -1207,23 +1183,15 @@
       "empty graph"
     ],
     [
-      "ristretto/impl#[VartimeRistrettoPrecomputation][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
-      "empty graph"
-    ],
-    [
       "ristretto/impl#[`&RistrettoBasepointTable`][`Mul<&Scalar>`]mul().",
       "empty graph"
     ],
     [
-      "ristretto/impl#[`&RistrettoPoint`][Neg]neg().",
-      "empty graph"
-    ],
-    [
-      "ristretto/impl#[`&RistrettoPoint`][`Mul<&Scalar>`]mul().",
-      "empty graph"
-    ],
-    [
       "ristretto/impl#[VartimeRistrettoPrecomputation][VartimePrecomputedMultiscalarMul]new().",
+      "empty graph"
+    ],
+    [
+      "ristretto/impl#[`&RistrettoPoint`][Neg]neg().",
       "empty graph"
     ],
     [
@@ -1235,11 +1203,15 @@
       "empty graph"
     ],
     [
+      "ristretto/impl#[VartimeRistrettoPrecomputation][VartimePrecomputedMultiscalarMul]optional_mixed_multiscalar_mul().",
+      "empty graph"
+    ],
+    [
       "ristretto/impl#[`&Scalar`][`Mul<&RistrettoBasepointTable>`]mul().",
       "empty graph"
     ],
     [
-      "ristretto/impl#[`&Scalar`][`Mul<&RistrettoPoint>`]mul().",
+      "ristretto/impl#[`&RistrettoPoint`][`Mul<&Scalar>`]mul().",
       "empty graph"
     ],
     [
@@ -1247,15 +1219,7 @@
       "empty graph"
     ],
     [
-      "ristretto/test/decompress_negative_s_fails().",
-      "empty graph"
-    ],
-    [
-      "ristretto/test/double_and_compress_1024_random_points().",
-      "empty graph"
-    ],
-    [
-      "ristretto/test/decompress_id().",
+      "ristretto/impl#[`&Scalar`][`Mul<&RistrettoPoint>`]mul().",
       "empty graph"
     ],
     [
@@ -1263,7 +1227,19 @@
       "empty graph"
     ],
     [
+      "ristretto/test/decompress_id().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/decompress_negative_s_fails().",
+      "empty graph"
+    ],
+    [
       "ristretto/test/encodings_of_small_multiples_of_basepoint().",
+      "empty graph"
+    ],
+    [
+      "ristretto/test/double_and_compress_1024_random_points().",
       "empty graph"
     ],
     [
@@ -1271,11 +1247,11 @@
       "empty graph"
     ],
     [
-      "ristretto/test/four_torsion_random().",
+      "ristretto/test/four_torsion_basepoint().",
       "empty graph"
     ],
     [
-      "ristretto/test/four_torsion_basepoint().",
+      "ristretto/test/four_torsion_random().",
       "empty graph"
     ],
     [
@@ -1295,7 +1271,11 @@
       "empty graph"
     ],
     [
-      "ristretto/test/vartime_precomputed_vs_nonprecomputed_multiscalar().",
+      "ristretto_benches/compress().",
+      "empty graph"
+    ],
+    [
+      "ristretto_benches/elligator().",
       "empty graph"
     ],
     [
@@ -1303,15 +1283,7 @@
       "empty graph"
     ],
     [
-      "ristretto_benches/compress().",
-      "empty graph"
-    ],
-    [
       "ristretto_benches/ristretto_benches().",
-      "empty graph"
-    ],
-    [
-      "ristretto_benches/elligator().",
       "empty graph"
     ],
     [
@@ -1323,20 +1295,12 @@
       "empty graph"
     ],
     [
+      "ristretto/test/vartime_precomputed_vs_nonprecomputed_multiscalar().",
+      "empty graph"
+    ],
+    [
       "scalar/impl#[Scalar][ConditionallySelectable]conditional_select().",
       "empty graph"
-    ],
-    [
-      "scalar/impl#[Scalar][Debug]fmt().",
-      "empty graph"
-    ],
-    [
-      "scalar/impl#[Scalar][Neg]neg().",
-      "empty graph"
-    ],
-    [
-      "scalar/impl#[Scalar][Serialize]serialize().",
-      "error: 1"
     ],
     [
       "scalar/impl#[Scalar][Default]default().",
@@ -1347,11 +1311,11 @@
       "empty graph"
     ],
     [
-      "scalar/impl#[Scalar][`Deserialize<'de>`]deserialize().",
+      "scalar/impl#[Scalar][Serialize]serialize().",
       "error: 1"
     ],
     [
-      "scalar/impl#[Scalar][`From<u128>`]from().",
+      "scalar/impl#[Scalar][Debug]fmt().",
       "empty graph"
     ],
     [
@@ -1359,7 +1323,23 @@
       "empty graph"
     ],
     [
+      "scalar/impl#[Scalar][Neg]neg().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`From<u128>`]from().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`Deserialize<'de>`]deserialize().",
+      "error: 1"
+    ],
+    [
       "scalar/impl#[Scalar][`From<u16>`]from().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[Scalar][`MulAssign<&Scalar>`]mul_assign().",
       "empty graph"
     ],
     [
@@ -1371,15 +1351,7 @@
       "empty graph"
     ],
     [
-      "scalar/impl#[Scalar][`MulAssign<&Scalar>`]mul_assign().",
-      "empty graph"
-    ],
-    [
       "scalar/impl#[Scalar][`SubAssign<&Scalar>`]sub_assign().",
-      "empty graph"
-    ],
-    [
-      "scalar/impl#[Scalar][`PartialEq<Self>`]eq().",
       "empty graph"
     ],
     [
@@ -1387,11 +1359,11 @@
       "empty graph"
     ],
     [
-      "scalar/impl#[Scalar]as_radix_16().",
+      "scalar/impl#[Scalar][`PartialEq<Self>`]eq().",
       "empty graph"
     ],
     [
-      "scalar/impl#[Scalar]as_radix_2w().",
+      "scalar/impl#[Scalar]as_radix_16().",
       "empty graph"
     ],
     [
@@ -1403,6 +1375,10 @@
       "empty graph"
     ],
     [
+      "scalar/impl#[Scalar]as_radix_2w().",
+      "empty graph"
+    ],
+    [
       "scalar/impl#[Scalar]random().",
       "empty graph"
     ],
@@ -1411,11 +1387,7 @@
       "empty graph"
     ],
     [
-      "scalar/impl#[`&Scalar`][Neg]neg().",
-      "empty graph"
-    ],
-    [
-      "scalar/impl#[`&Scalar`][`Mul<&Scalar>`]mul().",
+      "scalar/impl#[`&Scalar`][`Add<&Scalar>`]add().",
       "empty graph"
     ],
     [
@@ -1423,7 +1395,11 @@
       "empty graph"
     ],
     [
-      "scalar/impl#[`&Scalar`][`Add<&Scalar>`]add().",
+      "scalar/impl#[`&Scalar`][`Mul<&Scalar>`]mul().",
+      "empty graph"
+    ],
+    [
+      "scalar/impl#[`&Scalar`][Neg]neg().",
       "empty graph"
     ],
     [
@@ -1439,11 +1415,7 @@
       "empty graph"
     ],
     [
-      "scalar/test/batch_invert_with_a_zero_input_panics().",
-      "empty graph"
-    ],
-    [
-      "scalar/test/from_u64().",
+      "scalar/test/canonical_decoding().",
       "empty graph"
     ],
     [
@@ -1451,15 +1423,11 @@
       "empty graph"
     ],
     [
-      "scalar/test/fuzzer_testcase_reduction().",
-      "empty graph"
-    ],
-    [
       "scalar/test/from_bytes_mod_order_wide().",
       "empty graph"
     ],
     [
-      "scalar/test/canonical_decoding().",
+      "scalar/test/from_u64().",
       "empty graph"
     ],
     [
@@ -1467,15 +1435,19 @@
       "empty graph"
     ],
     [
+      "scalar/test/fuzzer_testcase_reduction().",
+      "empty graph"
+    ],
+    [
       "scalar/test/impl_mul().",
       "empty graph"
     ],
     [
-      "scalar/test/impl_product().",
+      "scalar/test/batch_invert_with_a_zero_input_panics().",
       "empty graph"
     ],
     [
-      "scalar/test/montgomery_reduce_matches_from_bytes_mod_order_wide().",
+      "scalar/test/impl_product().",
       "empty graph"
     ],
     [
@@ -1487,11 +1459,15 @@
       "empty graph"
     ],
     [
-      "scalar/test/non_adjacent_form_iter().",
+      "scalar/test/montgomery_reduce_matches_from_bytes_mod_order_wide().",
       "empty graph"
     ],
     [
       "scalar/test/neg_twice_is_identity().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/non_adjacent_form_iter().",
       "empty graph"
     ],
     [
@@ -1507,10 +1483,6 @@
       "empty graph"
     ],
     [
-      "scalar/test/scalar_mul_by_one().",
-      "empty graph"
-    ],
-    [
       "scalar/test/square().",
       "empty graph"
     ],
@@ -1519,7 +1491,7 @@
       "empty graph"
     ],
     [
-      "scalar/test/test_pippenger_radix().",
+      "scalar/test/scalar_mul_by_one().",
       "empty graph"
     ],
     [
@@ -1531,7 +1503,7 @@
       "empty graph"
     ],
     [
-      "scalar/test/test_read_le_u64_into().",
+      "scalar/test/test_pippenger_radix().",
       "empty graph"
     ],
     [
@@ -1539,7 +1511,7 @@
       "empty graph"
     ],
     [
-      "scalar/test/test_scalar_from_int().",
+      "scalar/test/test_read_le_u64_into().",
       "empty graph"
     ],
     [
@@ -1547,11 +1519,19 @@
       "empty graph"
     ],
     [
+      "scalar/top_half().",
+      "empty graph"
+    ],
+    [
+      "scalar/test/test_scalar_from_int().",
+      "empty graph"
+    ],
+    [
       "scalar/test/to_bytes_from_bytes_roundtrips().",
       "empty graph"
     ],
     [
-      "scalar/top_half().",
+      "scalar_benches/scalar_benches().",
       "empty graph"
     ],
     [
@@ -1563,11 +1543,7 @@
       "empty graph"
     ],
     [
-      "scalar_benches/scalar_benches().",
-      "empty graph"
-    ],
-    [
-      "traits/BasepointTable#basepoint().",
+      "traits/BasepointTable#mul_base().",
       "error: 1"
     ],
     [
@@ -1579,11 +1555,7 @@
       "empty graph"
     ],
     [
-      "traits/BasepointTable#mul_base().",
-      "error: 1"
-    ],
-    [
-      "traits/IsIdentity#is_identity().",
+      "traits/BasepointTable#basepoint().",
       "error: 1"
     ],
     [
@@ -1592,6 +1564,10 @@
     ],
     [
       "traits/ValidityCheck#is_valid().",
+      "error: 1"
+    ],
+    [
+      "traits/IsIdentity#is_identity().",
       "error: 1"
     ],
     [
@@ -1611,10 +1587,6 @@
       "empty graph"
     ],
     [
-      "window/impl#[`LookupTable<ProjectiveNielsPoint>`][`From<&EdwardsPoint>`]from().",
-      "error: 1"
-    ],
-    [
       "window/impl#[`LookupTable<T>`]select().",
       "error: 1"
     ],
@@ -1625,6 +1597,10 @@
     [
       "window/impl#[`NafLookupTable5<T>`][Debug]fmt().",
       "empty graph"
+    ],
+    [
+      "window/impl#[`LookupTable<ProjectiveNielsPoint>`][`From<&EdwardsPoint>`]from().",
+      "error: 1"
     ],
     [
       "window/impl#[`NafLookupTable8<AffineNielsPoint>`][`From<&EdwardsPoint>`]from().",
@@ -1643,7 +1619,7 @@
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_rustfmt_skip().",
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_const_arg().",
       "empty graph"
     ],
     [
@@ -1651,11 +1627,7 @@
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_const_arg().",
-      "empty graph"
-    ],
-    [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Conditional][Parse]parse().",
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 function_with_rustfmt_skip().",
       "empty graph"
     ],
     [
@@ -1663,11 +1635,7 @@
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg]condition().",
-      "empty graph"
-    ],
-    [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg]lit().",
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Conditional][Parse]parse().",
       "empty graph"
     ],
     [
@@ -1675,11 +1643,15 @@
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Struct]member_function().",
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg]lit().",
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`()`][`From<&Struct>`]from().",
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[SpecializeArg]condition().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[Struct]member_function().",
       "empty graph"
     ],
     [
@@ -1687,19 +1659,23 @@
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`StructWithGenerics<T>`]member_function().",
-      "empty graph"
-    ],
-    [
       "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`StructWithGenericsNoWhere<T>`]member_function().",
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner/inner_function().",
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`StructWithGenerics<T>`]member_function().",
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_sse2/tests/test_specialized_inner().",
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 impl#[`()`][`From<&Struct>`]from().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_avx2/spec_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner/inner_function().",
       "empty graph"
     ],
     [
@@ -1711,15 +1687,7 @@
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_avx2/spec_function().",
-      "empty graph"
-    ],
-    [
       "rust-analyzer cargo curve25519-dalek-derive 0.1.1 is_path_eq().",
-      "empty graph"
-    ],
-    [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 kw/conditional().",
       "empty graph"
     ],
     [
@@ -1731,7 +1699,11 @@
       "empty graph"
     ],
     [
-      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_item().",
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 kw/conditional().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 inner_spec_sse2/tests/test_specialized_inner().",
       "empty graph"
     ],
     [
@@ -1740,6 +1712,10 @@
     ],
     [
       "rust-analyzer cargo curve25519-dalek-derive 0.1.1 test_function().",
+      "empty graph"
+    ],
+    [
+      "rust-analyzer cargo curve25519-dalek-derive 0.1.1 process_item().",
       "empty graph"
     ],
     [
@@ -1755,7 +1731,7 @@
       "error: 1"
     ]
   ],
-  "elapsed_seconds": 318.1237144470215,
+  "elapsed_seconds": 362.720552444458,
   "all_symbols": [
     "rust-analyzer cargo curve25519-dalek 4.1.3 backend/cpuid_avx2/impl#[InitToken]get().",
     "rust-analyzer cargo curve25519-dalek 4.1.3 backend/cpuid_avx2/init().",

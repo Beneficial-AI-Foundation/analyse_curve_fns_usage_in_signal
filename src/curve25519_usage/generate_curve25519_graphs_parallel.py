@@ -23,10 +23,8 @@ def get_default_paths():
     project_root = get_project_root()
     return {
         "scip_json": project_root / "data" / "index_scip_libsignal_deps.json",
-        "output_dir": project_root / "outputs" / "curve25519-dalek_public_apis_graphs",
-        "rust_analyzer_dir": os.getenv(
-            "RUST_ANALYZER_DIR", project_root.parent / "rust-analyzer-test"
-        ),
+        "output_dir": project_root / "outputs" / "curve25519-dalek_public_apis_graphs_20",
+        "rust_analyzer_dir": os.getenv("RUST_ANALYZER_DIR", project_root.parent / "scip-callgraph"),
     }
 
 
@@ -59,7 +57,7 @@ def generate_single_graph(args):
     safe_name = symbol.replace("rust-analyzer cargo curve25519-dalek 4.1.3 ", "")
     safe_name = safe_name.replace("::", "_").replace("#", "_").replace("[", "_").replace("]", "_")
     safe_name = safe_name.replace("()", "").replace(".", "").replace(" ", "_").replace("/", "_")
-    output_file = output_path / f"{safe_name}_5.dot"
+    output_file = output_path / f"{safe_name}_depth{depth}.dot"
 
     cmd = [
         "cargo",
@@ -82,7 +80,7 @@ def generate_single_graph(args):
             capture_output=True,
             text=True,
             cwd=str(rust_analyzer_dir),
-            timeout=30,  # 30 second timeout per graph
+            timeout=120,  # 120 second timeout per graph (increased for depth 20)
         )
 
         if result.returncode == 0:
@@ -92,21 +90,26 @@ def generate_single_graph(args):
                 with open(output_file, "r") as f:
                     content = f.read()
                     if "digraph" in content and "->" in content:
-                        return (symbol, True, str(output_file))
+                        return (symbol, True, str(output_file), None)
                     else:
                         # Remove empty graph
                         output_file.unlink()
-                        return (symbol, False, "empty graph")
+                        return (symbol, False, "empty graph", None)
             else:
                 if output_file.exists():
                     output_file.unlink()
-                return (symbol, False, "no file generated")
+                return (symbol, False, "no file generated", None)
         else:
-            return (symbol, False, f"error: {result.returncode}")
+            # Capture stderr for error diagnosis
+            error_msg = result.stderr.strip() if result.stderr else "no error message"
+            # Truncate to last 200 chars to keep it manageable
+            if len(error_msg) > 200:
+                error_msg = "..." + error_msg[-200:]
+            return (symbol, False, f"error: {result.returncode}", error_msg)
     except subprocess.TimeoutExpired:
-        return (symbol, False, "timeout")
+        return (symbol, False, "timeout", "Process exceeded 120 second timeout")
     except Exception as e:
-        return (symbol, False, f"exception: {str(e)}")
+        return (symbol, False, f"exception: {str(e)}", str(e))
 
 
 def main():
@@ -133,8 +136,9 @@ def main():
     print(f"Found {len(all_symbols)} function symbols")
 
     # Prepare arguments for parallel processing
+    # Using depth 20 for comprehensive call chains (increased from 15 to capture all dependencies)
     args_list = [
-        (scip_json_path, output_dir, symbol, rust_analyzer_dir, 5) for symbol in all_symbols
+        (scip_json_path, output_dir, symbol, rust_analyzer_dir, 20) for symbol in all_symbols
     ]
 
     # Use number of CPUs for parallel processing
@@ -149,14 +153,23 @@ def main():
     with Pool(num_workers) as pool:
         # Process with progress updates
         for i, result in enumerate(pool.imap_unordered(generate_single_graph, args_list)):
-            symbol, success, info = result
+            # Result can be (symbol, success, info) or (symbol, success, info, error_msg)
+            symbol = result[0]
+            success = result[1]
+            info = result[2]
+            error_msg = result[3] if len(result) > 3 else None
+
             short_name = symbol.replace("rust-analyzer cargo curve25519-dalek 4.1.3 ", "")
 
             if success:
                 generated_graphs += 1
                 print(f"[{i + 1}/{len(all_symbols)}] ✓ {short_name}")
             else:
-                failed_symbols.append((short_name, info))
+                # Store with error message if available
+                if error_msg and error_msg is not None:
+                    failed_symbols.append((short_name, info, error_msg))
+                else:
+                    failed_symbols.append((short_name, info))
                 print(f"[{i + 1}/{len(all_symbols)}] × {short_name} ({info})")
 
             # Show progress every 10 items
@@ -168,22 +181,48 @@ def main():
                     f"  Progress: {i + 1}/{len(all_symbols)} - Rate: {rate:.1f}/s - ETA: {remaining:.0f}s"
                 )
 
-    # Print summary
+    # Print summary with detailed failure breakdown
     elapsed_total = time.time() - start_time
+
+    # Categorize failures by type
+    from collections import Counter
+
+    failure_reasons = Counter([item[1] for item in failed_symbols])
+
     print(f"\n{'=' * 50}")
     print("Summary:")
     print(f"  Total function symbols: {len(all_symbols)}")
     print(f"  Non-empty graphs generated: {generated_graphs}")
     print(f"  Failed/empty: {len(failed_symbols)}")
+    print("\nFailure breakdown:")
+    for reason, count in failure_reasons.most_common():
+        print(f"  - {reason}: {count}")
+    print("\nTiming:")
     print(f"  Time elapsed: {elapsed_total:.1f}s")
     print(f"  Average time per symbol: {elapsed_total / len(all_symbols):.2f}s")
-    print(f"  Output directory: {output_dir}")
+    print("\nOutput:")
+    print(f"  Directory: {output_dir}")
 
-    # Save detailed results
+    # Save detailed error messages to a separate file
+    error_details = []
+    for item in failed_symbols:
+        if len(item) >= 3 and item[1].startswith("error:"):
+            symbol, reason, error_msg = item[0], item[1], item[2] if len(item) > 2 else "no details"
+            error_details.append({"symbol": symbol, "reason": reason, "error_message": error_msg})
+
+    if error_details:
+        error_log_path = output_dir / "cargo_errors.json"
+        with open(error_log_path, "w") as f:
+            json.dump(error_details, f, indent=2)
+        print(f"\nCargo errors saved to: {error_log_path}")
+        print(f"  Total cargo errors: {len(error_details)}")
+
+    # Save detailed results with failure breakdown
     results = {
         "total_symbols": len(all_symbols),
         "generated_graphs": generated_graphs,
         "failed_symbols": failed_symbols,
+        "failure_breakdown": dict(failure_reasons),
         "elapsed_seconds": elapsed_total,
         "all_symbols": all_symbols,
     }

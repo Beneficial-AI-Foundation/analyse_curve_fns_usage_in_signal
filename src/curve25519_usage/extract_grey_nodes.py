@@ -16,10 +16,14 @@ def get_project_root():
     return current.parent.parent
 
 
-def parse_node_id(node_id):
+def parse_node_id(node_id, preserve_type_info=True):
     """
     Parse a node ID to extract file and function information.
     Returns (file, function) tuple or None if parsing fails.
+
+    Args:
+        node_id: The full node ID string
+        preserve_type_info: If True, preserve type information from impl#[Type] patterns
     """
     # Split by spaces and find the part with the file path
     parts = node_id.split()
@@ -45,11 +49,17 @@ def parse_node_id(node_id):
 
             # Handle special cases like impl#[Type]method
             if "impl#" in function_name:
-                # Extract the actual method name
-                # e.g., "impl#[EdwardsPoint][MultiscalarMul]multiscalar_mul" -> "multiscalar_mul"
-                match = re.search(r"impl#.*\]([^]]+)$", function_name)
-                if match:
-                    function_name = match.group(1)
+                if preserve_type_info:
+                    # Keep the full signature including type information
+                    # e.g., "impl#[EdwardsPoint][MultiscalarMul]multiscalar_mul"
+                    # becomes "impl#[EdwardsPoint][MultiscalarMul]multiscalar_mul"
+                    pass  # Keep function_name as is
+                else:
+                    # Extract just the method name
+                    # e.g., "impl#[EdwardsPoint][MultiscalarMul]multiscalar_mul" -> "multiscalar_mul"
+                    match = re.search(r"impl#.*\]([^]]+)$", function_name)
+                    if match:
+                        function_name = match.group(1)
 
             # Add .rs extension if not present
             if not file_path.endswith(".rs"):
@@ -63,10 +73,14 @@ def parse_node_id(node_id):
     return None
 
 
-def extract_nodes_from_dot(dot_file_path):
+def extract_nodes_from_dot(dot_file_path, preserve_type_info=True):
     """
     Extract information about grey nodes and sink nodes from a DOT file.
     Returns a tuple of (grey_nodes_set, sink_node).
+
+    Args:
+        dot_file_path: Path to the DOT file
+        preserve_type_info: Whether to preserve type information in function names
     """
     grey_nodes = set()
     all_nodes = {}  # node_id -> node_info
@@ -87,7 +101,7 @@ def extract_nodes_from_dot(dot_file_path):
 
             # Check if it's grey
             if "fillcolor=lightgray" in attributes:
-                parsed = parse_node_id(node_id)
+                parsed = parse_node_id(node_id, preserve_type_info=preserve_type_info)
                 if parsed:
                     grey_nodes.add(parsed)
 
@@ -112,7 +126,7 @@ def extract_nodes_from_dot(dot_file_path):
         # Check if it's a green node (sink nodes are marked with fillcolor=green)
         if "fillcolor=green" in all_nodes[node_id]:
             green_count += 1
-            parsed = parse_node_id(node_id)
+            parsed = parse_node_id(node_id, preserve_type_info=preserve_type_info)
             if parsed:
                 sink_nodes.append(parsed)
 
@@ -120,7 +134,7 @@ def extract_nodes_from_dot(dot_file_path):
     if green_count == 0 and len(all_nodes) > 0:
         for node_id in all_nodes:
             if node_id in incoming_edges and node_id not in outgoing_edges:
-                parsed = parse_node_id(node_id)
+                parsed = parse_node_id(node_id, preserve_type_info=preserve_type_info)
                 if parsed:
                     sink_nodes.append(parsed)
                     break
@@ -141,17 +155,22 @@ def main():
     """
     # Directory containing the DOT files
     project_root = get_project_root()
-    graphs_dir = project_root / "outputs" / "curve25519-dalek_public_apis_graphs"
-    output_file = project_root / "data" / "grey_nodes_extracted.json"
+    graphs_dir = project_root / "outputs" / "curve25519-dalek_public_apis_graphs_20"
+    output_file = project_root / "data" / "grey_nodes_extracted_depth20.json"
 
     if not graphs_dir.exists():
         print(f"Error: Directory {graphs_dir} does not exist")
         return
 
     # Sets to store all unique (file, function) pairs
+    # With type information preserved
     all_grey_nodes = set()
     all_sink_nodes = set()
     sink_node_to_files = {}  # Track which files have which sink nodes
+
+    # Without type information (for comparison)
+    all_grey_nodes_no_type = set()
+    all_sink_nodes_no_type = set()
 
     # Process all DOT files
     dot_files = list(graphs_dir.glob("*.dot"))
@@ -160,8 +179,15 @@ def main():
     missing_sink_files = []
 
     for dot_file in dot_files:
-        grey_nodes, sink_node = extract_nodes_from_dot(dot_file)
+        # Extract with type info preserved
+        grey_nodes, sink_node = extract_nodes_from_dot(dot_file, preserve_type_info=True)
         all_grey_nodes.update(grey_nodes)
+
+        # Extract without type info for comparison
+        grey_nodes_no_type, sink_node_no_type = extract_nodes_from_dot(
+            dot_file, preserve_type_info=False
+        )
+        all_grey_nodes_no_type.update(grey_nodes_no_type)
 
         if sink_node:
             all_sink_nodes.add(sink_node)
@@ -172,34 +198,75 @@ def main():
         else:
             missing_sink_files.append(dot_file.name)
 
+        if sink_node_no_type:
+            all_sink_nodes_no_type.add(sink_node_no_type)
+
         if grey_nodes or sink_node:
             print(
                 f"  {dot_file.name}: found {len(grey_nodes)} grey nodes, sink: {sink_node[1] if sink_node else 'None'}"
             )
 
     # Convert sets to sorted lists for JSON serialization
+    # WITH type information
     grey_nodes_list = sorted(list(all_grey_nodes))
     sink_nodes_list = sorted(list(all_sink_nodes))
+    all_curve25519_functions = sorted(list(all_grey_nodes | all_sink_nodes))
+
+    # WITHOUT type information (for comparison)
+    grey_nodes_list_no_type = sorted(list(all_grey_nodes_no_type))
+    sink_nodes_list_no_type = sorted(list(all_sink_nodes_no_type))
+    all_curve25519_functions_no_type = sorted(list(all_grey_nodes_no_type | all_sink_nodes_no_type))
 
     # Create a list of all sink nodes (one per DOT file)
     all_sink_nodes_per_file = []
     for dot_file in sorted(dot_files):
-        grey_nodes, sink_node = extract_nodes_from_dot(dot_file)
+        grey_nodes, sink_node = extract_nodes_from_dot(dot_file, preserve_type_info=True)
         if sink_node:
             all_sink_nodes_per_file.append(
                 {"dot_file": dot_file.name, "file": sink_node[0], "function": sink_node[1]}
             )
 
+    # Calculate overlap (with type info)
+    overlap = all_grey_nodes & all_sink_nodes
+    grey_only = all_grey_nodes - all_sink_nodes
+    sink_only = all_sink_nodes - all_grey_nodes
+
+    # Calculate overlap (without type info)
+    overlap_no_type = all_grey_nodes_no_type & all_sink_nodes_no_type
+    grey_only_no_type = all_grey_nodes_no_type - all_sink_nodes_no_type
+    sink_only_no_type = all_sink_nodes_no_type - all_grey_nodes_no_type
+
     # Create output dictionary
     output = {
-        "total_grey_nodes": len(grey_nodes_list),
-        "total_unique_sink_nodes": len(sink_nodes_list),
+        # PRIMARY COUNTS (with full type information preserved)
+        "total_curve25519_functions_with_types": len(all_curve25519_functions),
+        "total_grey_nodes_with_types": len(grey_nodes_list),
+        "total_unique_sink_nodes_with_types": len(sink_nodes_list),
         "total_sink_nodes_per_file": len(all_sink_nodes_per_file),
+        "overlap_grey_and_sink_with_types": len(overlap),
+        "grey_only_with_types": len(grey_only),
+        "sink_only_with_types": len(sink_only),
+        # COMPARISON COUNTS (without type information, collapsed)
+        "total_curve25519_functions_no_types": len(all_curve25519_functions_no_type),
+        "total_grey_nodes_no_types": len(grey_nodes_list_no_type),
+        "total_unique_sink_nodes_no_types": len(sink_nodes_list_no_type),
+        "overlap_grey_and_sink_no_types": len(overlap_no_type),
+        "grey_only_no_types": len(grey_only_no_type),
+        "sink_only_no_types": len(sink_only_no_type),
+        # DETAILED LISTS (with type information)
+        "all_curve25519_functions": [
+            {"file": file, "function": function} for file, function in all_curve25519_functions
+        ],
         "grey_nodes": [{"file": file, "function": function} for file, function in grey_nodes_list],
         "unique_sink_nodes": [
             {"file": file, "function": function} for file, function in sink_nodes_list
         ],
         "all_sink_nodes": all_sink_nodes_per_file,
+        # DETAILED LISTS (without type information)
+        "all_curve25519_functions_no_types": [
+            {"file": file, "function": function}
+            for file, function in all_curve25519_functions_no_type
+        ],
     }
 
     # Write to JSON file
@@ -207,18 +274,39 @@ def main():
         json.dump(output, f, indent=2)
 
     print("\nExtraction complete!")
-    print(f"Total unique grey nodes found: {len(grey_nodes_list)}")
-    print(f"Total unique sink nodes found: {len(sink_nodes_list)}")
+    print(f"\n{'=' * 80}")
+    print("WITH TYPE INFORMATION (full function signatures including type parameters):")
+    print(f"{'=' * 80}")
+    print(f"Total curve25519-dalek functions: {len(all_curve25519_functions)}")
+    print(f"  - Grey nodes (transitive dependencies): {len(grey_nodes_list)}")
+    print(f"  - Unique sink nodes (entry points): {len(sink_nodes_list)}")
+    print(f"  - Overlap (appear as both): {len(overlap)}")
+    print(f"  - Grey only: {len(grey_only)}")
+    print(f"  - Sink only: {len(sink_only)}")
+
+    print(f"\n{'=' * 80}")
+    print("WITHOUT TYPE INFORMATION (collapsed by function name only):")
+    print(f"{'=' * 80}")
+    print(f"Total curve25519-dalek functions: {len(all_curve25519_functions_no_type)}")
+    print(f"  - Grey nodes (transitive dependencies): {len(grey_nodes_list_no_type)}")
+    print(f"  - Unique sink nodes (entry points): {len(sink_nodes_list_no_type)}")
+    print(f"  - Overlap (appear as both): {len(overlap_no_type)}")
+    print(f"  - Grey only: {len(grey_only_no_type)}")
+    print(f"  - Sink only: {len(sink_only_no_type)}")
+
+    print(f"\n{'=' * 80}")
+    print(f"Total DOT files processed: {len(dot_files)}")
     print(f"Total sink nodes (one per DOT file): {len(all_sink_nodes_per_file)}")
     print(f"Results saved to: {output_file}")
+    print(f"{'=' * 80}")
 
-    # Print first few examples
-    print("\nFirst 10 grey nodes:")
-    for i, (file, function) in enumerate(grey_nodes_list[:10]):
+    # Print first few examples (with type information)
+    print("\nFirst 10 sink nodes (WITH type information):")
+    for i, (file, function) in enumerate(sink_nodes_list[:10]):
         print(f"  {i + 1}. {file} :: {function}")
 
-    print("\nFirst 10 sink nodes:")
-    for i, (file, function) in enumerate(sink_nodes_list[:10]):
+    print("\nFirst 10 grey nodes (WITH type information):")
+    for i, (file, function) in enumerate(grey_nodes_list[:10]):
         print(f"  {i + 1}. {file} :: {function}")
 
     if missing_sink_files:
