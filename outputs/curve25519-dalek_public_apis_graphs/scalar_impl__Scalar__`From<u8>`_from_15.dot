@@ -1,0 +1,257 @@
+digraph function_subgraph {
+  rankdir=LR;
+  node [shape=box, style=filled, fontname=Helvetica];
+  edge [color=gray];
+
+  subgraph cluster_0 {
+    label = "scalar.rs";
+    style=filled;
+    color=lightgrey;
+    style="filled,dotted";
+    fontname=Helvetica;
+    "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`From<u8>`]from()." [label="from", tooltip="    fn from(x: u8) -> Scalar {         let mut s_bytes = [0u8; 32];         s_bytes[0] = x;         Scalar { bytes: s_bytes }     }", fillcolor=green, style="filled,dotted"]
+  }
+  subgraph cluster_1 {
+    label = "message_backup.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge 0.1.0 message_backup/OnlineBackupValidator_AddFrame()." [label="OnlineBackupValidator_AddFrame", tooltip="fn OnlineBackupValidator_AddFrame(     backup: &mut OnlineBackupValidator,     frame: &[u8], ) -> Result<(), ReadError> {     let unknown_fields = backup         .get_mut()         .parse_and_add_fram...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 message_backup/MessageBackupValidator_Validate()." [label="MessageBackupValidator_Validate", tooltip="async fn MessageBackupValidator_Validate(     key: &MessageBackupKey,     first_stream: &mut dyn InputStream,     second_stream: &mut dyn InputStream,     len: u64,     purpose: AsType<Purpose, u8>, )...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_2 {
+    label = "usernames.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge 0.1.0 usernames/Username_Hash()." [label="Username_Hash", tooltip="pub fn Username_Hash(username: String) -> Result<[u8; 32], UsernameError> {     Username::new(&username).map(|un| un.hash()) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 usernames/Username_Proof()." [label="Username_Proof", tooltip="pub fn Username_Proof(username: String, randomness: &[u8; 32]) -> Result<Vec<u8>, UsernameError> {     Username::new(&username)?.proof(randomness) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-bridge 0.1.0 usernames/Username_HashFromParts()." [label="Username_HashFromParts", tooltip="pub fn Username_HashFromParts(     nickname: String,     discriminator: String,     min_len: u32,     max_len: u32, ) -> Result<[u8; 32], UsernameError> {     let limits = NicknameLimits::new(min_len ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_3 {
+    label = "message_backup.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-bridge-testing 0.1.0 message_backup/ComparableBackup_ReadUnencrypted()." [label="ComparableBackup_ReadUnencrypted", tooltip="async fn ComparableBackup_ReadUnencrypted(     stream: &mut dyn InputStream,     len: u64,     purpose: AsType<Purpose, u8>, ) -> Result<ComparableBackup, ReadError> {     let reader = BackupReader::n...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_4 {
+    label = "validation.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 process()." [label="process", tooltip="    fn process<R: ReaderFactory<Reader: Unpin>>(input: R, key: &MessageBackupKey) {         futures::executor::block_on(async {             BackupReader::new_encrypted_compressed(                 key,...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 validation()." [label="validation", tooltip="    validation,     hmac_only,     decrypt_only,     decrypt_and_decompress_and_hmac,     decrypt_and_decompress_and_hmac_and_segment,     decrypt_and_decompress_and_hmac_and_segment_and_parse,     de...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 parse_and_validate()." [label="parse_and_validate", tooltip="fn parse_and_validate(c: &mut Criterion) {     let mut group = c.benchmark_group(' PartialBackup' );     benchmark_multiple_backup_sizes(|size, _backup, _key| {         if size == 0 {             retu...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_5 {
+    label = "backup.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_missing_foreign_key()." [label="rejects_missing_foreign_key", tooltip="    fn rejects_missing_foreign_key<M: Method + ReferencedTypes>(         mut partial: PartialBackup<M>,         item: impl Into<FrameItem>,     ) {         let frame = proto::Frame {             item:...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_multiple_account_data()." [label="rejects_multiple_account_data", tooltip="    fn rejects_multiple_account_data<M: Method + ReferencedTypes>(mut partial: PartialBackup<M>) {         partial             .add_frame_item(proto::AccountData::test_data().into())             .expe...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." [label="add_recipient", tooltip="    fn add_recipient(&mut self, recipient: proto::Recipient) -> Result<(), RecipientFrameError> {         let id = recipient.id();         let err_with_id = |e| RecipientFrameError(id, e);         if ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/duplicate_contact_id()." [label="duplicate_contact_id", tooltip="    fn duplicate_contact_id<M: Method + ReferencedTypes>(         mut partial: PartialBackup<M>,         (expected_error, fill_in_field): (             impl Fn(RecipientId, RecipientId) -> CompletionE...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/pni_matching_aci_is_okay()." [label="pni_matching_aci_is_okay", tooltip="    fn pni_matching_aci_is_okay<M: Method + ReferencedTypes>(mut partial: PartialBackup<M>) {         partial             .add_account_data(proto::AccountData::test_data())             .expect(' valid...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/chat_item_order()." [label="chat_item_order", tooltip="    fn chat_item_order() {         let mut partial = Store::empty();          partial             .add_account_data(proto::AccountData::test_data())             .expect(' valid account data' );       ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame()." [label="add_frame", tooltip="    pub fn add_frame(&mut self, frame: proto::Frame) -> Result<(), ValidationError> {         self.add_frame_item(frame.item.ok_or(ValidationError::EmptyFrame)?)     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_duplicate_all_folder()." [label="rejects_duplicate_all_folder", tooltip="    fn rejects_duplicate_all_folder<M: Method + ReferencedTypes>(mut partial: PartialBackup<M>) {         partial             .add_frame_item(proto::AccountData::test_data().into())             .expec...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_missing_all_folder()." [label="rejects_missing_all_folder", tooltip="    fn rejects_missing_all_folder<M: Method + ReferencedTypes>(mut partial: PartialBackup<M>) {         partial             .add_frame_item(proto::AccountData::test_data().into())             .expect(...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/allows_lone_all_folder()." [label="allows_lone_all_folder", tooltip="    fn allows_lone_all_folder<M: Method + ReferencedTypes>(mut partial: PartialBackup<M>) {         partial             .add_frame_item(proto::AccountData::test_data().into())             .expect(' ac...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_duplicate_id()." [label="rejects_duplicate_id", tooltip="    fn rejects_duplicate_id<M: Method + ReferencedTypes>(         mut partial: PartialBackup<M>,         item: impl Into<FrameItem>,     ) {         let err = partial.add_frame_item(item.into()).unwra...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/TestPartialBackupMethod#fake()." [label="fake", tooltip="        fn fake() -> PartialBackup<Self> {             Self::fake_with([                 proto::Recipient::test_data_contact().into(),                 proto::Chat::test_data().into(),                 ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/zero_chat_id()." [label="zero_chat_id", tooltip="    fn zero_chat_id<M: Method + ReferencedTypes>(mut partial: PartialBackup<M>) {         partial             .add_account_data(proto::AccountData::test_data())             .expect(' valid account dat...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/zero_recipient_id()." [label="zero_recipient_id", tooltip="    fn zero_recipient_id<M: Method + ReferencedTypes>(mut partial: PartialBackup<M>) {         partial             .add_account_data(proto::AccountData::test_data())             .expect(' valid accoun...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/duplicate_non_contact_recipient()." [label="duplicate_non_contact_recipient", tooltip="    fn duplicate_non_contact_recipient<M: Method + ReferencedTypes>(         mut partial: PartialBackup<M>,         (expected_error, destination): (             impl Fn(RecipientId, RecipientId) -> Co...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame_item()." [label="add_frame_item", tooltip="    fn add_frame_item(&mut self, item: FrameItem) -> Result<(), ValidationError> {         match item {             FrameItem::Account(account_data) => self.add_account_data(account_data),            ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/TestPartialBackupMethod#fake_with()." [label="fake_with", tooltip="        fn fake_with(frames: impl IntoIterator<Item = proto::frame::Item>) -> PartialBackup<Self> {             let mut backup = Self::empty();              for frame in frames {                 backu...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_6 {
+    label = "account_data.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/account_data/impl#[UsernameData][`TryFrom<(String, Option<proto::account_data::UsernameLink>)>`]try_from()." [label="try_from", tooltip="    fn try_from(         (username, username_link): (String, Option<proto::account_data::UsernameLink>),     ) -> Result<Self, Self::Error> {         let username = Username::new(&username)?;         ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/account_data/test/valid_account_data()." [label="valid_account_data", tooltip="    fn valid_account_data() {         assert_eq!(             proto::AccountData::test_data().try_into_with(&TestContext::default()),             Ok(AccountData::from_proto_test_data())         );    ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/account_data/test/impl#[`AccountData<Store>`]from_proto_test_data()." [label="from_proto_test_data", tooltip="        pub(crate) fn from_proto_test_data() -> Self {             Self {                 profile_key: FAKE_PROFILE_KEY,                 username: Some(UsernameData {                     username: Use...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_7 {
+    label = "recipient.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Contact`][`TryIntoWith<ContactData, C>`]try_into_with()." [label="try_into_with", tooltip="    fn try_into_with(self, context: &C) -> Result<ContactData, Self::Error> {         let Self {             aci,             pni,             profileKey,             username,             e164,      ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/valid_destination_self()." [label="valid_destination_self", tooltip="    fn valid_destination_self() {         let recipient = proto::Recipient::test_data();          assert_eq!(             recipient.try_into_with(&TestContext::default()),             Ok(Destination::...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/valid_destination_group()." [label="valid_destination_group", tooltip="    fn valid_destination_group() {         let recipient = proto::Recipient {             destination: Some(proto::Group::test_data().into()),             ..proto::Recipient::test_data()         };   ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [label="try_into_with", tooltip="    fn try_into_with(self, context: &C) -> Result<Destination<R>, Self::Error> {         let Self {             id: _,             destination,             special_fields: _,         } = self;        ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/destination_distribution_list()." [label="destination_distribution_list", tooltip="    fn destination_distribution_list(         modifier: fn(&mut proto::DistributionListItem),     ) -> Result<(), RecipientError> {         let mut distribution_list = proto::DistributionListItem::tes...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/requires_destination()." [label="requires_destination", tooltip="    fn requires_destination() {         let recipient = proto::Recipient {             destination: None,             ..proto::Recipient::test_data()         };          assert_matches!(             r...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/destination_contact()." [label="destination_contact", tooltip="    fn destination_contact(modifier: fn(&mut proto::Contact)) -> Result<(), RecipientError> {         let mut contact = proto::Contact::test_data();         modifier(&mut contact);          let recipi...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/valid_distribution_list()." [label="valid_distribution_list", tooltip="    fn valid_distribution_list() {         let recipient = proto::Recipient {             destination: Some(proto::DistributionListItem::test_data().into()),             ..proto::Recipient::test_data(...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/valid_destination_contact()." [label="valid_destination_contact", tooltip="    fn valid_destination_contact() {         let recipient = proto::Recipient {             destination: Some(proto::Contact::test_data().into()),             ..proto::Recipient::test_data()         }...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/destination_group()." [label="destination_group", tooltip="    fn destination_group(modifier: fn(&mut proto::Group)) -> Result<(), RecipientError> {         let mut group = proto::Group::test_data();         modifier(&mut group);          let recipient = prot...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_8 {
+    label = "serialize.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/shuffled_chats_and_recipient_ids()." [label="shuffled_chats_and_recipient_ids", tooltip="    fn shuffled_chats_and_recipient_ids() {         let base = vec![crate::proto::backup::Frame {             item: Some(proto::AccountData::test_data().into()),             special_fields: Default::d...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/can_serialize()." [label="can_serialize", tooltip="    fn can_serialize() {         let backup = Backup {             meta: BackupMeta {                 version: 1,                 backup_time: Timestamp::test_value(),                 purpose: crate::...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/backup_from_frames()." [label="backup_from_frames", tooltip="    fn backup_from_frames(         frames: impl IntoIterator<Item = proto::Frame>,     ) -> crate::CompletedBackup<Store> {         let mut reader = crate::backup::PartialBackup::new(             prot...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/shuffled_chat_item_frames_not_equal()." [label="shuffled_chat_item_frames_not_equal", tooltip="    fn shuffled_chat_item_frames_not_equal() {         let first_contact = make_contact(' first' , 1);         let second_contact = make_contact(' second' , 2);          let constant_frames = vec![   ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_9 {
+    label = "main.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 main()." [label="main", tooltip="fn main() {     futures::executor::block_on(async_main()) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 validate()." [label="validate", tooltip="        async fn validate(             mut backup_reader: BackupReader<impl AsyncRead + Unpin + VerifyHmac>,             PrintOutput(print): PrintOutput,             verbosity: ParseVerbosity,        ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_10 {
+    label = "lib.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]collect_all()." [label="collect_all", tooltip="    pub async fn collect_all<M: backup::method::Method + backup::ReferencedTypes>(         self,     ) -> ReadResult<backup::PartialBackup<M>>     where         backup::PartialBackup<M>: Send,     {  ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]read_all()." [label="read_all", tooltip="    pub async fn read_all(self) -> ReadResult<backup::CompletedBackup<Store>> {         self.collect_all()             .await             .and_then(|r| Ok(CompletedBackup::try_from(r)?))     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]validate_all()." [label="validate_all", tooltip="    pub async fn validate_all(self) -> ReadResult<()> {         self.collect_all().await.and_then(|partial| {             let _: CompletedBackup<ValidateOnly> = partial.try_into()?;             Ok(())...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 read_all_frames()." [label="read_all_frames", tooltip="async fn read_all_frames<M: backup::method::Method + backup::ReferencedTypes>(     purpose: Purpose,     mut reader: VarintDelimitedReader<impl AsyncRead + Unpin + VerifyHmac>,     mut visitor: impl F...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`backup::PartialBackup<M>`]parse_and_add_frame()." [label="parse_and_add_frame", tooltip="    pub fn parse_and_add_frame(         &mut self,         raw_frame: &[u8],         mut visitor: impl FnMut(&proto::backup::Frame) + Send,     ) -> Result<Vec<(Vec<PathPart>, UnknownValue)>, crate::E...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_11 {
+    label = "test_cases.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 invalid_jsonproto()." [label="invalid_jsonproto", tooltip="fn invalid_jsonproto(input: Fixture<PathBuf>) {     let path = input.into_content();     let expected_path = path.with_extension(EXPECTED_SUFFIX);      let json_contents = json5::from_str(&std::fs::re...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 can_serialize_json_proto()." [label="can_serialize_json_proto", tooltip="fn can_serialize_json_proto(input: Fixture<&str>) {     let json_contents = input.into_content();     let json_contents = json5::from_str(json_contents).expect(' invalid JSON' );     let json_array = ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 scrambler_smoke_test()." [label="scrambler_smoke_test", tooltip="fn scrambler_smoke_test() {     // Scrambling is deterministic, so we can check against expected output.     let binproto = include_bytes!(' res/canonical-backup.binproto' );     let scrambled_binprot...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo libsignal-message-backup 0.1.0 serialized_account_settings_is_valid()." [label="serialized_account_settings_is_valid", tooltip="fn serialized_account_settings_is_valid() {     let binproto = include_bytes!(' res/canonical-backup.binproto' );     let expected_canonical_str = include_str!(' res/canonical-backup.expected.json' );...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_12 {
+    label = "fetch_profile_key_credential.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo libsignal-net-chat 0.1.0 main()." [label="main", tooltip="async fn main() -> anyhow::Result<()> {     env_logger::builder()         .filter_module(module_path!(), log::LevelFilter::Info)         .parse_default_env()         .init();      let Config {        ...", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_13 {
+    label = "usernames_benchmarks.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo usernames 0.1.0 bench_usernames()." [label="bench_usernames", tooltip="fn bench_usernames(c: &mut Criterion) {     let mut rng = OsRng.unwrap_err();     let usernames =         Username::candidates_from(&mut rng, ' signal' , NicknameLimits::default()).unwrap();      let ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 benches()." [label="benches", tooltip="criterion_group!(benches, bench_usernames); criterion_main!(benches);", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username_hash()." [label="username_hash", tooltip="pub fn username_hash(username: &str) -> Result<[u8; 32], UsernameError> {     Username::new(username).map(|un| un.hash()) }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username_proof()." [label="username_proof", tooltip="pub fn username_proof(username: &str, randomness: &[u8; 32]) -> Result<Vec<u8>, UsernameError> {     Username::new(username)?.proof(randomness) }", fillcolor=white, style="filled"]
+  }
+  subgraph cluster_14 {
+    label = "username.rs";
+    style=filled;
+    color=lightblue;
+    fontname=Helvetica;
+    "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [label="new", tooltip="    pub fn new(s: &str) -> Result<Self, UsernameError> {         let (nickname, discriminator) =             s.rsplit_once('.').ok_or(UsernameError::MissingSeparator)?;         Self::from_parts_withou...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/invalid_nicknames()." [label="invalid_nicknames", tooltip="    fn invalid_nicknames() {         for (nickname, expected_error) in [             (' ' , UsernameError::NicknameCannotBeEmpty),             (' ab🦀d' , UsernameError::BadNicknameCharacter),      ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." [label="nickname_scalar", tooltip="fn nickname_scalar(nickname: &str) -> Result<Scalar, UsernameError> {     assert!(         !nickname.is_empty(),         ' should be checked before calling nickname_scalar' ,     );     let bytes: Vec...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/no_discriminator()." [label="no_discriminator", tooltip="    fn no_discriminator() {         assert_eq!(             Username::new(' no_discriminator' ).expect_err(' not a valid username' ),             UsernameError::MissingSeparator         );     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/to_base_37_scalar()." [label="to_base_37_scalar", tooltip="fn to_base_37_scalar(bytes: &[u8]) -> Scalar {     assert!(         bytes.len() <= MAX_NICKNAME_LENGTH,         ' may not fit in a Scalar'      );      let thirty_seven = Scalar::from(37u8);     let m...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/invalid_discriminators()." [label="invalid_discriminators", tooltip="    fn invalid_discriminators() {         for (discriminator, expected_error) in [             (' ' , UsernameError::DiscriminatorCannotBeEmpty),             (' 0' , UsernameError::DiscriminatorCannot...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/valid_nicknames_should_produce_scalar()." [label="valid_nicknames_should_produce_scalar", tooltip="    fn valid_nicknames_should_produce_scalar() {         proptest!(|(nickname in NICKNAME_PATTERN)| {             nickname_scalar(&nickname).unwrap();         });     }", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/many_random_makes_valid_usernames()." [label="many_random_makes_valid_usernames", tooltip="    fn many_random_makes_valid_usernames() {         let mut rng = rand::rng();         let randomness = std::array::from_fn(|i| (i + 1).try_into().unwrap());         let nickname = ' _SiGNA1' ;      ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts()." [label="from_parts", tooltip="    pub fn from_parts(         nickname: &str,         discriminator: &str,         limits: NicknameLimits,     ) -> Result<Self, UsernameError> {         // This should perform the same set of checks...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/valid_usernames_proof_and_verify()." [label="valid_usernames_proof_and_verify", tooltip="    fn valid_usernames_proof_and_verify() {         proptest!(|(nickname in NICKNAME_PATTERN, discriminator in 1..DISCRIMINATOR_MAX)| {             let username = Username::new(&Username::format_parts...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts_without_soft_limit()." [label="from_parts_without_soft_limit", tooltip="    fn from_parts_without_soft_limit(         nickname: &str,         discriminator: &str,     ) -> Result<Self, UsernameError> {         validate_prefix(nickname)?;         let discriminator = valida...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/valid_nickname_scalar()." [label="valid_nickname_scalar", tooltip="    fn valid_nickname_scalar() {         // the results should be 1 + 27*27 + 37*27*37^1 + 1*27*37^2 = 74656         let nickname = ' _z9_' ;         assert_eq!(Scalar::from(74656_u32), nickname_scala...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/make_scalars()." [label="make_scalars", tooltip="fn make_scalars(nickname: &str, discriminator: u64) -> Result<Vec<Scalar>, UsernameError> {     Ok(vec![         username_sha_scalar(nickname, discriminator)?,         nickname_scalar(nickname)?,     ...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/nicknames_exceeding_soft_limits()." [label="nicknames_exceeding_soft_limits", tooltip="    fn nicknames_exceeding_soft_limits() {         Username::from_parts(' abcd' , ' 42' , NicknameLimits::default()).expect(' valid' );         assert_eq!(             Username::from_parts(' abcd' , '...", fillcolor=white, style="filled"]
+    "rust-analyzer cargo usernames 0.1.0 username/test/valid_usernames()." [label="valid_usernames", tooltip="    fn valid_usernames() {         for username in [' He110.01' , ' usr.999999999' , ' _identifier.42' , ' LOUD.700' ] {             let parsed = Username::new(username).unwrap();             _ = pars...", fillcolor=white, style="filled"]
+  }
+
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/shuffled_chats_and_recipient_ids()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/backup_from_frames()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts_without_soft_limit()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_missing_foreign_key()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 message_backup/OnlineBackupValidator_AddFrame()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`backup::PartialBackup<M>`]parse_and_add_frame()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/can_serialize()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/account_data/test/impl#[`AccountData<Store>`]from_proto_test_data()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/invalid_nicknames()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/invalid_nicknames()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Contact`][`TryIntoWith<ContactData, C>`]try_into_with()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]collect_all()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 read_all_frames()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." -> "rust-analyzer cargo usernames 0.1.0 username/to_base_37_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 invalid_jsonproto()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]read_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/no_discriminator()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_multiple_account_data()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame_item()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/duplicate_contact_id()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 can_serialize_json_proto()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]read_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 process()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]validate_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 process()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`backup::PartialBackup<M>`]parse_and_add_frame()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]read_all()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]collect_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 main()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 main()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`backup::PartialBackup<M>`]parse_and_add_frame()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 validate()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]read_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/account_data/impl#[UsernameData][`TryFrom<(String, Option<proto::account_data::UsernameLink>)>`]try_from()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 bench_usernames()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 bench_usernames()." -> "rust-analyzer cargo usernames 0.1.0 username_hash()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 bench_usernames()." -> "rust-analyzer cargo usernames 0.1.0 username_proof()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/account_data/test/valid_account_data()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/account_data/test/impl#[`AccountData<Store>`]from_proto_test_data()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/to_base_37_scalar()." -> "rust-analyzer cargo curve25519-dalek 4.1.3 scalar/impl#[Scalar][`From<u8>`]from()." [color=blue]
+  "rust-analyzer cargo usernames 0.1.0 username/test/invalid_discriminators()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/invalid_discriminators()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/pni_matching_aci_is_okay()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 benches()." -> "rust-analyzer cargo usernames 0.1.0 bench_usernames()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]validate_all()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]collect_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 validation()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 parse_and_validate()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username_hash()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/valid_nicknames_should_produce_scalar()." -> "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/many_random_makes_valid_usernames()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/chat_item_order()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/valid_destination_self()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts_without_soft_limit()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame_item()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 parse_and_validate()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`backup::PartialBackup<M>`]parse_and_add_frame()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/valid_usernames_proof_and_verify()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/valid_destination_group()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_duplicate_all_folder()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame_item()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 read_all_frames()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`backup::PartialBackup<M>`]parse_and_add_frame()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-net-chat 0.1.0 main()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username_proof()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 usernames/Username_Hash()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts_without_soft_limit()." -> "rust-analyzer cargo usernames 0.1.0 username/make_scalars()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_missing_all_folder()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame_item()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/valid_nickname_scalar()." -> "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Contact`][`TryIntoWith<ContactData, C>`]try_into_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/backup_from_frames()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/make_scalars()." -> "rust-analyzer cargo usernames 0.1.0 username/nickname_scalar()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/destination_distribution_list()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/nicknames_exceeding_soft_limits()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/allows_lone_all_folder()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame_item()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/allows_lone_all_folder()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/shuffled_chat_item_frames_not_equal()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/serialize/test/backup_from_frames()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 usernames/Username_Proof()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/requires_destination()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge-testing 0.1.0 message_backup/ComparableBackup_ReadUnencrypted()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]read_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/destination_contact()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_duplicate_id()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame_item()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_duplicate_id()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/TestPartialBackupMethod#fake()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/rejects_duplicate_id()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/TestPartialBackupMethod#fake_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/account_data/test/impl#[`AccountData<Store>`]from_proto_test_data()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/TestPartialBackupMethod#fake()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/TestPartialBackupMethod#fake_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/zero_chat_id()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/zero_recipient_id()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/valid_distribution_list()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`backup::PartialBackup<M>`]parse_and_add_frame()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/valid_destination_contact()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/duplicate_non_contact_recipient()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame_item()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_recipient()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 scrambler_smoke_test()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]read_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 message_backup/MessageBackupValidator_Validate()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]validate_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo usernames 0.1.0 username/test/valid_usernames()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]new()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 serialized_account_settings_is_valid()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 impl#[`BackupReader<R>`]read_all()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/TestPartialBackupMethod#fake_with()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/impl#[`PartialBackup<M>`]add_frame_item()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/TestPartialBackupMethod#fake_with()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/test/TestPartialBackupMethod#fake()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-bridge 0.1.0 usernames/Username_HashFromParts()." -> "rust-analyzer cargo usernames 0.1.0 username/impl#[Username]from_parts()." [color=blue, style=dashed]
+  "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/test/destination_group()." -> "rust-analyzer cargo libsignal-message-backup 0.1.0 backup/recipient/impl#[`proto::Recipient`][`TryIntoWith<Destination<R>, C>`]try_into_with()." [color=blue, style=dashed]
+}
