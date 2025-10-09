@@ -16,7 +16,7 @@
 | [backend/serial/u64/field/impl#[FieldElement51]as_bytes().](https://github.com/dalek-cryptography/curve25519-dalek/tree/curve25519-4.1.3/curve25519-dalek/src/backend/serial/u64/field.rs#L367) |  |  |  |  |
 | [backend/serial/u64/field/impl#[FieldElement51]from_bytes().](https://github.com/dalek-cryptography/curve25519-dalek/tree/curve25519-4.1.3/curve25519-dalek/src/backend/serial/u64/field.rs#L337) |  |  |  |  |
 | [backend/serial/u64/field/impl#[FieldElement51]pow2k().](https://github.com/dalek-cryptography/curve25519-dalek/tree/curve25519-4.1.3/curve25519-dalek/src/backend/serial/u64/field.rs#L453) |  |  |  |  |
-| [backend/serial/u64/field/impl#[FieldElement51]reduce().](https://github.com/dalek-cryptography/curve25519-dalek/tree/curve25519-4.1.3/curve25519-dalek/src/backend/serial/u64/field.rs#L289) |  |  |  |  |
+| [backend/serial/u64/field/impl#[FieldElement51]reduce().](https://github.com/dalek-cryptography/curve25519-dalek/tree/curve25519-4.1.3/curve25519-dalek/src/backend/serial/u64/field.rs#L289) | ✔️ |✔️  |  |  |
 | [backend/serial/u64/field/impl#[FieldElement51]square().](https://github.com/dalek-cryptography/curve25519-dalek/tree/curve25519-4.1.3/curve25519-dalek/src/backend/serial/u64/field.rs#L561) |  |  |  |  |
 | [backend/serial/u64/field/impl#[FieldElement51]square2().](https://github.com/dalek-cryptography/curve25519-dalek/tree/curve25519-4.1.3/curve25519-dalek/src/backend/serial/u64/field.rs#L566) |  |  |  |  |
 | [backend/serial/u64/scalar/impl#[Scalar52]add().](https://github.com/dalek-cryptography/curve25519-dalek/tree/curve25519-4.1.3/curve25519-dalek/src/backend/serial/u64/scalar.rs#L159) |  |  |  |  |
