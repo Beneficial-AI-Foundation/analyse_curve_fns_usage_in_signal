@@ -6,13 +6,13 @@ This repository contains an analysis of how curve25519-dalek v4.1.3 functions ar
 
 - **curve25519-dalek version**: 4.1.3
 - **Total curve25519-dalek symbols analyzed**: 557
-- **Functions with non-empty call graphs (called from libsignal)**: 119
+- **Functions with non-empty call graphs (called from libsignal)**: 125
 
 ## Overview
 
-This analysis generated call graphs showing the relationships between curve25519-dalek v4.1.3 functions and their usage in libsignal. Out of 557 total symbols (including public API, internal functions, backend implementations, and trait implementations) in the curve25519-dalek v4.1.3 library, 119 functions have non-empty call graphs indicating they are called directly or transitively from libsignal code. 
+This analysis generated call graphs showing the relationships between curve25519-dalek v4.1.3 functions and their usage in libsignal. Out of 557 total symbols (including public API, internal functions, backend implementations, and trait implementations) in the curve25519-dalek v4.1.3 library, 125 functions have non-empty call graphs indicating they are called directly or transitively from libsignal code. 
 
-The generated graphs are stored in the [outputs/curve25519-dalek_public_apis_graphs](outputs/curve25519-dalek_public_apis_graphs) directory, with each graph visualizing the call relationships for a specific function. The graphs are generated as `.dot` files and converted to `.svg` files for visualization. The names of the 119 sink nodes are enumerated [here](docs/curve25519_dalek_svg_files.md). 
+The generated graphs are stored in the [outputs/curve25519-dalek_public_apis_graphs](outputs/curve25519-dalek_public_apis_graphs) directory, with each graph visualizing the call relationships for a specific function. The graphs are generated as `.dot` files and converted to `.svg` files for visualization. The names of the 125 sink nodes are enumerated [here](docs/curve25519_dalek_svg_files.md). 
 
 ## Installation
 
@@ -78,7 +78,7 @@ uv run extract-public-api-from-scip  # Extract public API from SCIP index
 - `data/index_scip_libsignal_deps.json` - SCIP index containing all symbols and call relationships for curve25519-dalek v4.1.3 and libsignal (generated with rust-analyzer and scip)
 - `data/index_scip_curve25519-4.1.3.json` - SCIP index for curve25519-dalek v4.1.3 only
 - `data/curve25519-dalek-public-api.json` - Reference documentation of public APIs in curve25519-dalek v4.1.3 (can be regenerated with `extract-public-api-from-scip`)
-- `docs/curve25519_dalek_svg_files.md` - Index of all 119 generated SVG graph files
+- `docs/curve25519_dalek_svg_files.md` - Index of all 125 generated SVG graph files
 - `outputs/curve25519-dalek_public_apis_graphs/processing_results.json` - Processing statistics and metadata
 
 ### Regenerating the Public API JSON
@@ -93,13 +93,18 @@ This script extracts all public API functions, methods, and constants from the S
 
 ## Remarks
 
-The 119 functions with non-empty graphs represent **all curve25519-dalek v4.1.3 functions that are reachable from libsignal code**. This includes:
-- **58** typed implementations (methods on public types like `EdwardsPoint::double()`)
-- **45** backend implementations (internal u64/field operations)
-- **9** standalone public API functions
-- **7** trait implementations (Identity, MultiscalarMul, etc.)
+The 125 functions with non-empty graphs represent **all curve25519-dalek v4.1.3 functions that are reachable from libsignal code**. This includes:
+- **46** backend implementations (internal u64/field operations, AVX2 optimizations, etc.)
+- **21** scalar operations (arithmetic, conversions, serialization)
+- **15** Edwards curve operations (point arithmetic, compression, multiscalar multiplication)
+- **14** Ristretto operations (point compression, elligator mapping, multiscalar multiplication)
+- **8** Montgomery operations (curve conversions and Montgomery arithmetic)
+- **8** field operations (including lizard constants and field arithmetic)
+- **8** lizard-specific operations (Jacobi quartic and Ristretto extensions)
+- **4** trait implementations (Identity, MultiscalarMul, etc.)
+- **3** window/lookup table operations
 
-The script `extract_grey_nodes.py` confirms that any curve25519-dalek node in any graph appears in `curve25519_dalek_svg_files.md`, meaning it is a sink node in a graph. In other words: if function `f` appears in any graph and `f` calls `g` (where both are in curve25519-dalek), then `g` is one of the 119 functions and has its own graph.
+The script `extract_grey_nodes.py` confirms that any curve25519-dalek node in any graph appears in `curve25519_dalek_svg_files.md`, meaning it is a sink node in a graph. In other words: if function `f` appears in any graph and `f` calls `g` (where both are in curve25519-dalek), then `g` is one of the 125 functions and has its own graph.
 
 ### Color code
  
@@ -109,7 +114,7 @@ The script `extract_grey_nodes.py` confirms that any curve25519-dalek node in an
 
 The analysis extracts **all** curve25519-dalek v4.1.3 symbols from the [SCIP index](https://github.com/Beneficial-AI-Foundation/rust-analyzer-test/blob/master/index_scip_libsignal_deps.json) (generated with `rust-analyzer` and `scip`). This includes public API functions, internal backend implementations, trait implementations, and helper functions.
 
-For each curve25519-dalek v4.1.3 function `f`, a 5-depth call graph is generated: if functions `g1`, ..., `gk` call `f`, we add all `gi -> f` edges, then recursively process `g1`, ..., `gk` for 4 more iterations. The graph is then filtered to show only paths starting from a libsignal function. This ensures we capture all curve25519-dalek code that is **actually reachable** from libsignal, whether it's public API or internal implementation details.
+For each curve25519-dalek v4.1.3 function `f`, a 15-depth call graph is generated: if functions `g1`, ..., `gk` call `f`, we add all `gi -> f` edges, then recursively process `g1`, ..., `gk` for 14 more iterations. The graph is then filtered to show only paths starting from a libsignal function. This ensures we capture all curve25519-dalek code that is **actually reachable** from libsignal, whether it's public API or internal implementation details.
 
 **Example:** Consider the internal backend function `pub fn add(a: &Scalar52, b: &Scalar52) -> (s: Scalar52)` from [this graph](https://github.com/Beneficial-AI-Foundation/analyse_curve_fns_usage_in_signal/blob/dbe6f44608895a22a908dfaa37bd955f17ff2890/curve25519-dalek_public_apis_graphs/backend_serial_u64_scalar_impl__Scalar52_add_5.svg). Even though `add` is an internal backend implementation (not public API), it appears as a sink node because it's reachable from libsignal:
 - `add` is called by `from_bytes_wide` (internal) in the [same file](https://github.com/Beneficial-AI-Foundation/curve25519-dalek/blob/c396de153573ee410853a3e6090b5952d476034c/curve25519-dalek/src/backend/serial/u64/scalar.rs#L139)
